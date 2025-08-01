@@ -1,0 +1,70 @@
+import HeroSection from "./components/HeroSection";
+import Navbar from "./components/Navbar";
+import Features from "./components/Features";
+import Profile from "./components/Profile";
+import ArtikelCard from "./components/ArtikelCard";
+import home from "./assets/home.webp"; // Pastikan path ini sesuai dengan struktur folder Anda
+import MediaSosial from "./components/MediaSosial";
+import KelasTerbaik from "./components/KelasTerbaik";
+import TestimonialCarousel from "./components/TestimonialCarousel";
+import VideoGallerySection from "./components/VideoGallerySection";
+import ExperienceStatsSection from "./components/ExperienceStatsSection";
+import ProsedurPage from "./components/ProsedurPage";
+import StatistikPeserta from "./components/StatistikPeserta";
+import CallToAction from "./components/CallToAction";
+import HeroImageSection from "./components/HeroImageSection";
+import SupportSection from "./components/SupportSection";
+import CustomFAQ from "./components/CustomFAQ";
+import Footer from "./components/Footer";
+import SSWTokuteiGinou from "./components/SSWTokuteiGinou";
+
+export default function App() {
+  return (
+    <div className="bg-gray-50">
+      <div className="!min-h-screen !w-screen py-12">
+        <Navbar />
+        <HeroSection />
+        <VideoGallerySection />
+        <KelasTerbaik />
+        <SSWTokuteiGinou />
+        {/* <h2 className="text-3xl font-bold text-center my-8 text-blue-900">
+          Berita dan Artikel Terakhir ISO Jepang
+        </h2>
+        <div className="flex justify-center mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center">
+            <ArtikelCard
+              image={home}
+              tag="Artikel"
+              title="Tas Anak Jepang Randoseru: 7 Fakta Mengejutkan"
+              description="Tas Anak Jepang Randoseru: 7 Fakta Mengejutkan yang Nggak Kamu Sangka!"
+              date="July 30, 2025"
+              link="#"
+            />
+            <ArtikelCard
+              image={home}
+              tag="Artikel"
+              title="Peringatan Tsunami: Jepang Kembali Terancam"
+              description="Mengapa Negeri Sakura Selalu Jadi Langganan Bencana Laut?"
+              date="July 30, 2025"
+              link="#"
+            />
+            <ArtikelCard
+              image={home}
+              tag="Artikel"
+              title="Tips Adaptasi kehidupan di Jepang"
+              description="Untuk Pekerja Migran Indonesia (PMI)"
+              date="July 28, 2025"
+              link="#"
+            />
+          </div>
+        </div> */}
+        <TestimonialCarousel />
+        <CallToAction />
+        <HeroImageSection />
+        <SupportSection />
+        <CustomFAQ />
+      </div>
+        <Footer />
+    </div>
+  );
+}
