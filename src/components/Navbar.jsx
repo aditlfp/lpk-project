@@ -146,12 +146,12 @@ function Navbar() {
 
         {/* Nav Pc */}
         <div className="navbar-center hidden lg:flex gap-x-9">
-          <div className="dropdown dropdown-hover uppercase font-bold w-full">
+          <div className="dropdown dropdown-hover uppercase font-bold text-sm w-full">
             <label
               tabIndex="0"
-              className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
+              className="bg-transparent hover:text-amber-500 group flex items-center gap-2 w-[100pt]"
             >
-              MediaSosial
+              Media Sosial
               <svg
                 className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
                 fill="none"
@@ -168,24 +168,32 @@ function Navbar() {
             </label>
             <ul
               tabIndex="0"
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box  w-52"
             >
               <li>
-                <a className="bg-transparent hover:text-amber-500">Youtube</a>
+                <a className="bg-transparent hover:text-amber-500 text-sm">
+                  Youtube
+                </a>
               </li>
               <li>
-                <a className="bg-transparent hover:text-amber-500">Facebook</a>
+                <a className="bg-transparent hover:text-amber-500 text-sm">
+                  Facebook
+                </a>
               </li>
               <li>
-                <a className="bg-transparent hover:text-amber-500">Instagram</a>
+                <a className="bg-transparent hover:text-amber-500 text-sm">
+                  Instagram
+                </a>
               </li>
               <li>
-                <a className="bg-transparent hover:text-amber-500">Tiktok</a>
+                <a className="bg-transparent hover:text-amber-500 text-sm">
+                  Tiktok
+                </a>
               </li>
             </ul>
           </div>
 
-          <div className="dropdown dropdown-hover uppercase font-bold">
+          <div className="dropdown dropdown-hover uppercase font-bold text-sm">
             <label
               tabIndex="0"
               className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
@@ -210,10 +218,14 @@ function Navbar() {
               className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="bg-transparent hover:text-amber-500">Wa 1</a>
+                <a className="bg-transparent hover:text-amber-500 text-sm">
+                  Wa 1
+                </a>
               </li>
               <li>
-                <a className="bg-transparent hover:text-amber-500">Wa 2</a>
+                <a className="bg-transparent hover:text-amber-500 text-sm">
+                  Wa 2
+                </a>
               </li>
             </ul>
           </div>
@@ -221,12 +233,12 @@ function Navbar() {
           <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
             <label
               tabIndex="0"
-              className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
+              className="bg-transparent hover:text-amber-500 group flex items-center gap-2 text-sm"
             >
               Sign In
             </label>
           </div>
-          <div className="navbar-end ml-14 mr-4">
+          <div className="navbar-end ml-10 mr-4">
             <a className="btn btn-warning text-white font-bold transition-transform duration-300 hover:scale-110 hover:bg-blue-600 hover:border-0 shadow-none">
               Daftar Sekarang
             </a>
