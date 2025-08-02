@@ -1,4 +1,3 @@
-
 const CallToAction = () => {
   return (
     <section className="relative z-10 -mt-20 px-4">

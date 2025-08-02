@@ -71,7 +71,8 @@ export default function TestimoniCarousel() {
             Ulasan dari Peserta Didik
           </h1>
           <span className="text-gray-300 text-lg mt-2 block">
-            Berikut beberapa ulasan dari peserta didik ISO Jepang yang sedang berada di Jepang dan yang telah proses belajar di ISO Jepang.
+            Berikut beberapa ulasan dari peserta didik ISO Jepang yang sedang
+            berada di Jepang dan yang telah proses belajar di ISO Jepang.
           </span>
         </div>
       </div>
@@ -79,13 +80,13 @@ export default function TestimoniCarousel() {
       {/* Navigation Buttons */}
       <button
         ref={prevRef}
-        className="absolute left-8 top-1/2 z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
+        className="absolute left-8 top-[44%] lg:top-1/2 z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
       >
         <FaAngleLeft />
       </button>
       <button
         ref={nextRef}
-        className="absolute right-8 top-1/2 z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
+        className="absolute right-8 top-[44%] lg:top-1/2 z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
       >
         <FaAngleRight />
       </button>
@@ -93,26 +94,26 @@ export default function TestimoniCarousel() {
       <Swiper
         ref={swiperRef}
         modules={[Pagination, Autoplay, Navigation]}
-        pagination={{ 
+        pagination={{
           clickable: true,
-          bulletClass: 'swiper-pagination-bullet !bg-white/50 !w-2 !h-2',
-          bulletActiveClass: 'swiper-pagination-bullet-active !bg-white',
+          bulletClass: "swiper-pagination-bullet !bg-white/50 !w-2 !h-2",
+          bulletActiveClass: "swiper-pagination-bullet-active !bg-white",
           renderBullet: function (index, className) {
             return '<span class="' + className + ' !mx-1"></span>';
-          }
+          },
         }}
         navigation={false}
-        autoplay={{ 
+        autoplay={{
           delay: 2000,
-          disableOnInteraction: false
+          disableOnInteraction: false,
         }}
         loop
-        className="h-[70vh] min-h-[600px]"
+        className="h-[70vh] min-h-[850px] lg:min-h-[600px] mb-10 lg:mb-0"
       >
         {testimonials.map((item, index) => (
           <SwiperSlide key={index}>
             <section
-              className="h-full bg-cover bg-center flex items-end justify-center text-white relative pb-24"
+              className="h-full bg-cover bg-center flex items-end justify-center text-white relative pb-54 lg:pb-24"
               style={{
                 backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url(${item.bg})`,
               }}
@@ -120,27 +121,36 @@ export default function TestimoniCarousel() {
               <div className="max-w-[90rem] mx-auto px-6 text-center max-h-[20rem]">
                 {/* Testimonial Content */}
                 <div className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-                  <p className="text-gray-200 text-lg md:text-md leading-relaxed mb-8 italic">
+                  <p className="text-gray-200 text-lg md:text-md leading-relaxed mb-4 lg:mb-8 italic">
                     "{item.content}"
                   </p>
-                  
+
                   {/* Profile */}
                   <div className="flex flex-col items-center">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-16 h-16 rounded-xl mb-4 border-3 border-white/20 object-cover"
+                      className="w-16 h-16 rounded-xl mb-2 lg:mb-4 border-3 border-white/20 object-cover"
                     />
-                    
+
                     {/* Star Rating */}
                     <div className="flex justify-center mb-3">
                       {[...Array(item.stars)].map((_, starIndex) => (
-                        <span key={starIndex} className="text-yellow-400 text-xl mx-0.5">★</span>
+                        <span
+                          key={starIndex}
+                          className="text-yellow-400 text-xl mx-0.5"
+                        >
+                          ★
+                        </span>
                       ))}
                     </div>
-                    
-                    <h4 className="font-bold text-xl text-white mb-1">{item.name}</h4>
-                    <p className="text-blue-400 text-sm font-medium">{item.location}</p>
+
+                    <h4 className="font-bold text-xl text-white mb-1">
+                      {item.name}
+                    </h4>
+                    <p className="text-blue-400 text-sm font-medium">
+                      {item.location}
+                    </p>
                   </div>
                 </div>
               </div>
