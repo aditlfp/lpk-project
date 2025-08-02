@@ -17,6 +17,8 @@ import SupportSection from "./components/SupportSection";
 import CustomFAQ from "./components/CustomFAQ";
 import Footer from "./components/Footer";
 import SSWTokuteiGinou from "./components/SSWTokuteiGinou";
+import EmployeRequired from "./components/EmployeRequired";
+import CandidateCard from "./components/CandidateCard";
 
 export default function App() {
   return (
@@ -25,6 +27,8 @@ export default function App() {
         <Navbar />
         <HeroSection />
         <VideoGallerySection />
+        <EmployeRequired />
+        <CandidateCard />
         <KelasTerbaik />
         <SSWTokuteiGinou />
         {/* <h2 className="text-3xl font-bold text-center my-8 text-blue-900">
