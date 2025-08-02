@@ -80,13 +80,13 @@ export default function TestimoniCarousel() {
       {/* Navigation Buttons */}
       <button
         ref={prevRef}
-        className="absolute left-8 top-[44%] lg:top-1/2 z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
+        className="absolute left-8 top-[41%] lg:top-1/2 z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
       >
         <FaAngleLeft />
       </button>
       <button
         ref={nextRef}
-        className="absolute right-8 top-[44%] lg:top-1/2 z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
+        className="absolute right-8 top-[41%] lg:top-1/2 z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
       >
         <FaAngleRight />
       </button>
@@ -113,7 +113,7 @@ export default function TestimoniCarousel() {
         {testimonials.map((item, index) => (
           <SwiperSlide key={index}>
             <section
-              className="h-full bg-cover bg-center flex items-end justify-center text-white relative pb-54 lg:pb-24"
+              className="h-full bg-cover bg-center flex items-end justify-center text-white relative pb-52 lg:pb-24"
               style={{
                 backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url(${item.bg})`,
               }}
@@ -121,7 +121,7 @@ export default function TestimoniCarousel() {
               <div className="max-w-[90rem] mx-auto px-6 text-center max-h-[20rem]">
                 {/* Testimonial Content */}
                 <div className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-                  <p className="text-gray-200 text-lg md:text-md leading-relaxed mb-4 lg:mb-8 italic">
+                  <p className="text-gray-200 text-base leading-relaxed mb-4 lg:mb-8 italic">
                     "{item.content}"
                   </p>
 
@@ -145,7 +145,7 @@ export default function TestimoniCarousel() {
                       ))}
                     </div>
 
-                    <h4 className="font-bold text-xl text-white mb-1">
+                    <h4 className="font-bold text-lg lg:text-xl text-white mb-1">
                       {item.name}
                     </h4>
                     <p className="text-blue-400 text-sm font-medium">

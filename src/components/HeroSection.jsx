@@ -42,22 +42,20 @@ export default function HeroSection() {
           kebutuhan pasar kerja Jepang.
         </p>
 
-        <div className="flex flex-col lg:flex-row-reverse gap-2 items-center justify-between lg:w-[80%]">
-          {/* Tombol */}
-          <button className="btn btn-warning text-white font-bold btn-xl text-sm md:text-2xl p-4 md:p-6 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-600 hover:border-0 shadow-none">
-            Daftar Sekarang
-          </button>
+        {/* Tombol */}
+        <button className="btn btn-warning text-white font-bold btn-xl text-sm md:text-2xl p-4 md:p-6 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-600 hover:border-0 shadow-none">
+          Daftar Sekarang
+        </button>
 
-          {/* Kolaborator */}
-          <div className="mt-5 md:mt-10 lg:mt-0">
-            <p className="text-lg md:text-xl font-bold opacity-70">
-              Berkolaborasi dengan
-            </p>
-            <div className="grid grid-cols-3 gap-2 lg:gap-4 mt-2 lg:mt-4 justify-center items-center">
-              <img src={logo} alt="Kemnaker" className="h-12" />
-              <img src={logo} alt="TIT" className="h-12" />
-              <img src={logo} alt="JITCO" className="h-12" />
-            </div>
+        {/* Kolaborator */}
+        <div className="mt-5 md:mt-10">
+          <p className="text-lg md:text-xl font-bold opacity-70">
+            Berkolaborasi dengan
+          </p>
+          <div className="grid grid-cols-3 gap-2 lg:gap-4 mt-2 lg:mt-4 justify-center items-center">
+            <img src={logo} alt="Kemnaker" className="h-12" />
+            <img src={logo} alt="TIT" className="h-12" />
+            <img src={logo} alt="JITCO" className="h-12" />
           </div>
         </div>
       </div>
