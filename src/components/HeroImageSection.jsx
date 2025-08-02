@@ -51,10 +51,14 @@ const cards = [
 
 export default function HeroImageSection() {
   return (
-    <section className="flex flex-col items-center justify-center py-10 mt-20">
+    <section className="flex flex-col items-center justify-center py-10 mt-10 lg:mt-20">
       {/* Logo Bersama (statis) */}
-      <div className="mb-12">
-        <img src={corp} alt="Bersama Logo" className="w-full h-auto" />
+      <div className="mb-12 flex justify-center md:block">
+        <img
+          src={corp}
+          alt="Bersama Logo"
+          className="w-[80%] lg:w-full h-auto"
+        />
       </div>
 
       {/* Cards */}
