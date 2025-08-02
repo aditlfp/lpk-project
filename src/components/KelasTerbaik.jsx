@@ -55,7 +55,7 @@ const KelasTerbaik = () => {
         MENGAPA DEMIKIAN ?
       </h3>
 
-      <p className="max-w-3xl mx-2 mt-4 text-gray-600 text-justify">
+      <p className="max-w-3xl mx-2 mt-4 text-gray-600 md:mx-auto text-justify lg:text-center">
         Di Kelas BASIC, Para Peserta Didik Mendapatkan Berbagai Materi
         Pendidikan yang Menjadi Persyaratan untuk Mengikuti Program SSW
         (Specified Skill Worker) diantaranya Kurikulum Pendidikan Kemampuan
@@ -68,34 +68,42 @@ const KelasTerbaik = () => {
         Berbagai Wilayah yang ada di Jepang.
       </p>
 
-      <div className="mt-12 grid gap-8 md:grid-cols-4 max-w-[90rem] mx-auto justify-center">
+      <div className="mt-12 grid gap-8 lg:gap-4 md:grid-cols-4 max-w-[90rem] mx-auto justify-center">
         {kelasData.map((kelas, idx) => (
           <div
             key={idx}
-            className="bg-[#0B1E47] text-white rounded-xl shadow-lg overflow-hidden w-80"
+            className="bg-[#0B1E47] text-white rounded-xl shadow-lg overflow-hidden w-80 lg:w-full flex flex-col"
+            style={{ height: "100%" }} // optional if wrapping with grid
           >
             <img
               src={kelas.image}
               alt={kelas.title}
               className="w-full h-56 object-cover"
             />
-            <div className="p-5 text-left">
-              <h4 className="text-lg font-bold mb-2">{kelas.title}</h4>
-              <div className="flex items-center justify-between gap-4 text-sm mb-3 text-blue-300">
-                <div className="flex items-center gap-1">
-                  <FaClock />
-                  <span>{kelas.duration}</span>
+            <div className="p-5 flex flex-col flex-1 justify-between">
+              {/* Content section */}
+              <div>
+                <h4 className="text-lg font-bold mb-2 text-left">
+                  {kelas.title}
+                </h4>
+                <div className="flex items-center justify-between gap-4 text-sm mb-3 text-blue-300">
+                  <div className="flex items-center gap-1">
+                    <FaClock />
+                    <span>{kelas.duration}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <FaMedal />
+                    <span>Bersertifikat</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1">
-                  <FaMedal />
-                  <span>Bersertifikat</span>
-                </div>
+                <p className="text-gray-300 text-sm text-justify">
+                  {kelas.description}
+                </p>
               </div>
-              <p className="text-gray-300 text-sm mb-4 text-justify">
-                {kelas.description}
-              </p>
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-1 text-yellow-400">
+
+              {/* Footer always at bottom */}
+              <div className="mt-5 flex justify-between items-end">
+                <div className="flex items-center gap-1 text-yellow-400 text-sm">
                   <span>{kelas.rating}</span>
                   <FaStar />
                   <FaStar />
@@ -103,7 +111,7 @@ const KelasTerbaik = () => {
                   <FaStar />
                   <FaStar />
                 </div>
-                <button className="btn btn-sm btn-warning p-5 px-7 text-white font-bold">
+                <button className="btn btn-sm btn-warning px-6 text-white font-bold">
                   Daftar
                 </button>
               </div>

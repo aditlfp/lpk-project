@@ -69,10 +69,10 @@ const CandidateCard = () => {
           </h2>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:items-center lg:flex-row">
           {/* Left Section - Profile Carousel */}
           <motion.div
-            className="flex-1 p-6"
+            className="flex-1 p-6 lg:max-w-[25%]"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
