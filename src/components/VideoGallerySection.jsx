@@ -52,7 +52,7 @@ export default function VideoGallerySection() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-blue-400 text-base font-medium mb-2 tracking-wide">
+          <p className="text-blue-400 text-sm font-medium mb-2 tracking-wide">
             Cuplikan Video ISO Jepang
           </p>
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
