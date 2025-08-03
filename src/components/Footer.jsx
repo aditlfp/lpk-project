@@ -42,7 +42,7 @@ function Footer() {
                   Jl. Pedurenan Depok No. 7A, Cisalak, Kec. Cimanggis, Kota
                   Depok, Jawa Barat 16452
                 </p>
-                <p className="text-sm"> isojepang@gmail.com</p>
+                <p className="text-sm"> asahikarimulya@gmail.com</p>
                 <p className="text-sm">+62 811 9776 887</p>
                 <p className="text-sm">+62 822 4044 3142</p>
               </div>
@@ -61,7 +61,7 @@ function Footer() {
               <li>Pengajar</li>
               <li>Materi JLPT</li>
               <li>Materi JF-Test</li>
-              <li>Mitra ISO Jepang</li>
+              <li>Mitra Asa Hikari Mulya</li>
             </ul>
           </div>
 

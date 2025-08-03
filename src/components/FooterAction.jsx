@@ -9,7 +9,7 @@ const FooterAction = () => {
             Daftar Sekarang dan Mulai Karirmu di Jepang!
           </h2>
           <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-           Jangan lewatkan kesempatan emas ini! Bergabunglah dengan ISO Jepang dan raih sukses karirmu di Jepang! Kursi Kami terbatas! 
+           Jangan lewatkan kesempatan emas ini! Bergabunglah dengan Asa Hikari Mulya dan raih sukses karirmu di Jepang! Kursi Kami terbatas! 
           </p>
         </div>
 

@@ -4,23 +4,23 @@ import { Play, Calendar, Users } from "lucide-react";
 const videoData = [
   {
     id: 1,
-    title: "Kegiatan Peserta ISO Jepang",
+    title: "Kegiatan Peserta Asa Hikari Mulya",
     thumbnail: "https://placehold.co/400x250",
     duration: "5:45",
-    category: "ISO Jepang",
+    category: "Asa Hikari Mulya",
     tag: "Kegiatan",
     description:
-      "Kegiatan Peserta ISO Jepang Dalam Mengikuti Kegiatan Besar dalam Sebuah Kurikulum ISO Jepang. Kurikulum yang Mengajakan Peserta ISO Menjaga Berkualitas Jepang dan Manjur Menghadapi Keadaan Seridaki Dimengerti Pada Perusahaan Jepang.",
+      "Kegiatan Peserta Asa Hikari Mulya Dalam Mengikuti Kegiatan Besar dalam Sebuah Kurikulum Asa Hikari Mulya. Kurikulum yang Mengajakan Peserta Asa Hikari Mulya Menjaga Berkualitas Jepang dan Manjur Menghadapi Keadaan Seridaki Dimengerti Pada Perusahaan Jepang.",
   },
   {
     id: 2,
     title: "Aplikasi Pera Pera",
     thumbnail: "https://placehold.co/400x250",
     duration: "1:43",
-    category: "ISO Jepang",
+    category: "Asa Hikari Mulya",
     tag: "Registrasi",
     description:
-      "Peserta Didik ISO Jepang Online Akan diberikan Pembelajaran Bahasa Jepang via Aplikasi buat ISO Jepang yang bernama Pera Pera Aplikasi ini memfig ukan men bantu peserta mencapai Bahasa Jepang dalam dengan Cepat sekaligus memahami Huruf Hiragana.",
+      "Peserta Didik Asa Hikari Mulya Online Akan diberikan Pembelajaran Bahasa Jepang via Aplikasi buat Asa Hikari Mulya yang bernama Pera Pera Aplikasi ini memfig ukan men bantu peserta mencapai Bahasa Jepang dalam dengan Cepat sekaligus memahami Huruf Hiragana.",
   },
   {
     id: 3,
@@ -28,10 +28,10 @@ const videoData = [
       "Highlight Online Class Bersama Ibu Uda Fauzyah Mentri Ketenagakerjaan",
     thumbnail: "https://placehold.co/400x250",
     duration: "6:32",
-    category: "ISO Jepang",
+    category: "Asa Hikari Mulya",
     tag: "Program",
     description:
-      "Pada Akhir Tahun 2021 ISO Jepang Mengadakan Class Online Untuk Peserta ISO Jepang Dalam Mengikuti Kegiatan Online Bersama Pendamfkan Kota Palu. Class Online ISO Jepang Dihata Langsung Secara Online via Zoom Oleh Ibu Ida Fauziyah Mentri Ketenagakerjaan Republik Indonesia Acara Berlangsung Sangat Seru dan Spektakular.",
+      "Pada Akhir Tahun 2021 Asa Hikari Mulya Mengadakan Class Online Untuk Peserta Asa Hikari Mulya Dalam Mengikuti Kegiatan Online Bersama Pendamfkan Kota Palu. Class Online Asa Hikari Mulya Dihata Langsung Secara Online via Zoom Oleh Ibu Ida Fauziyah Mentri Ketenagakerjaan Republik Indonesia Acara Berlangsung Sangat Seru dan Spektakular.",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const videoData = [
       "20 Peserta Lulus Wawancara di Perusahaan Jepang Bidang Perakitan Mobil",
     thumbnail: "https://placehold.co/400x250",
     duration: "12:31",
-    category: "ISO Jepang",
+    category: "Asa Hikari Mulya",
     tag: "Testimoni",
     description:
       "Testimoni 20 Peserta yang Lulus Wawancara Perusahaan Jepang di Bidang Perakitan Mobil Perusahaan Wawancara Jepang dilI Toyota ini Berhasil dari Berbagai Faktor yang ada di Indonesia Mereka adalah yang bersekolah dari Medan Acunaela, Makassar, Lampung, Janti Bersekolah Provinsi yang ada di Pulau Jawa Para Peserta Uni Sudah Berangkat ke Jepang Untuk Mengikuti Kursus Kerja Selama 3 Tahun.",
@@ -53,10 +53,10 @@ export default function VideoGallerySection() {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="text-red-400 text-sm font-medium mb-2 tracking-wide">
-            Cuplikan Video ISO Jepang
+            Cuplikan Video Asa Hikari Mulya
           </p>
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
-            Video Pembelajaran & Kegiatan ISO Jepang
+            Video Pembelajaran & Kegiatan Asa Hikari Mulya
           </h2>
         </div>
 

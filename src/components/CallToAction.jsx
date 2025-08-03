@@ -9,7 +9,7 @@ const CallToAction = () => {
             Secepatnya
           </h2>
           <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-            ISO Jepang Pusat Pelatihan Bahasa Jepang, menyediakan kurikulum
+            Asa Hikari Mulya Pusat Pelatihan Bahasa Jepang, menyediakan kurikulum
             pembelajaran yang berfokus untuk persiapan kerja ke Jepang. Bekerja
             sama dengan LPK/BLK yang berlokasi di wilayah Indonesia
           </p>

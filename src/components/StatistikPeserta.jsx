@@ -88,13 +88,13 @@ const StatistikPeserta = () => {
         {/* Text Content */}
         <div className="w-full lg:w-1/2">
           <h4 className="text-blue-400 text-sm font-semibold mb-2">
-            Siapa Saja Yang Mendaftar di ISO Jepang
+            Siapa Saja Yang Mendaftar di Asa Hikari Mulya
           </h4>
           <h2 className="text-2xl md:text-3xl font-bold leading-snug mb-4">
             Lebih dari 300+ Peserta Didik Aktif Setiap Periode Pendaftaran
           </h2>
           <p className="text-gray-300 text-sm">
-            Peserta Didik ISO Jepang berasal dari berbagai daerah di seluruh
+            Peserta Didik Asa Hikari Mulya berasal dari berbagai daerah di seluruh
             Indonesia. Dari Sabang sampai Merauke mereka memiliki mimpi yang
             sama: belajar dan bekerja di Jepang. Kami mendampingi mereka
             dengan proses yang efisien dan target kerja yang jelas.

@@ -22,7 +22,7 @@ const testimonials = [
     location: "Prefektur Kagoshima, Jepang",
     stars: 5,
     content:
-      "Setelah mengikuti program pendidikan ISO, selama di Jepang kami dapat berkegiatan sehari-hari dan bekerja dengan baik...",
+      "Setelah mengikuti program pendidikan Asa Hikari Mulya, selama di Jepang kami dapat berkegiatan sehari-hari dan bekerja dengan baik...",
   },
   {
     bg: bg2,
@@ -31,7 +31,7 @@ const testimonials = [
     location: "Prefektur Kagoshima, Jepang",
     stars: 5,
     content:
-      "Pelatihan bahasa Jepang di LPK yang menerapkan program ISO sangat menyenangkan dan berkualitas karena dibimbing oleh pengajar yang berpengalaman. Belajar bahasa dan budaya kerja Jepang jadi mudah untuk dipahami. Banyak hal yang baru bisa kita dapatkan sebagai bekal untuk bekerja ke Jepang.",
+      "Pelatihan bahasa Jepang di LPK yang menerapkan program Asa Hikari Mulya sangat menyenangkan dan berkualitas karena dibimbing oleh pengajar yang berpengalaman. Belajar bahasa dan budaya kerja Jepang jadi mudah untuk dipahami. Banyak hal yang baru bisa kita dapatkan sebagai bekal untuk bekerja ke Jepang.",
   },
   {
     bg: bg3,
@@ -40,7 +40,7 @@ const testimonials = [
     location: "Prefektur Oita, Jepang",
     stars: 5,
     content:
-      "Sebelum berangkat ke Jepang, Program pendidikan ISO memberikan banyak bekal pelatihan yang... ",
+      "Sebelum berangkat ke Jepang, Program pendidikan Asa Hikari Mulya memberikan banyak bekal pelatihan yang... ",
   },
 ];
 
@@ -71,8 +71,8 @@ export default function TestimoniCarousel() {
             Ulasan dari Peserta Didik
           </h1>
           <span className="text-gray-300 text-lg mt-2 block">
-            Berikut beberapa ulasan dari peserta didik ISO Jepang yang sedang
-            berada di Jepang dan yang telah proses belajar di ISO Jepang.
+            Berikut beberapa ulasan dari peserta didik Asa Hikari Mulya yang sedang
+            berada di Jepang dan yang telah proses belajar di Asa Hikari Mulya.
           </span>
         </div>
       </div>

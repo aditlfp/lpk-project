@@ -9,7 +9,7 @@ const cards = [
   {
     frontImg: ipsum,
     back: {
-      title: "ISO Jepang",
+      title: "Asa Hikari Mulya",
       description: "Pusat Pelatihan Bahasa dan Budaya Jepang",
     },
   },
@@ -55,7 +55,7 @@ const cards_long = [
   {
     frontImg: ipsumPj,
     back: {
-      title: "ISO Jepang",
+      title: "Asa Hikari Mulya",
       description: "Pusat Pelatihan Bahasa dan Budaya Jepang",
     },
   },

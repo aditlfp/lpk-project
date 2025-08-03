@@ -3,11 +3,11 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 
 const faqItems = [
   {
-    question: "Apa itu ISO Jepang?",
+    question: "Apa itu Asa Hikari Mulya?",
     answer: (
       <>
         <p>
-          ISO Jepang adalah lembaga yang menyediakan pelatihan bahasa Jepang
+          Asa Hikari Mulya adalah lembaga yang menyediakan pelatihan bahasa Jepang
           secara online dan offline dalam mempersiapkan peserta untuk bekerja di
           Jepang. Kami juga memiliki Bekerjasama dengan Sending Organization
           (SO) Lembaga Pendidikan & Pelatihan Rakyat Indonesia (LPPR Indonesia)

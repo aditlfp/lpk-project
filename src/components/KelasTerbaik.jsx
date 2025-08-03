@@ -5,7 +5,7 @@ import { FaMedal } from "react-icons/fa6";
 
 const kelasData = [
   {
-    title: "Kelas JF-TEST ISO Jepang",
+    title: "Kelas JF-TEST Asa Hikari Mulya",
     duration: "1.5 Bulan Pendidikan",
     sertifikat: true,
     description:
@@ -14,7 +14,7 @@ const kelasData = [
     rating: 4.8,
   },
   {
-    title: "Kelas BASIC ISO Jepang",
+    title: "Kelas BASIC Asa Hikari Mulya",
     duration: "3 Bulan Pendidikan",
     sertifikat: true,
     description:
@@ -23,7 +23,7 @@ const kelasData = [
     rating: 4.9,
   },
   {
-    title: "Kelas BASIC ISO Jepang",
+    title: "Kelas BASIC Asa Hikari Mulya",
     duration: "3 Bulan Pendidikan",
     sertifikat: true,
     description:
@@ -32,7 +32,7 @@ const kelasData = [
     rating: 5.0,
   },
   {
-    title: "Kelas BASIC ISO Jepang",
+    title: "Kelas BASIC Asa Hikari Mulya",
     duration: "3 Bulan Pendidikan",
     sertifikat: true,
     description:
@@ -46,10 +46,10 @@ const KelasTerbaik = () => {
   return (
     <section className="py-16 px-4 text-center">
       <p className="text-sm text-red-500 font-medium">
-        Kelas Terbaik ISO Jepang
+        Kelas Terbaik Asa Hikari Mulya
       </p>
       <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mt-2">
-        Kelas BASIC adalah Kelas Terbaik di ISO JEPANG
+        Kelas BASIC adalah Kelas Terbaik di Asa Hikari Mulya
       </h2>
       <h3 className="text-xl font-semibold text-red-900 mt-1">
         MENGAPA DEMIKIAN ?
