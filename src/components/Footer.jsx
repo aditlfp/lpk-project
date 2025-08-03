@@ -12,6 +12,15 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { TbBrandWhatsappFilled } from "react-icons/tb";
 
 function Footer() {
+
+  const whatsappNumber = "6281395554334"; // Replace with your WhatsApp number (with country code)
+  const message = "Halo Admin LPK Asa Hikari Mulya, Saya ingin menanyakan informasi lebih lanjut mengenai program pelatihan yang tersedia!"; // Optional default message
+
+  const handleClick = () => {
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <>
       {/* Bagian atas footer */}
@@ -35,7 +44,6 @@ function Footer() {
                 <MapPin />
                 <Mail />
                 <TbBrandWhatsappFilled className="text-xl" />
-                <TbBrandWhatsappFilled className="text-xl" />
               </div>
               <div className="flex flex-col gap-y-5 justify-center">
                 <p className="text-sm">
@@ -43,8 +51,7 @@ function Footer() {
                   Depok, Jawa Barat 16452
                 </p>
                 <p className="text-sm"> asahikarimulya@gmail.com</p>
-                <p className="text-sm">+62 811 9776 887</p>
-                <p className="text-sm">+62 822 4044 3142</p>
+                <p className="text-sm"><a href={handleClick}>{`+`+whatsappNumber}</a></p>
               </div>
             </div>
           </div>

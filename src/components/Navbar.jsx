@@ -5,6 +5,13 @@ import { useState } from "react";
 
 function Navbar() {
   const [mobileNav, setMobileNav] = useState(false);
+  const whatsappNumber = "6281395554334"; // Replace with your WhatsApp number (with country code)
+  const message = "Halo Admin LPK Asa Hikari Mulya, Saya ingin menanyakan informasi lebih lanjut mengenai program pelatihan yang tersedia!"; // Optional default message
+
+  const handleClick = () => {
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  };
   return (
     <div className="navbar bg-base-100 shadow-sm fixed mb-10 z-50 top-0 left-0 w-screen">
       <div className="flex justify-center w-screen">
@@ -35,89 +42,6 @@ function Navbar() {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box rounded-t-none z-0 mt-[45pt] sm:mt-[22.5pt] w-[80vw] p-2 drop-shadow-md"
             >
               <li>
-                <div class="dropdown dropdown-hover uppercase font-bold w-full">
-                  <label
-                    tabIndex="0"
-                    className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
-                  >
-                    Media Sosial
-                    <svg
-                      className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </label>
-                  <ul
-                    tabIndex="0"
-                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-                  >
-                    <li>
-                      <a className="bg-transparent hover:text-amber-500">
-                        Youtube
-                      </a>
-                    </li>
-                    <li>
-                      <a className="bg-transparent hover:text-amber-500">
-                        Facebook
-                      </a>
-                    </li>
-                    <li>
-                      <a className="bg-transparent hover:text-amber-500">
-                        Instagram
-                      </a>
-                    </li>
-                    <li>
-                      <a className="bg-transparent hover:text-amber-500">
-                        Tiktok
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="dropdown dropdown-hover uppercase font-bold">
-                  <label
-                    tabIndex="0"
-                    className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
-                  >
-                    Kontak
-                    <svg
-                      className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </label>
-                  <ul
-                    tabIndex="0"
-                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-                  >
-                    <li>
-                      <a className="bg-transparent hover:text-amber-500">
-                        Wa 1
-                      </a>
-                    </li>
-                    <li>
-                      <a className="bg-transparent hover:text-amber-500">
-                        Wa 2
-                      </a>
-                    </li>
-                  </ul>
-                </div>
 
                 <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
                   <label
@@ -127,10 +51,13 @@ function Navbar() {
                     Sign In
                   </label>
                 </div>
-                <div className="navbar-end ml-10">
-                  <a className="btn btn-warning text-white font-bold transition-transform duration-300 hover:-translate-y-4 hover:bg-blue-600 hover:border-0 shadow-none">
-                    Daftar Sekarang
-                  </a>
+                <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
+                  <label
+                    tabIndex="0"
+                    className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
+                  >
+                    Sign Up
+                  </label>
                 </div>
               </li>
             </ul>
@@ -146,84 +73,20 @@ function Navbar() {
 
         {/* Nav Pc */}
         <div className="navbar-center hidden lg:flex gap-x-9">
-          <div class="dropdown dropdown-hover uppercase font-bold w-full">
-            <label
-              tabIndex="0"
-              className="bg-transparent hover:text-amber-500 group flex items-center gap-2 w-[120pt]"
-            >
-              Media Sosial
-              <svg
-                className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex="0"
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="bg-transparent hover:text-amber-500">Youtube</a>
-              </li>
-              <li>
-                <a className="bg-transparent hover:text-amber-500">Facebook</a>
-              </li>
-              <li>
-                <a className="bg-transparent hover:text-amber-500">Instagram</a>
-              </li>
-              <li>
-                <a className="bg-transparent hover:text-amber-500">Tiktok</a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="dropdown dropdown-hover uppercase font-bold">
-            <label
-              tabIndex="0"
-              className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
-            >
-              Kontak
-              <svg
-                className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex="0"
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="bg-transparent hover:text-amber-500">Wa 1</a>
-              </li>
-              <li>
-                <a className="bg-transparent hover:text-amber-500">Wa 2</a>
-              </li>
-            </ul>
-          </div>
-
           <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
             <label
               tabIndex="0"
               className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
             >
               Sign In
+            </label>
+          </div>
+          <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
+            <label
+              tabIndex="0"
+              className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
+            >
+              Sign Up
             </label>
           </div>
           <div className="navbar-end ml-16">
