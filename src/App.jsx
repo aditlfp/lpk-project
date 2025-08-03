@@ -1,16 +1,8 @@
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
-import Features from "./components/Features";
-import Profile from "./components/Profile";
-import ArtikelCard from "./components/ArtikelCard";
-import home from "./assets/home.webp"; // Pastikan path ini sesuai dengan struktur folder Anda
-import MediaSosial from "./components/MediaSosial";
 import KelasTerbaik from "./components/KelasTerbaik";
 import TestimonialCarousel from "./components/TestimonialCarousel";
 import VideoGallerySection from "./components/VideoGallerySection";
-import ExperienceStatsSection from "./components/ExperienceStatsSection";
-import ProsedurPage from "./components/ProsedurPage";
-import StatistikPeserta from "./components/StatistikPeserta";
 import CallToAction from "./components/CallToAction";
 import HeroImageSection from "./components/HeroImageSection";
 import SupportSection from "./components/SupportSection";

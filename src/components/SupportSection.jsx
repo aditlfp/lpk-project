@@ -27,7 +27,7 @@ const SupportSection = () => {
       />
 
       {/* Blue Overlay */}
-      <div className="absolute inset-0 bg-blue-50 opacity-80 z-10" />
+      <div className="absolute inset-0 bg-[#f8c8dcad] opacity-80 z-10" />
 
       {/* Content */}
       <div className="relative z-20 py-10 px-5">

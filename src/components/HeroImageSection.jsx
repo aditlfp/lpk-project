@@ -2,45 +2,79 @@ import React from "react";
 import { motion } from "framer-motion";
 import corp from "../assets/corp.webp";
 import img from "../assets/testimonial1.jpg";
+import ipsum from "../assets/img_fix/ipsum.png"
+import ipsumPj from "../assets/img_fix/ipsum_panjang.png"
 
 const cards = [
   {
-    frontImg: img,
+    frontImg: ipsum,
     back: {
       title: "ISO Jepang",
       description: "Pusat Pelatihan Bahasa dan Budaya Jepang",
     },
   },
   {
-    frontImg: img,
+    frontImg: ipsum,
     back: {
       title: "Logo 2",
       description: "Deskripsi Logo 2",
     },
   },
   {
-    frontImg: img,
+    frontImg: ipsum,
     back: {
       title: "Logo 2",
       description: "Deskripsi Logo 2",
     },
   },
   {
-    frontImg: img,
+    frontImg: ipsum,
     back: {
       title: "Logo 2",
       description: "Deskripsi Logo 2",
     },
   },
   {
-    frontImg: img,
+    frontImg: ipsum,
     back: {
       title: "Logo 2",
       description: "Deskripsi Logo 2",
     },
   },
   {
-    frontImg: img,
+    frontImg: ipsum,
+    back: {
+      title: "Logo 2",
+      description: "Deskripsi Logo 2",
+    },
+  },
+  // Tambah lainnya
+];
+
+const cards_long = [
+  {
+    frontImg: ipsumPj,
+    back: {
+      title: "ISO Jepang",
+      description: "Pusat Pelatihan Bahasa dan Budaya Jepang",
+    },
+  },
+  {
+    frontImg: ipsumPj,
+    back: {
+      title: "Logo 2",
+      description: "Deskripsi Logo 2",
+    },
+  },
+  {
+    frontImg: ipsumPj,
+    back: {
+      title: "Logo 2",
+      description: "Deskripsi Logo 2",
+    },
+  },
+  {
+    frontImg: ipsumPj,
     back: {
       title: "Logo 2",
       description: "Deskripsi Logo 2",
@@ -62,7 +96,7 @@ export default function HeroImageSection() {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-2 md:flex gap-6 md:gap-12 border-l border-b border-gray-300 p-4">
+      <div className="grid grid-cols-3 gap-6 md:gap-12 border-l border-b border-gray-300 p-4">
         {cards.map((card, index) => (
           <div key={index} className="flip-card  border-r border-blue-500 px-1">
             <motion.div
@@ -94,7 +128,7 @@ export default function HeroImageSection() {
 
       {/* Cards */}
       <div className="flex flex-wrap p-4 gap-4 justify-center w-full my-20">
-        {cards.slice(0, 4).map((card, index) => (
+        {cards_long.slice(0, 4).map((card, index) => (
           <div key={index} className="flip-card w-full sm:w-1/3 xl:w-1/3 px-2">
             <motion.div
               className="flip-card-inner w-full h-48"

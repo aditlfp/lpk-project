@@ -13,7 +13,7 @@ const SSWTokuteiGinou = () => {
       description:
         "Industri Penerbangan ini berupa penanganan lapangan bandara (membantu ground running, menangani baggage/cargo, dll.), pemeliharaan pesawat (pemeliharaan pesawat dan perangkatnya)",
       workers: "1.700 - 2.000 Orang",
-      bgColor: "bg-blue-100",
+      bgColor: "bg-red-100",
       iconBg: "bg-transparant",
     },
     {
@@ -43,19 +43,19 @@ const SSWTokuteiGinou = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
-      <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white py-20 relative overflow-hidden">
+      <div className="bg-gradient-to-br from-slate-900 via-red-900 to-slate-800 text-white py-20 relative overflow-hidden">
         {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-blue-600/10"></div>
 
         {/* Animated decorative shapes */}
         <div className="absolute top-0 right-0 w-96 h-96 opacity-20">
-          <div className="absolute top-8 right-8 w-40 h-40 border-2 border-blue-300 rounded-2xl transform rotate-12 animate-pulse"></div>
+          <div className="absolute top-8 right-8 w-40 h-40 border-2 border-red-300 rounded-2xl transform rotate-12 animate-pulse"></div>
           <div
-            className="absolute top-16 right-16 w-32 h-32 border border-purple-300 rounded-full animate-bounce"
+            className="absolute top-16 right-16 w-32 h-32 border border-blue-300 rounded-full animate-bounce"
             style={{ animationDuration: "3s" }}
           ></div>
           <div
-            className="absolute top-20 right-32 w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-400 rounded-xl transform rotate-45 opacity-30 animate-spin"
+            className="absolute top-20 right-32 w-20 h-20 bg-gradient-to-br from-red-400 to-blue-400 rounded-xl transform rotate-45 opacity-30 animate-spin"
             style={{ animationDuration: "8s" }}
           ></div>
           <div
@@ -70,26 +70,26 @@ const SSWTokuteiGinou = () => {
             style={{ animationDuration: "2.5s" }}
           ></div>
           <div
-            className="absolute bottom-16 left-16 w-40 h-40 border border-blue-300 rounded-2xl transform -rotate-12 animate-bounce"
+            className="absolute bottom-16 left-16 w-40 h-40 border border-red-300 rounded-2xl transform -rotate-12 animate-bounce"
             style={{ animationDuration: "4s" }}
           ></div>
           <div
-            className="absolute bottom-24 left-32 w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full opacity-40 animate-ping"
+            className="absolute bottom-24 left-32 w-16 h-16 bg-gradient-to-br from-cyan-400 to-red-400 rounded-full opacity-40 animate-ping"
             style={{ animationDuration: "3s" }}
           ></div>
           <div
-            className="absolute bottom-32 left-24 w-24 h-24 border-2 border-purple-300 rounded-xl transform rotate-45 animate-spin"
+            className="absolute bottom-32 left-24 w-24 h-24 border-2 border-blue-300 rounded-xl transform rotate-45 animate-spin"
             style={{ animationDuration: "10s" }}
           ></div>
         </div>
 
         {/* Center decorative elements */}
         <div
-          className="absolute top-1/2 left-1/4 w-4 h-4 bg-blue-400 rounded-full opacity-30 animate-ping"
+          className="absolute top-1/2 left-1/4 w-4 h-4 bg-red-400 rounded-full opacity-30 animate-ping"
           style={{ animationDuration: "2s" }}
         ></div>
         <div
-          className="absolute top-1/3 right-1/4 w-3 h-3 bg-purple-400 rounded-full opacity-40 animate-pulse"
+          className="absolute top-1/3 right-1/4 w-3 h-3 bg-blue-400 rounded-full opacity-40 animate-pulse"
           style={{ animationDuration: "1.5s" }}
         ></div>
         <div
@@ -98,17 +98,17 @@ const SSWTokuteiGinou = () => {
         ></div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-white via-red-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-lg">
             Specified Skilled Worker (SSW) / Tokutei Ginou
           </h1>
-          <p className="text-blue-100 max-w-4xl mx-auto leading-relaxed mb-6 text-lg text-justify backdrop-blur-sm bg-white/5 rounded-2xl p-6 border border-white/10">
+          <p className="text-red-100 max-w-4xl mx-auto leading-relaxed mb-6 text-lg text-justify backdrop-blur-sm bg-white/5 rounded-2xl p-6 border border-white/10">
             Specified Skilled Workers (SSW) atau Tokutei Ginou 特定技能 adalah
             status visa/izin tinggal bagi warga negara asing di Jepang yang
             mulai berlaku sejak 1 April 2019. Pemegang visa SSW dapat bekerja di
             perusahaan Jepang dengan hak dan kewajiban yang sama dengan pekerja
             Jepang.
           </p>
-          <p className="text-cyan-200 text-sm bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full px-6 py-2 inline-block backdrop-blur-sm border border-white/10">
+          <p className="text-cyan-200 text-sm bg-gradient-to-r from-red-500/20 to-blue-500/20 rounded-full px-6 py-2 inline-block backdrop-blur-sm border border-white/10">
             ✨ Dikutip dari Laman BP2TKI
           </p>
         </div>
@@ -134,10 +134,10 @@ const SSWTokuteiGinou = () => {
           {industries.map((industry) => (
             <div
               key={industry.id}
-              className="group card bg-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 relative overflow-hidden"
+              className="group card bg-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-red-200 relative overflow-hidden"
             >
               {/* Card gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div className="card-body text-center p-8 relative z-10 flex justify-center items-center">
                 {/* Icon with enhanced styling */}
@@ -153,7 +153,7 @@ const SSWTokuteiGinou = () => {
                 </div>
 
                 {/* Title with gradient */}
-                <h3 className="card-title text-xl font-bold bg-gradient-to-r from-gray-800 to-blue-600 bg-clip-text text-transparent justify-center mb-2 group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+                <h3 className="card-title text-xl font-bold bg-gradient-to-r from-gray-800 to-red-600 bg-clip-text text-transparent justify-center mb-2 group-hover:from-red-600 group-hover:to-blue-600 transition-all duration-300">
                   {industry.title}
                 </h3>
                 <p className="text-gray-500 mb-6 font-medium text-lg">
@@ -166,8 +166,8 @@ const SSWTokuteiGinou = () => {
                 </p>
 
                 {/* Workers Count with gradient background */}
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 shadow-inner group-hover:from-blue-100 group-hover:to-purple-100 transition-all duration-300 border border-blue-100">
-                  <p className="font-bold text-gray-800 text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <div className="bg-gradient-to-r from-red-50 to-blue-50 rounded-2xl p-6 shadow-inner group-hover:from-red-100 group-hover:to-blue-100 transition-all duration-300 border border-red-100">
+                  <p className="font-bold text-gray-800 text-lg bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
                     Dibutuhkan <br /> {industry.workers}
                   </p>
                 </div>

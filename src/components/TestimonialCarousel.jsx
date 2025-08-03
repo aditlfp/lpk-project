@@ -64,7 +64,7 @@ export default function TestimoniCarousel() {
       {/* Static Header - Does not scroll with carousel */}
       <div className="absolute top-5 left-0 right-0 z-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h3 className="text-blue-400 text-base font-medium mb-4 tracking-wide">
+          <h3 className="text-red-400 text-base font-medium mb-4 tracking-wide">
             Testimoni Peserta Didik
           </h3>
           <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
@@ -115,7 +115,7 @@ export default function TestimoniCarousel() {
             <section
               className="h-full bg-cover bg-center flex items-end justify-center text-white relative pb-52 lg:pb-24"
               style={{
-                backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url(${item.bg})`,
+                backgroundImage: `linear-gradient(rgba(84, 2, 9, 0.75), rgba(84, 2, 9, 0.75)), url(${item.bg})`,
               }}
             >
               <div className="max-w-[90rem] mx-auto px-6 text-center max-h-[20rem]">
@@ -148,7 +148,7 @@ export default function TestimoniCarousel() {
                     <h4 className="font-bold text-lg lg:text-xl text-white mb-1">
                       {item.name}
                     </h4>
-                    <p className="text-blue-400 text-sm font-medium">
+                    <p className="text-red-400 text-sm font-medium">
                       {item.location}
                     </p>
                   </div>

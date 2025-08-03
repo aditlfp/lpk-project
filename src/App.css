@@ -2,7 +2,7 @@
 @plugin "daisyui";
 
 body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
@@ -50,3 +50,4 @@ body {
   transform: rotateY(180deg);
   z-index: 1;
 }
+

@@ -101,7 +101,7 @@ const CandidateCard = () => {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`badge-${currentCandidate.id}`}
-                    className="absolute -bottom-1 -right-1 bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-medium shadow-lg"
+                    className="absolute -bottom-1 -right-1 bg-red-600 text-white text-xs px-2 py-1 rounded-full font-medium shadow-lg"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
@@ -152,7 +152,7 @@ const CandidateCard = () => {
                 </AnimatePresence>
 
                 <motion.button
-                  className="text-purple-600 text-sm font-medium hover:text-purple-800 transition-colors"
+                  className="text-red-600 text-sm font-medium hover:text-red-800 transition-colors"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6, duration: 0.5 }}
@@ -170,7 +170,7 @@ const CandidateCard = () => {
                       onClick={() => setCurrentIndex(index)}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         index === currentIndex
-                          ? "bg-purple-600 w-6"
+                          ? "bg-red-600 w-6"
                           : "bg-gray-300 hover:bg-gray-400"
                       }`}
                     />
@@ -260,7 +260,7 @@ const CandidateCard = () => {
 
           {/* Right Section - Stats */}
           <motion.div
-            className="w-full lg:w-80 bg-gradient-to-br from-purple-600 to-purple-700 text-white p-6"
+            className="w-full lg:w-80 bg-gradient-to-br from-red-600 to-red-700 text-white p-6"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
@@ -305,7 +305,7 @@ const CandidateCard = () => {
               </motion.div>
 
               <motion.p
-                className="text-purple-100 text-sm mb-6"
+                className="text-red-100 text-sm mb-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.1, duration: 0.5 }}
@@ -314,7 +314,7 @@ const CandidateCard = () => {
               </motion.p>
 
               <motion.button
-                className="inline-flex items-center gap-2 text-white font-medium text-base hover:text-purple-100 transition-colors group"
+                className="inline-flex items-center gap-2 text-white font-medium text-base hover:text-red-100 transition-colors group"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2, duration: 0.5 }}

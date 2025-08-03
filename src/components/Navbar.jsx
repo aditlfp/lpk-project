@@ -1,20 +1,20 @@
 import { LuX } from "react-icons/lu";
-import logo from "../assets/logo.png";
+import logo from "../assets/img_fix/logo_dark.png";
 import { RiMenu5Fill } from "react-icons/ri";
 import { useState } from "react";
 
 function Navbar() {
   const [mobileNav, setMobileNav] = useState(false);
   return (
-    <div className="navbar bg-base-100 shadow-sm fixed mb-10 z-50 top-0 left-0">
+    <div className="navbar bg-base-100 shadow-sm fixed mb-10 z-50 top-0 left-0 w-screen">
       <div className="flex justify-center w-screen">
-        <div className="flex justify-between items-center lg:gap-x-10 p-3 sm:p-3">
+        <div className="flex justify-evenly items-center lg:gap-x-10 p-3 sm:p-3">
           <>
             <img
               src={logo}
               alt=""
               srcset=""
-              className="w-[40%] h-auto sm:w-[50%]"
+              className="w-[10%] h-auto sm:w-[12%]"
             />
           </>
 
@@ -127,7 +127,7 @@ function Navbar() {
                     Sign In
                   </label>
                 </div>
-                <div className="navbar-end ml-16">
+                <div className="navbar-end ml-10">
                   <a className="btn btn-warning text-white font-bold transition-transform duration-300 hover:-translate-y-4 hover:bg-blue-600 hover:border-0 shadow-none">
                     Daftar Sekarang
                   </a>
@@ -136,8 +136,9 @@ function Navbar() {
             </ul>
           </div>
           <div className="lg:hidden">
-            <a className="btn btn-sm btn-warning text-white whitespace-nowrap font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none">
-              Daftar Sekarang
+            <a className="btn btn-warning text-xs text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none flex flex-col leading-tight items-center">
+              <span>Daftar</span>
+              <span>Sekarang</span>
             </a>
           </div>
         </div>

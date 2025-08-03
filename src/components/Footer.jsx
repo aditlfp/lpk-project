@@ -7,7 +7,7 @@ import {
   FaSearch,
   FaClock,
 } from "react-icons/fa";
-import icon from "../assets/logo.png";
+import icon from "../assets/img_fix/logo_white.jpg";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { TbBrandWhatsappFilled } from "react-icons/tb";
 
@@ -15,7 +15,7 @@ function Footer() {
   return (
     <>
       {/* Bagian atas footer */}
-      <div className="bg-[#0e1b35] pt-[60%] md:pt-32 relative z-0 w-screen">
+      <div className="bg-[#540209] pt-[60%] md:pt-32 relative z-0 w-screen">
         {/* Kartu floating yang masuk ke dalam */}
         <div className="absolute -top-1 w-full">
           <FooterAction />
@@ -26,12 +26,12 @@ function Footer() {
         <footer className="flex flex-col md:flex-row flex-wrap gap-10 px-6 pb-10 text-white max-w-7xl mx-auto">
           {/* Kolom 1: Kontak & Logo */}
           <div className="flex-1 min-w-[220px] space-y-4">
-            <img src={icon} alt="ISO Jepang" className="w-36" />
+            <img src={icon} alt="AHIYA" className="w-30" />
             <p className="text-sm text-gray-300">
               Pusat Pelatihan dan Pendidikan Bahasa Serta Budaya Jepang
             </p>
             <div className="flex justify-center items-center gap-x-3">
-              <div className="flex flex-col gap-y-5 items-center mt-5 text-blue-500">
+              <div className="flex flex-col gap-y-5 items-center mt-5 text-red-500">
                 <MapPin />
                 <Mail />
                 <TbBrandWhatsappFilled className="text-xl" />
@@ -51,7 +51,7 @@ function Footer() {
 
           {/* Kolom 2: Link Cepat */}
           <div className="flex-1 min-w-[150px]">
-            <h3 className="font-semibold text-lg mb-2 border-b border-blue-400 w-fit">
+            <h3 className="font-semibold text-lg mb-2 border-b border-red-400 w-fit">
               Link Cepat
             </h3>
             <ul className="space-y-2 text-sm">
@@ -67,7 +67,7 @@ function Footer() {
 
           {/* Kolom 3: Link Support */}
           <div className="flex-1 min-w-[150px]">
-            <h3 className="font-semibold text-lg mb-2 border-b border-blue-400 w-fit">
+            <h3 className="font-semibold text-lg mb-2 border-b border-red-400 w-fit">
               Link Support
             </h3>
             <ul className="space-y-2 text-sm">
@@ -80,13 +80,13 @@ function Footer() {
 
           {/* Kolom 4: Jam Kerja & Sosial Media */}
           <div className="flex-1 min-w-[250px] space-y-4">
-            <h3 className="font-semibold text-lg mb-2 border-b border-blue-400 w-fit">
+            <h3 className="font-semibold text-lg mb-2 border-b border-red-400 w-fit">
               Jam Kerja
             </h3>
             <div className="flex flex-row items-center text-sm gap-2">
               <div className="space-y-2">
-                <FaClock className="text-blue-400" />
-                <FaClock className="text-blue-400" />
+                <FaClock className="text-red-400" />
+                <FaClock className="text-red-400" />
               </div>
               <div>
                 <p>09.00 AM - 05.00 PM, Senin - Jumat</p>
@@ -101,10 +101,10 @@ function Footer() {
               <a className="bg-red-600 p-2 rounded-full" href="#">
                 <FaYoutube />
               </a>
-              <a className="bg-blue-800 p-2 rounded-full" href="#">
+              <a className="bg-red-800 p-2 rounded-full" href="#">
                 <FaFacebookF />
               </a>
-              <a className="bg-blue-400 p-2 rounded-full" href="#">
+              <a className="bg-red-400 p-2 rounded-full" href="#">
                 <FaInstagram />
               </a>
               <a className="bg-gray-500 p-2 rounded-full" href="#">
@@ -118,7 +118,7 @@ function Footer() {
         </footer>
 
         {/* Bottom footer */}
-        <div className="border-t border-gray-700 py-4 px-6 text-gray-300 font-medium text-xs flex justify-between items-center  max-w-7xl mx-auto">
+        <div className="border-t border-red-700 py-4 px-6 text-gray-300 font-medium text-xs flex justify-between items-center  max-w-7xl mx-auto">
           <span>Coded By Adityalfp</span>
           <span>Copyright © 2025. All rights reserved.</span>
         </div>

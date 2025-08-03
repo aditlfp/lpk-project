@@ -1,6 +1,6 @@
-import React from "react";
-import { FaClock, FaCertificate, FaStar } from "react-icons/fa";
-import home from "../assets/home.webp";
+import { FaClock, FaStar } from "react-icons/fa";
+import kelas from "../assets/img_fix/kelas.jpg";
+import kelas2 from "../assets/img_fix/kelas2.jpg";
 import { FaMedal } from "react-icons/fa6";
 
 const kelasData = [
@@ -10,7 +10,7 @@ const kelasData = [
     sertifikat: true,
     description:
       "Kelas JF-Test diperuntukan bagi peserta yang telah menguasai bahasa Jepang dan ingin mendapatkan sertifikat untuk memenuhi persyaratan Specified Skill Worker (SSW) dan memiliki peluang untuk bekerja ke Jepang.",
-    image: home,
+    image: kelas,
     rating: 4.8,
   },
   {
@@ -19,7 +19,7 @@ const kelasData = [
     sertifikat: true,
     description:
       "Kelas Basic direkomendasikan bagi peserta yang memiliki keinginan untuk siap bekerja di Jepang. Kelas BASIC meliputi pendidikan dasar bahasa Jepang serta Budaya dan etika di negara Jepang.",
-    image: home,
+    image: kelas2,
     rating: 4.9,
   },
   {
@@ -28,7 +28,7 @@ const kelasData = [
     sertifikat: true,
     description:
       "Kelas Basic direkomendasikan bagi peserta yang memiliki keinginan untuk siap bekerja di Jepang. Kelas BASIC meliputi pendidikan dasar bahasa Jepang serta Budaya dan etika di negara Jepang.",
-    image: home,
+    image: kelas2,
     rating: 5.0,
   },
   {
@@ -37,7 +37,7 @@ const kelasData = [
     sertifikat: true,
     description:
       "Kelas Basic direkomendasikan bagi peserta yang memiliki keinginan untuk siap bekerja di Jepang. Kelas BASIC meliputi pendidikan dasar bahasa Jepang serta Budaya dan etika di negara Jepang.",
-    image: home,
+    image: kelas2,
     rating: 5.0,
   },
 ];
@@ -45,13 +45,13 @@ const kelasData = [
 const KelasTerbaik = () => {
   return (
     <section className="py-16 px-4 text-center">
-      <p className="text-sm text-blue-500 font-medium">
+      <p className="text-sm text-red-500 font-medium">
         Kelas Terbaik ISO Jepang
       </p>
       <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mt-2">
         Kelas BASIC adalah Kelas Terbaik di ISO JEPANG
       </h2>
-      <h3 className="text-xl font-semibold text-blue-900 mt-1">
+      <h3 className="text-xl font-semibold text-red-900 mt-1">
         MENGAPA DEMIKIAN ?
       </h3>
 
@@ -68,11 +68,11 @@ const KelasTerbaik = () => {
         Berbagai Wilayah yang ada di Jepang.
       </p>
 
-      <div className="mt-12 grid gap-8 lg:gap-4 md:grid-cols-4 max-w-[90rem] mx-auto justify-center">
+      <div className="mt-12 grid gap-8 sm:flex lg:gap-4 md:grid-cols-4 max-w-[90rem] mx-auto justify-center">
         {kelasData.map((kelas, idx) => (
           <div
             key={idx}
-            className="bg-[#0B1E47] text-white rounded-xl shadow-lg overflow-hidden w-80 lg:w-full flex flex-col"
+            className="bg-red-950 text-white rounded-xl shadow-lg overflow-hidden w-80 lg:w-full flex flex-col"
             style={{ height: "100%" }} // optional if wrapping with grid
           >
             <img
@@ -86,7 +86,7 @@ const KelasTerbaik = () => {
                 <h4 className="text-lg font-bold mb-2 text-left">
                   {kelas.title}
                 </h4>
-                <div className="flex items-center justify-between gap-4 text-sm mb-3 text-blue-300">
+                <div className="flex items-center justify-between gap-4 text-sm mb-3 text-red-300">
                   <div className="flex items-center gap-1">
                     <FaClock />
                     <span>{kelas.duration}</span>

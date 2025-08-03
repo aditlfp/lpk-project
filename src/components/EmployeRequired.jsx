@@ -355,7 +355,7 @@ const EmployeRequired = () => {
             variants={itemVariants}
           >
             {[
-              { color: "bg-green-400", text: "Tersertifikasi", delay: 0 },
+              { color: "bg-blue-400", text: "Tersertifikasi", delay: 0 },
               { color: "bg-amber-400", text: "Terpercaya", delay: 0.2 },
               { color: "bg-slate-400", text: "Legal", delay: 0.4 },
             ].map((item, index) => (
