@@ -130,7 +130,7 @@ const EmployeRequired = () => {
       </motion.div>
 
       <motion.div
-        className="hero-content flex-col lg:flex-row-reverse max-w-7xl mx-auto px-6 relative z-10"
+        className="hero-content flex-col lg:flex-row-reverse max-w-0 md:max-w-7xl mx-auto md:px-6 relative z-10"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
