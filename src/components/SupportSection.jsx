@@ -33,7 +33,7 @@ const SupportSection = () => {
       <div className="relative z-20 py-10 px-5">
         <div className="max-w-7xl mx-auto text-center flex flex-col lg:flex-row justify-center items-center">
           <div className="lg:max-w-1/3">
-            <h1 className="text-3xl md:text-5xl font-bold text-black tracking-tight leading-snug text-start">
+            <h1 className="text-3xl md:text-5xl font-bold text-black tracking-tight leading-snug text-center lg:text-start">
               Dukungan dan Kerjasama Resmi Asa Hikari Mulya Jepang
             </h1>
 

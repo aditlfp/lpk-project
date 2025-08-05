@@ -2,6 +2,7 @@ import { LuX } from "react-icons/lu";
 import logo from "../assets/img_fix/logo_dark.png";
 import { RiMenu5Fill } from "react-icons/ri";
 import { useState } from "react";
+import { PiSignInBold } from "react-icons/pi";
 
 function Navbar() {
   const [mobileNav, setMobileNav] = useState(false);
@@ -47,23 +48,31 @@ function Navbar() {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box rounded-t-none z-0 mt-[48pt] sm:mt-[22.5pt] w-[80vw] p-2 drop-shadow-md"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box rounded-t-none z-0 mt-[48pt] sm:mt-[22.5pt] w-[80vw] p-2"
             >
-              <li>
-                <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
+              <li className="flex flex-col items-start w-full ">
+                {/* Sign In */}
+                <div className="dropdown dropdown-hover w-full ">
                   <label
                     tabIndex="0"
-                    className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
+                    className="bg-white rounded-t-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold text-gray-700 hover:text-amber-500 transition-colors duration-200"
                   >
-                    Sign In
+                    <span>SIGN IN</span>
+                    <PiSignInBold className="w-5 h-5" />
                   </label>
                 </div>
-                <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
+
+                {/* Divider */}
+                <div className="w-full h-[1px] border border-gray-200"></div>
+
+                {/* Sign Up */}
+                <div className="dropdown dropdown-hover w-full">
                   <label
                     tabIndex="0"
-                    className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
+                    className="bg-white rounded-b-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold text-gray-700 hover:text-amber-500 transition-colors duration-200"
                   >
-                    Sign Up
+                    <span>SIGN UP</span>
+                    <PiSignInBold className="w-5 h-5" />
                   </label>
                 </div>
               </li>

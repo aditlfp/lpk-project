@@ -12,19 +12,21 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { TbBrandWhatsappFilled } from "react-icons/tb";
 
 function Footer() {
-
   const whatsappNumber = "6281395554334"; // Replace with your WhatsApp number (with country code)
-  const message = "Halo Admin LPK Asa Hikari Mulya, Saya ingin menanyakan informasi lebih lanjut mengenai program pelatihan yang tersedia!"; // Optional default message
+  const message =
+    "Halo Admin LPK Asa Hikari Mulya, Saya ingin menanyakan informasi lebih lanjut mengenai program pelatihan yang tersedia!"; // Optional default message
 
   const handleClick = () => {
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message
+    )}`;
     window.open(url, "_blank");
   };
 
   return (
     <>
       {/* Bagian atas footer */}
-      <div className="bg-[#540209] pt-[60%] md:pt-32 relative z-0 w-screen">
+      <div className="bg-[#540209] pt-[84%] md:pt-32 relative z-0 w-screen">
         {/* Kartu floating yang masuk ke dalam */}
         <div className="absolute -top-1 w-full">
           <FooterAction />
@@ -35,7 +37,7 @@ function Footer() {
         <footer className="flex flex-col md:flex-row flex-wrap gap-10 px-6 pb-10 text-white max-w-7xl mx-auto">
           {/* Kolom 1: Kontak & Logo */}
           <div className="flex-1 min-w-[220px] space-y-4">
-            <img src={icon} alt="AHIYA" className="w-30" />
+            <img src={icon} alt="AHIYA" className="w-[7rem]" />
             <p className="text-sm text-gray-300">
               Pusat Pelatihan dan Pendidikan Bahasa Serta Budaya Jepang
             </p>
@@ -51,7 +53,9 @@ function Footer() {
                   Depok, Jawa Barat 16452
                 </p>
                 <p className="text-sm"> asahikarimulya@gmail.com</p>
-                <p className="text-sm"><a href={handleClick}>{`+`+whatsappNumber}</a></p>
+                <p className="text-sm">
+                  <a href={handleClick}>{`+` + whatsappNumber}</a>
+                </p>
               </div>
             </div>
           </div>

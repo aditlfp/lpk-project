@@ -23,28 +23,23 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center text-white h-full px-4">
         {/* Logo */}
-        <div className="flex w-full justify-center items-center gap-x-4">
+        <div className="flex w-full justify-center items-center gap-x-4 mb-6 mt-10 lg:mt-5">
           <img
             src={logo}
             alt="Asa Hikari Mulya"
-            className="w-1/3 md:w-1/5 lg:w-1/10 mb-6 mt-10 lg:mt-5 bg-white"
+            className="w-1/3 md:w-1/5 lg:w-1/10  bg-white"
           />
           <div className="flex flex-col justify-start items-start font-bold md:text-[2.9rem] text-2xl">
-              <span>
-                Asa
-              </span>
-              <span>
-                Hikari
-              </span>
-              <span>
-                Mulya
-              </span>
+            <span>Asa</span>
+            <span>Hikari</span>
+            <span>Mulya</span>
           </div>
         </div>
 
         {/* Judul */}
         <h1 className="text-3xl md:text-[2.9rem] font-bold mb-4 md:mb-10 text-pretty max-w-5xl">
-          Kuasai Bahasa Jepang, Raih Peluang Kerja ke Jepang dengan Asa Hikari Mulya!
+          Kuasai Bahasa Jepang, Raih Peluang Kerja ke Jepang dengan Asa Hikari
+          Mulya!
         </h1>
 
         {/* Deskripsi */}
