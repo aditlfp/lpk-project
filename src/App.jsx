@@ -57,8 +57,8 @@ export default function App() {
         </div> */}
         <TestimonialCarousel />
         <CallToAction />
-        <HeroImageSection />
-        <SupportSection />
+        {/* <HeroImageSection /> */}
+        {/* <SupportSection /> */}
         <CustomFAQ />
       </div>
         <Footer />

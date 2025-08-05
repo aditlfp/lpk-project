@@ -45,13 +45,13 @@ const kelasData = [
 const KelasTerbaik = () => {
   return (
     <section className="py-16 px-4 text-center">
-      <p className="text-sm md:text-base text-red-500 font-medium">
+      <p className="text-sm md:text-base text-blue-500 font-medium">
         Kelas Terbaik Asa Hikari Mulya
       </p>
       <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mt-2">
         Kelas BASIC adalah Kelas Terbaik di Asa Hikari Mulya
       </h2>
-      <h3 className="text-xl font-semibold text-red-900 mt-1">
+      <h3 className="text-xl font-semibold text-blue-900 mt-1">
         MENGAPA DEMIKIAN ?
       </h3>
 
@@ -72,7 +72,7 @@ const KelasTerbaik = () => {
         {kelasData.map((kelas, idx) => (
           <div
             key={idx}
-            className="bg-red-950 text-white rounded-xl shadow-lg overflow-hidden w-80 md:w-[22rem] lg:w-full flex flex-col"
+            className="bg-blue-950 text-white rounded-xl my-5 sm:my-0 shadow-lg overflow-hidden w-80 md:w-[22rem] lg:w-full flex flex-col"
             style={{ height: "100%" }} // optional if wrapping with grid
           >
             <img
@@ -86,7 +86,7 @@ const KelasTerbaik = () => {
                 <h4 className="text-lg md:text-xl lg:text-lg font-bold mb-2 text-left">
                   {kelas.title}
                 </h4>
-                <div className="flex items-center justify-between gap-4 text-sm md:text-base mb-3 text-red-300">
+                <div className="flex items-center justify-between gap-4 text-sm md:text-base mb-3 text-blue-300">
                   <div className="flex items-center gap-1">
                     <FaClock />
                     <span>{kelas.duration}</span>

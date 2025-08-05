@@ -97,7 +97,7 @@ export default function TestimoniCarousel() {
             <section
               className="h-full bg-cover bg-center"
               style={{
-                backgroundImage: `linear-gradient(rgba(84, 2, 9, 0.75), rgba(84, 2, 9, 0.75)), url(${item.bg})`,
+                backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url(${item.bg})`,
               }}
             ></section>
           </SwiperSlide>
@@ -139,7 +139,7 @@ export default function TestimoniCarousel() {
           <SwiperSlide key={index}>
             <section className="min-h-full flex items-end justify-center text-white mt-10 pb-0 lg:pb-24">
               <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
-                <div className="bg-red-300/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                <div className="bg-blue-300/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
                   <p className="text-gray-200 text-base md:text-xl leading-relaxed mb-6 italic line-clamp-5">
                     "{item.content}"
                   </p>

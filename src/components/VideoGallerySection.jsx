@@ -52,7 +52,7 @@ export default function VideoGallerySection() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-red-400 text-sm md:text-base font-medium mb-2 tracking-wide">
+          <p className="text-blue-400 text-sm md:text-base font-medium mb-2 tracking-wide">
             Cuplikan Video Asa Hikari Mulya
           </p>
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
@@ -78,7 +78,7 @@ export default function VideoGallerySection() {
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center group hover:bg-black/40 transition-colors cursor-pointer">
                   <div className="bg-white/90 rounded-full p-4 group-hover:scale-110 transition-transform">
                     <Play
-                      className="w-8 h-8 text-red-600 ml-1"
+                      className="w-8 h-8 text-blue-600 ml-1"
                       fill="currentColor"
                     />
                   </div>
@@ -93,11 +93,11 @@ export default function VideoGallerySection() {
               <div className="p-6">
                 {/* Tags */}
                 <div className="flex gap-2 mb-3">
-                  <span className="inline-flex items-center gap-1 bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
                     <Calendar className="w-3 h-3" />
                     {video.category}
                   </span>
-                  <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="inline-flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
                     <Users className="w-3 h-3" />
                     {video.tag}
                   </span>
@@ -114,7 +114,7 @@ export default function VideoGallerySection() {
                 </p>
 
                 {/* Watch Button */}
-                <button className="mt-4 inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-medium text-sm transition-colors">
+                <button className="mt-4 inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors">
                   <Play className="w-4 h-4" fill="currentColor" />
                   Tonton Video
                 </button>
@@ -125,7 +125,7 @@ export default function VideoGallerySection() {
 
         {/* View More Button */}
         <div className="text-center mt-12">
-          <button className="btn btn-md btn-warning text-white md:text-lg font-bold transition-transform duration-300 hover:scale-110 hover:bg-red-600 hover:border-0 shadow-none">
+          <button className="btn btn-md btn-warning text-white md:text-lg font-bold transition-transform duration-300 hover:scale-110 hover:bg-blue-600 hover:border-0 shadow-none">
             Lihat Semua Video
           </button>
         </div>

@@ -18,7 +18,7 @@ export default function HeroSection() {
       />
 
       {/* Overlay Gelap */}
-      <div className="absolute inset-0 bg-[#540209] opacity-75" />
+      <div className="absolute inset-0 bg-blue-950 opacity-75" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center text-white h-full px-4">
@@ -57,7 +57,7 @@ export default function HeroSection() {
         </button>
 
         {/* Kolaborator */}
-        <div className="mt-5 md:mt-10 lg:mt-5">
+        {/* <div className="mt-5 md:mt-10 lg:mt-5">
           <p className="text-lg md:text-xl font-bold opacity-70">
             Berkolaborasi dengan
           </p>
@@ -66,7 +66,8 @@ export default function HeroSection() {
             <img src={logo_white} alt="TIT" className="h-12" />
             <img src={logo_white} alt="JITCO" className="h-12" />
           </div>
-        </div>
+        </div> */}
+
       </div>
     </div>
   );
