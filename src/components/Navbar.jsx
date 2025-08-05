@@ -3,6 +3,7 @@ import logo from "../assets/img_fix/logo_dark.png";
 import { RiMenu5Fill } from "react-icons/ri";
 import { useState } from "react";
 import { PiSignInBold } from "react-icons/pi";
+import { SignInButton, SignUpButton } from "./partials/SignButton";
 
 function Navbar() {
   const [mobileNav, setMobileNav] = useState(false);
@@ -90,25 +91,13 @@ function Navbar() {
         {/* Nav Pc */}
         <div className="navbar-center hidden md:flex gap-x-9">
           <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
-            <label
-              tabIndex="0"
-              className="bg-transparent hover:text-amber-500 btn lg:btn-lg capitalize group flex items-center gap-2"
-            >
-              Sign In
-              <PiSignInBold className="w-5 h-5" />
-            </label>
+            <SignInButton />
           </div>
           <div className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3">
-            <label
-              tabIndex="0"
-              className="bg-transparent hover:text-amber-500 btn lg:btn-lg capitalize group flex items-center gap-2"
-            >
-              Sign Up
-              <PiSignInBold className="w-5 h-5" />
-            </label>
+           <SignUpButton />
           </div>
           <div className="navbar-end md:ml-8 lg:ml-16 md:mr-4">
-            <a className="btn lg:btn-lg btn-warning text-white font-bold transition-transform duration-300 hover:scale-110 hover:bg-blue-600 hover:border-0 shadow-none">
+            <a className="btn lg:btn-lg btn-warning text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none">
               Daftar Sekarang
             </a>
           </div>

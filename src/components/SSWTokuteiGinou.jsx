@@ -173,7 +173,7 @@ const SSWTokuteiGinou = () => {
 
                   {/* Workers Count with gradient background */}
                   <div className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-2xl p-6 shadow-inner group-hover:from-blue-100 group-hover:to-blue-100 transition-all duration-300 border border-blue-100">
-                    <p className="font-bold text-gray-800 text-lg bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
+                    <p className="font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                       Dibutuhkan <br /> {industry.workers}
                     </p>
                   </div>
