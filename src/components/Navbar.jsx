@@ -20,14 +20,14 @@ function Navbar() {
     <div className="navbar bg-base-100 shadow-sm fixed mb-10 z-50 top-0 left-0 w-screen">
       <div className="flex justify-center w-screen">
         <div className="flex justify-between md:justify-evenly items-center lg:gap-x-10 p-3 sm:p-3">
-          <div className="w-[33%] md:w-auto flex gap-1">
+          <div className="w-[33%] md:w-auto flex items-center gap-1 md:gap-2">
             <img
               src={logo}
               alt=""
               srcset=""
-              className="w-[40%] h-auto sm:w-[12%]"
+              className="w-[40%] h-auto md:w-[25%]"
             />
-            <div className="flex flex-col text-xs font-bold">
+            <div className="flex flex-col text-xs md:text-sm font-bold">
               <span>Asa</span>
               <span>Hikari</span>
               <span>Mulya</span>
@@ -39,7 +39,7 @@ function Navbar() {
             className="dropdown flex justify-center w-[33%]"
             onClick={() => setMobileNav(!mobileNav)}
           >
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
               {mobileNav ? (
                 <LuX className="w-6 h-6" />
               ) : (
@@ -78,7 +78,7 @@ function Navbar() {
               </li>
             </ul>
           </div>
-          <div className="lg:hidden w-[33%]">
+          <div className="md:hidden w-[33%]">
             <a className="btn btn-warning text-xs text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none flex flex-col leading-tight items-center">
               <span>Daftar</span>
               <span>Sekarang</span>
@@ -88,7 +88,7 @@ function Navbar() {
         {/* End Nav Mobile */}
 
         {/* Nav Pc */}
-        <div className="navbar-center hidden lg:flex gap-x-9">
+        <div className="navbar-center hidden md:flex gap-x-9">
           <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
             <label
               tabIndex="0"
@@ -97,7 +97,7 @@ function Navbar() {
               Sign In
             </label>
           </div>
-          <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
+          <div className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3">
             <label
               tabIndex="0"
               className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
@@ -105,7 +105,7 @@ function Navbar() {
               Sign Up
             </label>
           </div>
-          <div className="navbar-end ml-16">
+          <div className="navbar-end md:ml-8 lg:ml-16 md:mr-4">
             <a className="btn btn-warning text-white font-bold transition-transform duration-300 hover:scale-110 hover:bg-blue-600 hover:border-0 shadow-none">
               Daftar Sekarang
             </a>
