@@ -96,7 +96,7 @@ export default function HeroImageSection() {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6 lg:gap-12 md:justify-center md:items-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6 lg:gap-20 md:justify-center md:items-center">
         {cards.map((card, index) => (
           <div key={index} className="flip-card ">
             <div className="flip-card-inner">
@@ -105,7 +105,7 @@ export default function HeroImageSection() {
                 <img
                   src={card.frontImg}
                   alt={card.back.title}
-                  className="w-[50%] md:w-[60%] lg:w-full h-auto object-cover"
+                  className="w-[50%] md:w-[60%] lg:w-[70%] h-auto object-cover"
                 />
               </div>
 
@@ -135,7 +135,7 @@ export default function HeroImageSection() {
                 <img
                   src={card.frontImg}
                   alt={card.back.title}
-                  className="lg:w-full lg:h-full object-cover"
+                  className="lg:w-[100%] lg:h-auto object-cover"
                 />
               </div>
 

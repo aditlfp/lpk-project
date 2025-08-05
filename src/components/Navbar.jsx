@@ -25,9 +25,9 @@ function Navbar() {
               src={logo}
               alt=""
               srcset=""
-              className="w-[40%] h-auto md:w-[25%]"
+              className="w-[40%] h-auto md:w-[25%] lg:w-[20%]"
             />
-            <div className="flex flex-col text-xs md:text-sm font-bold">
+            <div className="flex flex-col text-xs md:text-sm lg:text-base font-bold">
               <span>Asa</span>
               <span>Hikari</span>
               <span>Mulya</span>
@@ -92,21 +92,23 @@ function Navbar() {
           <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
             <label
               tabIndex="0"
-              className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
+              className="bg-transparent hover:text-amber-500 btn lg:btn-lg capitalize group flex items-center gap-2"
             >
               Sign In
+              <PiSignInBold className="w-5 h-5" />
             </label>
           </div>
           <div className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3">
             <label
               tabIndex="0"
-              className="bg-transparent hover:text-amber-500 group flex items-center gap-2"
+              className="bg-transparent hover:text-amber-500 btn lg:btn-lg capitalize group flex items-center gap-2"
             >
               Sign Up
+              <PiSignInBold className="w-5 h-5" />
             </label>
           </div>
           <div className="navbar-end md:ml-8 lg:ml-16 md:mr-4">
-            <a className="btn btn-warning text-white font-bold transition-transform duration-300 hover:scale-110 hover:bg-blue-600 hover:border-0 shadow-none">
+            <a className="btn lg:btn-lg btn-warning text-white font-bold transition-transform duration-300 hover:scale-110 hover:bg-blue-600 hover:border-0 shadow-none">
               Daftar Sekarang
             </a>
           </div>

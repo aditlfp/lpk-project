@@ -176,3 +176,28 @@ body {
     height: 20rem !important;
   }
 }
+@media (min-width: 1024px) {
+  .flip-card {
+    aspect-ratio: 1/1;
+    width: 100%;
+  }
+  .flip-card2 {
+    width: 100%;
+  }
+  .flip-card-inner {
+    width: 12rem !important;
+    height: 12rem !important;
+  }
+
+  .flip-card-back {
+    width: 12rem !important;
+    height: 12rem !important;
+  }
+
+  .flip-card-front2,
+  .flip-card-back2,
+  .flip-card-inner2 {
+    width: 40rem !important;
+    height: 20rem !important;
+  }
+}

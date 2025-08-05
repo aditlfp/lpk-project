@@ -90,7 +90,7 @@ export default function TestimoniCarousel() {
         fadeEffect={{ crossFade: true }}
         speed={1000}
         allowTouchMove={false}
-        className="h-[70vh] min-h-[520pt] md:min-h-[420pt] lg:min-h-[600px] mb-10 lg:mb-0"
+        className="h-[70vh] min-h-[520pt] md:min-h-[420pt] lg:min-h-[540pt] mb-10 lg:mb-0"
       >
         {testimonials.map((item, index) => (
           <SwiperSlide key={index}>
@@ -133,7 +133,7 @@ export default function TestimoniCarousel() {
           disableOnInteraction: false,
         }}
         loop
-        className="!absolute top-[120pt] md:top-[100pt] min-h-[380pt] md:min-h-[330pt] left-0 w-full z-10 "
+        className="!absolute top-[120pt] md:top-[100pt] min-h-[380pt] md:min-h-[330pt] lg:min-h-[300pt] left-0 w-full z-10 "
       >
         {testimonials.map((item, index) => (
           <SwiperSlide key={index}>

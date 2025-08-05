@@ -26,7 +26,7 @@ function Footer() {
   return (
     <>
       {/* Bagian atas footer */}
-      <div className="bg-[#540209] pt-[84%] md:pt-[30%] relative z-0 w-screen">
+      <div className="bg-[#540209] pt-[84%] md:pt-[30%] lg:pt-[14%] lg:px-4 relative z-0 w-screen">
         {/* Kartu floating yang masuk ke dalam */}
         <div className="absolute -top-1 w-full">
           <FooterAction />

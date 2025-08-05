@@ -120,7 +120,7 @@ const SSWTokuteiGinou = () => {
           <h2 className="text-3xl font-bold text-gray-800 mb-4">
             17 Bidang Pekerjaan SSW
           </h2>
-          <p className="text-gray-600 max-w-4xl mx-auto md:mx-4 md:text-lg leading-relaxed text-justify">
+          <p className="text-gray-600 max-w-4xl lg:max-w-full mx-auto md:mx-4 lg:mx-12 md:text-lg leading-relaxed text-justify">
             Dengan berkurangnya tenaga kerja di Jepang, ada 17 bidang industri
             yang terdampak dengan tidak tercukupinya kebutuhan tenaga kerja
             untuk masa yang akan datang. Bidang itulah yang nantinya diisi
@@ -130,7 +130,7 @@ const SSWTokuteiGinou = () => {
         </div>
 
         {/* Industry Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl lg:max-w-full mx-auto lg:mx-6">
           {industries.map((industry, index) => {
             const isLastOdd =
               industries.length % 2 === 1 && index === industries.length - 1;
@@ -138,7 +138,9 @@ const SSWTokuteiGinou = () => {
               <div
                 key={industry.id}
                 className={`group card bg-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-red-200 relative overflow-hidden 
-          ${isLastOdd ? "md:col-span-2 md:mx-[20%]" : ""}`}
+          ${
+            isLastOdd ? "md:col-span-2 md:mx-[20%] lg:col-span-1 lg:mx-0" : ""
+          }`}
               >
                 {/* Card gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

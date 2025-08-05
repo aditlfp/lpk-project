@@ -60,15 +60,15 @@ const SupportSection = () => {
               Dinas Tenaga Kerja
             </div>
 
-            <div className="flex flex-wrap justify-center md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-8 md:place-items-center">
+            <div className="flex flex-wrap justify-center md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-8 md:place-items-center lg:items-start">
               {dinasLogos.map((logo, idx) => (
                 <div key={idx} className="text-center w-1/2 md:w-auto">
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="h-20 md:max-w-[8rem] md:h-auto mx-auto object-contain"
+                    className="h-20 md:max-w-[8rem] lg:max-w-[6rem] md:h-auto mx-auto object-contain"
                   />
-                  <p className="my-2 text-sm md:text-lg font-medium text-gray-700">
+                  <p className="my-2 text-sm md:text-lg font-medium lg:font-bold text-gray-700">
                     {logo.name}
                   </p>
                 </div>

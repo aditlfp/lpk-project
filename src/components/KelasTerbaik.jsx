@@ -55,7 +55,7 @@ const KelasTerbaik = () => {
         MENGAPA DEMIKIAN ?
       </h3>
 
-      <p className="max-w-3xl mx-2 md:mx-4 mt-4 text-gray-600 md:text-lg text-justify lg:text-center">
+      <p className="max-w-3xl lg:max-w-full mx-2 md:mx-4 lg:mx-8 mt-4 text-gray-600 md:text-lg text-justify lg:text-center">
         Di Kelas BASIC, Para Peserta Didik Mendapatkan Berbagai Materi
         Pendidikan yang Menjadi Persyaratan untuk Mengikuti Program SSW
         (Specified Skill Worker) diantaranya Kurikulum Pendidikan Kemampuan
@@ -83,7 +83,7 @@ const KelasTerbaik = () => {
             <div className="p-5 flex flex-col flex-1 justify-between">
               {/* Content section */}
               <div>
-                <h4 className="text-lg md:text-xl font-bold mb-2 text-left">
+                <h4 className="text-lg md:text-xl lg:text-lg font-bold mb-2 text-left">
                   {kelas.title}
                 </h4>
                 <div className="flex items-center justify-between gap-4 text-sm md:text-base mb-3 text-red-300">
