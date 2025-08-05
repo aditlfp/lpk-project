@@ -1,4 +1,3 @@
-// SignInButton.jsx
 function SignInButton() {
   return (
     <button className="relative group text-black font-semibold">
