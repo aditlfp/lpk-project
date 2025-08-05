@@ -64,12 +64,12 @@ const CandidateCard = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          <h2 className="text-lg font-semibold text-gray-800">
+          <h2 className="text-lg md:text-xl md:text-center font-semibold text-gray-800">
             Kandidat Terbaik
           </h2>
         </motion.div>
 
-        <div className="flex flex-col lg:items-center lg:flex-row">
+        <div className="flex flex-col md:items-center lg:flex-row">
           {/* Left Section - Profile Carousel */}
           <motion.div
             className="flex-1 p-6 lg:max-w-[25%]"
@@ -130,7 +130,7 @@ const CandidateCard = () => {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`location-${currentCandidate.id}`}
-                    className="flex items-center gap-2 text-sm text-gray-600 mb-3"
+                    className="flex items-center gap-2 text-sm md:text-base text-gray-600 mb-3"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
@@ -152,7 +152,7 @@ const CandidateCard = () => {
                 </AnimatePresence>
 
                 <motion.button
-                  className="text-red-600 text-sm font-medium hover:text-red-800 transition-colors"
+                  className="text-red-600 text-sm md:text-base font-medium hover:text-red-800 transition-colors"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6, duration: 0.5 }}
@@ -193,12 +193,12 @@ const CandidateCard = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              <p className="text-red-600 font-medium text-sm leading-relaxed">
+              <p className="text-red-600 font-medium text-sm md:text-base leading-relaxed">
                 Dukungan total profesional untuk merekrut tenaga kerja asing
                 untuk pertama kalinya
               </p>
               <motion.p
-                className="text-red-600 text-sm mt-1"
+                className="text-red-600 text-sm md:text-base mt-1"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
@@ -225,10 +225,10 @@ const CandidateCard = () => {
                   className="checkbox checkbox-sm mt-0.5 checkbox-primary"
                 />
                 <div>
-                  <span className="font-medium">
+                  <span className="md:text-lg font-medium">
                     Dukungan posting pekerjaan
                   </span>
-                  <span className="ml-2">
+                  <span className="ml-2 md:text-lg">
                     Temukan bakat yang dicari perusahaan Anda
                   </span>
                 </div>
@@ -246,10 +246,10 @@ const CandidateCard = () => {
                   className="checkbox checkbox-sm mt-0.5 checkbox-primary"
                 />
                 <div>
-                  <span className="font-medium">
+                  <span className="md:text-lg font-medium">
                     Dukungan pemrosesan dokumen
                   </span>
-                  <span className="ml-2">
+                  <span className="ml-2 md:text-lg">
                     Spesialis akan mendukung Anda mulai dari persiapan dokumen
                     hingga pengajuan atas nama Anda.
                   </span>
@@ -305,7 +305,7 @@ const CandidateCard = () => {
               </motion.div>
 
               <motion.p
-                className="text-red-100 text-sm mb-6"
+                className="text-red-100 text-sm md:text-lg mb-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.1, duration: 0.5 }}
@@ -314,7 +314,7 @@ const CandidateCard = () => {
               </motion.p>
 
               <motion.button
-                className="inline-flex items-center gap-2 text-white font-medium text-base hover:text-red-100 transition-colors group"
+                className="inline-flex items-center gap-2 text-white font-medium text-base md:text-lg hover:text-red-100 transition-colors group"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2, duration: 0.5 }}

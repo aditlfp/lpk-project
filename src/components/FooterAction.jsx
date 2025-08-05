@@ -1,4 +1,3 @@
-
 const FooterAction = () => {
   return (
     <section className="relative z-10 -mt-20 px-4">
@@ -8,8 +7,9 @@ const FooterAction = () => {
           <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-snug mb-3">
             Daftar Sekarang dan Mulai Karirmu di Jepang!
           </h2>
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-           Jangan lewatkan kesempatan emas ini! Bergabunglah dengan Asa Hikari Mulya dan raih sukses karirmu di Jepang! Kursi Kami terbatas! 
+          <p className="text-gray-600 text-sm md:text-lg leading-relaxed">
+            Jangan lewatkan kesempatan emas ini! Bergabunglah dengan Asa Hikari
+            Mulya dan raih sukses karirmu di Jepang! Kursi Kami terbatas!
           </p>
         </div>
 
@@ -17,11 +17,10 @@ const FooterAction = () => {
         <div className="w-full md:w-auto flex flex-col md:items-end gap-3">
           <a
             href="#daftar"
-            className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-6 py-3 rounded-md transition duration-200"
+            className="bg-orange-400 hover:bg-orange-500 text-white font-semibold md:text-center px-6 py-3 rounded-md transition duration-200"
           >
             Daftar Sekarang
           </a>
-         
         </div>
       </div>
     </section>

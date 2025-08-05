@@ -7,14 +7,15 @@ const faqItems = [
     answer: (
       <>
         <p>
-          Asa Hikari Mulya adalah lembaga yang menyediakan pelatihan bahasa Jepang
-          secara online dan offline dalam mempersiapkan peserta untuk bekerja di
-          Jepang. Kami juga memiliki Bekerjasama dengan Sending Organization
-          (SO) Lembaga Pendidikan & Pelatihan Rakyat Indonesia (LPPR Indonesia)
-          dan Perusahaan Penempatan Pekerja Migran Indonesia (P3MI) PT. Multi
-          Lintas Buana Raya yang resmi untuk pemberangkatan peserta kami ke
-          Jepang. Kami juga bekerja sama dengan perusahaan-perusahaan di Jepang
-          untuk menyalurkan tenaga kerja yang terlatih dan siap bekerja.
+          Asa Hikari Mulya adalah lembaga yang menyediakan pelatihan bahasa
+          Jepang secara online dan offline dalam mempersiapkan peserta untuk
+          bekerja di Jepang. Kami juga memiliki Bekerjasama dengan Sending
+          Organization (SO) Lembaga Pendidikan & Pelatihan Rakyat Indonesia
+          (LPPR Indonesia) dan Perusahaan Penempatan Pekerja Migran Indonesia
+          (P3MI) PT. Multi Lintas Buana Raya yang resmi untuk pemberangkatan
+          peserta kami ke Jepang. Kami juga bekerja sama dengan
+          perusahaan-perusahaan di Jepang untuk menyalurkan tenaga kerja yang
+          terlatih dan siap bekerja.
         </p>
         <p className="mt-4">
           Info Lebih Lanjut cek{" "}
@@ -75,7 +76,7 @@ const CustomFAQ = () => {
   }, [activeIndex]);
 
   return (
-    <section className="px-4 py-10 mb-10 md:mb-5">
+    <section className="px-4 py-10 mb-10 md:mx-20 md:mb-5">
       <div className="max-w-3xl mx-auto space-y-4">
         <div className="flex flex-col gap-y-4 mb-2 md:mb-10">
           <span className="font-semibold text-xl text-red-500">
@@ -84,7 +85,7 @@ const CustomFAQ = () => {
           <h1 className="text-4xl font-semibold">
             Pertanyaan Yang Sering Diajukan
           </h1>
-          <span className="text-gray-400 font-semibold">
+          <span className="text-gray-400 font-semibold md:text-xl">
             Pertanyaan yang Sering Diajukan Ke Kami Terkait Prosedur, Dokumen,
             Seleksi, Dan Lainnya.
           </span>
@@ -103,7 +104,7 @@ const CustomFAQ = () => {
                   : "bg-white text-gray-800"
               }`}
             >
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center md:text-xl">
                 <span>{item.question}</span>
                 <span>
                   {activeIndex === i ? (
@@ -117,7 +118,7 @@ const CustomFAQ = () => {
             {/* Body */}
             <div
               ref={(el) => (contentRefs.current[i] = el)}
-              className="overflow-hidden transition-all duration-500 bg-white px-6 text-sm text-gray-800"
+              className="overflow-hidden transition-all duration-500 bg-white px-6 text-sm md:text-xl text-gray-800"
               style={{ maxHeight: "0px" }}
             >
               <div className="py-8">{item.answer}</div>

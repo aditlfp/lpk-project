@@ -66,13 +66,13 @@ export default function TestimoniCarousel() {
       {/* Static Header */}
       <div className="absolute top-5 left-0 right-0 z-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h3 className="text-white text-base font-medium mb-2 tracking-wide">
+          <h3 className="text-white text-base md:text-lg font-medium mb-2 tracking-wide">
             Testimoni Peserta Didik
           </h3>
-          <h1 className="text-3xl md:text-6xl font-bold text-white leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white leading-tight">
             Ulasan dari Peserta Didik
           </h1>
-          <span className="text-gray-300 text-lg mt-2 block">
+          <span className="text-gray-300 text-lg md:text-xl mt-2 block">
             Berikut beberapa ulasan dari peserta didik Asa Hikari Mulya...
           </span>
         </div>
@@ -90,7 +90,7 @@ export default function TestimoniCarousel() {
         fadeEffect={{ crossFade: true }}
         speed={1000}
         allowTouchMove={false}
-        className="h-[70vh] min-h-[520pt] lg:min-h-[600px] mb-10 lg:mb-0"
+        className="h-[70vh] min-h-[520pt] md:min-h-[420pt] lg:min-h-[600px] mb-10 lg:mb-0"
       >
         {testimonials.map((item, index) => (
           <SwiperSlide key={index}>
@@ -107,13 +107,13 @@ export default function TestimoniCarousel() {
       {/* Navigation Buttons */}
       <button
         ref={prevRef}
-        className="absolute left-8 top-[60%] z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
+        className="absolute left-8 top-[60%] md:top-[49%] z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
       >
         <FaAngleLeft />
       </button>
       <button
         ref={nextRef}
-        className="absolute right-8 top-[60%] z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
+        className="absolute right-8 top-[60%] md:top-[49%] z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
       >
         <FaAngleRight />
       </button>
@@ -124,7 +124,8 @@ export default function TestimoniCarousel() {
         modules={[Pagination, Autoplay, Navigation]}
         pagination={{
           clickable: true,
-          bulletClass: "swiper-pagination-bullet !bg-white/50 !w-2 !h-2 !mx-1",
+          bulletClass:
+            "swiper-pagination-bullet !bg-white/50 !w-2 !h-2 !md:w-4 !md:h-4 !mx-1",
           bulletActiveClass: "swiper-pagination-bullet-active !bg-white",
         }}
         autoplay={{
@@ -132,21 +133,21 @@ export default function TestimoniCarousel() {
           disableOnInteraction: false,
         }}
         loop
-        className="!absolute top-[120pt] min-h-[380pt] left-0 w-full z-10 "
+        className="!absolute top-[120pt] md:top-[100pt] min-h-[380pt] md:min-h-[330pt] left-0 w-full z-10 "
       >
         {testimonials.map((item, index) => (
           <SwiperSlide key={index}>
             <section className="min-h-full flex items-end justify-center text-white mt-10 pb-0 lg:pb-24">
-              <div className="max-w-3xl mx-auto px-6 text-center">
+              <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
                 <div className="bg-red-300/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-                  <p className="text-gray-200 text-base leading-relaxed mb-6 italic line-clamp-5">
+                  <p className="text-gray-200 text-base md:text-xl leading-relaxed mb-6 italic line-clamp-5">
                     "{item.content}"
                   </p>
                   <div className="flex flex-col items-center">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-16 h-16 rounded-xl mb-4 border-3 border-white/20 object-cover"
+                      className="w-16 h-16 md:w-20 md:h-20 rounded-xl mb-4 border-3 border-white/20 object-cover"
                     />
                     <div className="flex justify-center mb-2">
                       {[...Array(item.stars)].map((_, starIndex) => (
@@ -161,7 +162,7 @@ export default function TestimoniCarousel() {
                     <h4 className="font-bold text-lg lg:text-xl text-white">
                       {item.name}
                     </h4>
-                    <p className="text-amber-400 text-sm font-medium">
+                    <p className="text-amber-400 text-sm md:text-base font-medium">
                       {item.location}
                     </p>
                   </div>

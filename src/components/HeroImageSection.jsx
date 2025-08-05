@@ -96,24 +96,28 @@ export default function HeroImageSection() {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 border-l border-b border-gray-300">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6 lg:gap-12 md:justify-center md:items-center">
         {cards.map((card, index) => (
-          <div key={index} className="flip-card">
-            <div className="flip-card-inner !w-[10rem] !h-[10rem]">
+          <div key={index} className="flip-card ">
+            <div className="flip-card-inner">
               {/* FRONT */}
               <div className="flip-card-front !rounded-sm">
                 <img
                   src={card.frontImg}
                   alt={card.back.title}
-                  className="w-[50%] lg:w-full h-auto object-cover"
+                  className="w-[50%] md:w-[60%] lg:w-full h-auto object-cover"
                 />
               </div>
 
               {/* BACK */}
-              <div className="flip-card-back flex items-center justify-center text-center p-4 !rounded-sm">
+              <div className="flip-card-back flex items-center justify-center text-center p-4 md:p-0 !rounded-sm">
                 <div className="max-h-full">
-                  <h3 className="text-lg font-bold">{card.back.title}</h3>
-                  <p className="text-sm mt-2">{card.back.description}</p>
+                  <h3 className="text-sm md:text-lg font-bold">
+                    {card.back.title}
+                  </h3>
+                  <p className="text-xs md:text-sm mt-2">
+                    {card.back.description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -122,12 +126,12 @@ export default function HeroImageSection() {
       </div>
 
       {/* Cards */}
-      <div className="flex flex-wrap p-4 gap-4 justify-center w-full my-20">
+      <div className="grid grid-cols-1 gap-2 md:gap-6 lg:gap-12 md:justify-center md:items-center my-20">
         {cards_long.slice(0, 4).map((card, index) => (
-          <div key={index} className="flip-card w-full sm:w-1/3 xl:w-1/3 px-2">
-            <div className="flip-card-inner w-full h-48">
+          <div key={index} className="flip-card2 ">
+            <div className="flip-card-inner2">
               {/* FRONT */}
-              <div className="flip-card-front rounded-sm overflow-hidden">
+              <div className="flip-card-front2 !rounded-sm overflow-hidden">
                 <img
                   src={card.frontImg}
                   alt={card.back.title}
@@ -136,10 +140,14 @@ export default function HeroImageSection() {
               </div>
 
               {/* BACK */}
-              <div className="flip-card-back flex items-center justify-center text-center p-4 rounded-sm overflow-hidden bg-blue-500 text-white">
+              <div className="flip-card-back2 flex items-center justify-center text-center p-4 md:p-0 !rounded-sm">
                 <div className="max-h-full">
-                  <h3 className="text-lg font-bold">{card.back.title}</h3>
-                  <p className="text-sm mt-2">{card.back.description}</p>
+                  <h3 className="text-sm md:text-2xl font-bold">
+                    {card.back.title}
+                  </h3>
+                  <p className="text-xs md:text-lg mt-2">
+                    {card.back.description}
+                  </p>
                 </div>
               </div>
             </div>

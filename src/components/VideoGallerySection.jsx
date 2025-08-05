@@ -52,7 +52,7 @@ export default function VideoGallerySection() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-red-400 text-sm font-medium mb-2 tracking-wide">
+          <p className="text-red-400 text-sm md:text-base font-medium mb-2 tracking-wide">
             Cuplikan Video Asa Hikari Mulya
           </p>
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
@@ -61,7 +61,7 @@ export default function VideoGallerySection() {
         </div>
 
         {/* Video Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 md:mx-20 lg:gap-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:mx-10 lg:mx-20 lg:gap-4 gap-8">
           {videoData.map((video) => (
             <div
               key={video.id}
@@ -125,7 +125,7 @@ export default function VideoGallerySection() {
 
         {/* View More Button */}
         <div className="text-center mt-12">
-          <button className="btn btn-md btn-warning text-white font-bold transition-transform duration-300 hover:scale-110 hover:bg-red-600 hover:border-0 shadow-none">
+          <button className="btn btn-md btn-warning text-white md:text-lg font-bold transition-transform duration-300 hover:scale-110 hover:bg-red-600 hover:border-0 shadow-none">
             Lihat Semua Video
           </button>
         </div>

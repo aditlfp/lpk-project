@@ -249,7 +249,7 @@ const EmployeRequired = () => {
         >
           {/* Animated Badge */}
           <motion.div
-            className="inline-flex items-center gap-3 bg-amber-500/80 text-slate-800 px-6 py-3 rounded-full text-sm font-bold mb-8 shadow-2xl backdrop-blur-sm"
+            className="inline-flex items-center gap-3 bg-amber-500/80 text-slate-800 px-6 py-3 rounded-full text-sm font-bold md:mt-4 mb-8 shadow-2xl backdrop-blur-sm"
             whileHover={{
               scale: 1.05,
               boxShadow: "0 25px 50px -12px rgba(245, 158, 11, 0.4)",
@@ -261,12 +261,14 @@ const EmployeRequired = () => {
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             ></motion.div>
-            <span>Untuk perusahaan yang tertarik pada pekerja asing</span>
+            <span className="md:text-lg">
+              Untuk perusahaan yang tertarik pada pekerja asing
+            </span>
           </motion.div>
 
           {/* Main Heading with Stagger Animation */}
           <motion.h1
-            className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6"
+            className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6 md:mb-3"
             variants={itemVariants}
           >
             <motion.span
@@ -280,7 +282,7 @@ const EmployeRequired = () => {
 
           {/* Animated Subheading */}
           <motion.h2
-            className="text-2xl lg:text-3xl text-slate-200 font-semibold mb-8 max-w-lg"
+            className="text-2xl lg:text-3xl text-slate-200 font-semibold md:text-center mb-8 md:mb-4 max-w-lg md:max-w-full"
             variants={itemVariants}
             whileInView={{ scale: [0.95, 1.02, 1] }}
             transition={{ duration: 0.6 }}
@@ -290,7 +292,7 @@ const EmployeRequired = () => {
 
           {/* Description */}
           <motion.p
-            className="text-slate-300 mb-10 max-w-md text-lg leading-relaxed"
+            className="text-slate-300 mb-10 max-w-md md:max-w-full text-lg leading-relaxed"
             variants={itemVariants}
           >
             Sesuai dengan tempat tinggal dan skill yang cocok
@@ -375,7 +377,9 @@ const EmployeRequired = () => {
                     delay: item.delay,
                   }}
                 ></motion.div>
-                <span className="text-sm font-medium">{item.text}</span>
+                <span className="text-sm md:text-lg font-medium">
+                  {item.text}
+                </span>
               </motion.div>
             ))}
           </motion.div>

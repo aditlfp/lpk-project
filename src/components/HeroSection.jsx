@@ -27,9 +27,9 @@ export default function HeroSection() {
           <img
             src={logo}
             alt="Asa Hikari Mulya"
-            className="w-1/3 md:w-1/5 lg:w-1/10  bg-white"
+            className="w-1/3 md:w-1/6 lg:w-1/10  bg-white"
           />
-          <div className="flex flex-col justify-start items-start font-bold md:text-[2.9rem] text-2xl">
+          <div className="flex flex-col justify-start items-start font-bold md:text-[2rem] lg:text-[2.9rem] text-2xl">
             <span>Asa</span>
             <span>Hikari</span>
             <span>Mulya</span>
@@ -37,13 +37,13 @@ export default function HeroSection() {
         </div>
 
         {/* Judul */}
-        <h1 className="text-3xl md:text-[2.9rem] font-bold mb-4 md:mb-10 text-pretty max-w-5xl">
+        <h1 className="text-3xl md:text-[2.3rem] lg::text-[2.9rem] font-bold mb-4 md:mb-10 text-pretty max-w-5xl">
           Kuasai Bahasa Jepang, Raih Peluang Kerja ke Jepang dengan Asa Hikari
           Mulya!
         </h1>
 
         {/* Deskripsi */}
-        <p className="max-w-5xl md:max-w-[80rem] md:mx-10 font-bold text-sm md:text-base text-gray-300 mb-6 md:mb-10">
+        <p className="max-w-5xl md:max-w-[80rem] md:mx-10 font-bold text-sm md:text-lg text-gray-300 mb-6 md:mb-10">
           Asa Hikari Mulya adalah pusat pelatihan bahasa Jepang terpercaya yang
           mempersiapkan Anda untuk bekerja di Jepang melalui program Specified
           Skilled Worker (SSW) dan Magang. Dapatkan pelatihan intensif,

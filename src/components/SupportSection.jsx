@@ -37,30 +37,38 @@ const SupportSection = () => {
               Dukungan dan Kerjasama Resmi Asa Hikari Mulya Jepang
             </h1>
 
-            <p className="my-8 text-md text-black tracking-normal leading-relaxed font-semibold">
+            <p className="my-8 text-base md:text-xl text-black tracking-normal leading-relaxed font-semibold">
               Telah diakui resmi oleh:
             </p>
 
             <div className="flex justify-center items-center gap-10 mt-6">
-              <img src={kemnak} alt="Kemnaker" className="w-24 h-auto" />
-              <img src={kp2} alt="BP2MI" className="w-24 h-auto" />
+              <img
+                src={kemnak}
+                alt="Kemnaker"
+                className="w-24 h-auto md:max-w-[8rem] md:h-auto"
+              />
+              <img
+                src={kp2}
+                alt="BP2MI"
+                className="w-24 h-auto md:max-w-[8rem] md:h-auto"
+              />
             </div>
           </div>
 
           <div>
-            <div className="divider my-8 text-black font-semibold">
+            <div className="divider md:text-xl my-8 text-black font-semibold">
               Dinas Tenaga Kerja
             </div>
 
-            <div className="flex flex-wrap justify-center md:grid md:grid-cols-4 lg:grid-cols-5 md:gap-8 md:place-items-center">
+            <div className="flex flex-wrap justify-center md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-8 md:place-items-center">
               {dinasLogos.map((logo, idx) => (
                 <div key={idx} className="text-center w-1/2 md:w-auto">
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="h-20 mx-auto object-contain"
+                    className="h-20 md:max-w-[8rem] md:h-auto mx-auto object-contain"
                   />
-                  <p className="my-2 text-sm font-medium text-gray-700">
+                  <p className="my-2 text-sm md:text-lg font-medium text-gray-700">
                     {logo.name}
                   </p>
                 </div>
