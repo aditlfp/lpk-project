@@ -29,11 +29,6 @@ export default function HeroSection() {
             alt="Asa Hikari Mulya"
             className="w-1/3 md:w-1/6 lg:w-1/10 bg-white"
           />
-          <div className="flex flex-col justify-start items-start font-bold md:text-[2rem] lg:text-[2.1rem] text-2xl">
-            <span>Asa</span>
-            <span>Hikari</span>
-            <span>Mulya</span>
-          </div>
         </div>
 
         {/* Judul */}
@@ -67,7 +62,6 @@ export default function HeroSection() {
             <img src={logo_white} alt="JITCO" className="h-12" />
           </div>
         </div> */}
-
       </div>
     </div>
   );

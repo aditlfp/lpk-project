@@ -1,5 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Play, Calendar, Users } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+
+import bg1 from "../assets/Test1.jpg";
+import bg2 from "../assets/Test2.jpg";
+import bg3 from "../assets/Test3.jpg";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 const videoData = [
   {
@@ -46,9 +55,40 @@ const videoData = [
   },
 ];
 
+const galery = [
+  {
+    bg: bg1,
+    name: "Peserta Didik Bidang Manufaktur",
+    location: "Prefektur Kagoshima, Jepang",
+  },
+  {
+    bg: bg2,
+    name: "Peserta Didik Bidang Perakitan Komponen Untuk HP & Laptop",
+    location: "Prefektur Kagoshima, Jepang",
+  },
+  {
+    bg: bg3,
+    name: "Peserta Didik Bidang Pengepakan di Perusahaan Roda 4",
+    location: "Prefektur Oita, Jepang",
+  },
+];
+
 export default function VideoGallerySection() {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const galerySwiperRef = useRef(null);
+
+  useEffect(() => {
+    if (galerySwiperRef.current && prevRef.current && nextRef.current) {
+      const swiper = galerySwiperRef.current.swiper;
+      swiper.params.navigation.prevEl = prevRef.current;
+      swiper.params.navigation.nextEl = nextRef.current;
+      swiper.navigation.init();
+      swiper.navigation.update();
+    }
+  }, []);
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="pt-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
@@ -130,6 +170,99 @@ export default function VideoGallerySection() {
           </button>
         </div>
       </div>
+      <div className="divider"></div>
+
+      {/* galery */}
+      <div className="relative mt-4 min-w-full">
+        {/* Static Header */}
+        <div className="absolute top-5 left-0 right-0 z-10">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h3 className="text-white text-base md:text-lg font-medium mb-2 tracking-wide">
+              Foto Kegiatan Peserta Didik
+            </h3>
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white leading-tight">
+              Galeri Foto Kegiatan Peserta Didik Asa Hikari Mulya
+            </h1>
+          </div>
+        </div>
+        {/* Background Carousel */}
+        <Swiper
+          modules={[Autoplay, EffectFade]}
+          autoplay={{
+            delay: 8000, // twice the testimonial delay
+            disableOnInteraction: false,
+          }}
+          loop
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          speed={1000}
+          allowTouchMove={false}
+          className="h-[75vh] md:h-[62vh]  lg:min-h-[540pt] mb-10 lg:mb-0"
+        >
+          {galery.map((item, index) => (
+            <SwiperSlide key={index}>
+              <section
+                className="h-full bg-cover bg-center"
+                style={{
+                  backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url(${item.bg})`,
+                }}
+              ></section>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Navigation Buttons */}
+        <button
+          ref={prevRef}
+          className="absolute left-8 top-[60%] md:top-[49%] md:left-[10%] z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
+        >
+          <FaAngleLeft className="md:w-7 h-full" />
+        </button>
+        <button
+          ref={nextRef}
+          className="absolute right-8 top-[60%] md:top-[49%] md:right-[10%] z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
+        >
+          <FaAngleRight className="md:w-7 h-full" />
+        </button>
+
+        {/* Foreground Galery Carousel */}
+        <Swiper
+          ref={galerySwiperRef}
+          modules={[Autoplay, Navigation]}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          loop
+          className="!absolute top-[110pt] md:top-[100pt] lg:top-[150pt] min-h-[380pt] md:min-h-[330pt] lg:min-h-[300pt] left-0 w-full z-10 "
+        >
+          {galery.map((item, index) => (
+            <SwiperSlide key={index}>
+              <section className="min-h-full flex items-end justify-center text-white mt-10 pb-0 lg:pb-24">
+                <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
+                  <div className="bg-blue-300/10 backdrop-blur-sm rounded-2xl p-2 md:p-2 lg:p-4 border border-white/10">
+                    <div className="flex flex-col items-center">
+                      <img
+                        src={item.bg}
+                        alt={item.name}
+                        className="w-[100%] h-[50%] md:w-[70%] lg:w-[90%] rounded-xl mb-4 border-3 aspect-[18/9] border-white/20 object-cover"
+                      />
+                      <h4 className="font-bold text-lg md:text-xl text-white">
+                        {item.name}
+                      </h4>
+                      <p className="text-amber-400 text-sm md:text-base font-medium">
+                        {item.location}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      <div className="divider"></div>
 
       <style jsx>{`
         .line-clamp-2 {
@@ -143,6 +276,9 @@ export default function VideoGallerySection() {
           -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
           overflow: hidden;
+        }
+        .swiper-pagination {
+          bottom: 0px !important;
         }
       `}</style>
     </section>

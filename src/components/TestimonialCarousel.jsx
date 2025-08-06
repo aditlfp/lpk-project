@@ -107,15 +107,15 @@ export default function TestimoniCarousel() {
       {/* Navigation Buttons */}
       <button
         ref={prevRef}
-        className="absolute left-8 top-[60%] md:top-[49%] z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
+        className="absolute left-8 top-[60%] md:top-[50%] md:left-[8%] z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
       >
-        <FaAngleLeft />
+        <FaAngleLeft className="md:w-7 h-full" />
       </button>
       <button
         ref={nextRef}
-        className="absolute right-8 top-[60%] md:top-[49%] z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
+        className="absolute right-8 top-[60%] md:top-[50%] md:right-[8%] z-20 -translate-y-1/2 text-white text-2xl bg-transparent hover:bg-white/10 rounded-full p-3 transition-all duration-300"
       >
-        <FaAngleRight />
+        <FaAngleRight className="md:w-7 h-full" />
       </button>
 
       {/* Foreground Testimonial Carousel */}
@@ -147,7 +147,7 @@ export default function TestimoniCarousel() {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-16 h-16 md:w-20 md:h-20 rounded-xl mb-4 border-3 border-white/20 object-cover"
+                      className="w-16 h-16 md:w-22 md:h-22 rounded-xl mb-4 border-3 border-white/20 object-cover"
                     />
                     <div className="flex justify-center mb-2">
                       {[...Array(item.stars)].map((_, starIndex) => (

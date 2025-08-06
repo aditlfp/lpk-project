@@ -64,7 +64,7 @@ function Navbar() {
                 </div>
 
                 {/* Divider */}
-                <div className="w-full h-[1px] border border-gray-200"></div>
+                <div className="divider"></div>
 
                 {/* Sign Up */}
                 <div className="dropdown dropdown-hover w-full">
@@ -94,7 +94,7 @@ function Navbar() {
             <SignInButton />
           </div>
           <div className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3">
-           <SignUpButton />
+            <SignUpButton />
           </div>
           <div className="navbar-end md:ml-8 lg:ml-16 md:mr-4">
             <a className="btn lg:btn-lg btn-warning text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none">

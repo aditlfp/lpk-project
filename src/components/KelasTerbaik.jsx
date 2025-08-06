@@ -68,11 +68,11 @@ const KelasTerbaik = () => {
         Berbagai Wilayah yang ada di Jepang.
       </p>
 
-      <div className="mt-12 md:grid gap-8 md:gap-4 sm:flex lg:gap-4 md:grid-cols-2 lg:grid-cols-4 max-w-[90rem] mx-auto justify-center items-center">
+      <div className="mt-12 md:grid gap-4 md:gap-4 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-[90rem] mx-auto justify-center items-center">
         {kelasData.map((kelas, idx) => (
           <div
             key={idx}
-            className="bg-blue-950 text-white rounded-xl my-5 sm:my-0 shadow-lg overflow-hidden w-80 md:w-[22rem] lg:w-full flex flex-col"
+            className="bg-blue-950 text-white rounded-xl my-5 sm:my-0 shadow-lg overflow-hidden w-full md:w-[22rem] lg:w-full flex flex-col"
             style={{ height: "100%" }} // optional if wrapping with grid
           >
             <img
