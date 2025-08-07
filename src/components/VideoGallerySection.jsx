@@ -96,7 +96,7 @@ export default function VideoGallerySection() {
             Cuplikan Video Asa Hikari Mulya
           </p>
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
-            Video Pembelajaran & Kegiatan Asa Hikari Mulya
+            Video Pembelajaran Asa Hikari Mulya
           </h2>
         </div>
 
