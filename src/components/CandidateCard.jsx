@@ -77,20 +77,20 @@ const CandidateCard = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <div className="flex flex-row items-start gap-4">
+            <div className="flex flex-col items-center gap-4">
               {/* Profile Image */}
               <motion.div
                 className="relative"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="w-20 h-24 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg overflow-hidden shadow-md">
+                <div className="w-[160pt] lg:w-[140pt] h-[120pt] lg:h-[110pt] bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg overflow-hidden shadow-md">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentCandidate.id}
                       src={currentCandidate.image}
                       alt="Profile"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center"
                       initial={{ opacity: 0, scale: 1.1 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
@@ -101,7 +101,7 @@ const CandidateCard = () => {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`badge-${currentCandidate.id}`}
-                    className="absolute -bottom-1 -right-1 bg-blue-600 text-white text-xs px-2 py-1 rounded-full font-medium shadow-lg"
+                    className="absolute -bottom-2 -right-2 bg-blue-600 text-white text-sm px-4 py-2 rounded-full font-medium shadow-lg"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
@@ -113,7 +113,7 @@ const CandidateCard = () => {
               </motion.div>
 
               {/* Profile Info */}
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 text-center">
                 <AnimatePresence mode="wait">
                   <motion.h3
                     key={`name-${currentCandidate.id}`}
@@ -163,7 +163,7 @@ const CandidateCard = () => {
                 </motion.button>
 
                 {/* Carousel Indicators */}
-                <div className="flex gap-2 mt-4">
+                <div className="flex justify-center gap-2 mt-4">
                   {candidates.map((_, index) => (
                     <button
                       key={index}

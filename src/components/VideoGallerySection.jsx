@@ -204,7 +204,7 @@ export default function VideoGallerySection() {
               <section
                 className="h-full bg-cover bg-center"
                 style={{
-                  backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url(${item.bg})`,
+                  backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url(${item.bg})`,
                 }}
               ></section>
             </SwiperSlide>

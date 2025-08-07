@@ -76,7 +76,7 @@ const CustomFAQ = () => {
   }, [activeIndex]);
 
   return (
-    <section className="px-4 py-10 mb-10 md:mx-20 md:mb-5">
+    <section id="faq" className="px-4 py-10 mb-10 md:mx-20 md:mb-5">
       <div className="max-w-3xl mx-auto space-y-4">
         <div className="flex flex-col gap-y-4 mb-2 md:mb-10">
           <span className="font-semibold text-xl text-blue-500">

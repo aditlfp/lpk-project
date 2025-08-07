@@ -44,7 +44,7 @@ const kelasData = [
 
 const KelasTerbaik = () => {
   return (
-    <section className="py-16 px-4 text-center">
+    <section id="kelas" className="py-16 px-4 text-center">
       <p className="text-sm md:text-base text-blue-500 font-medium">
         Kelas Terbaik Asa Hikari Mulya
       </p>
@@ -111,9 +111,12 @@ const KelasTerbaik = () => {
                   <FaStar />
                   <FaStar />
                 </div>
-                <button className="btn btn-sm btn-warning px-6 text-white font-bold md:text-lg">
+                <a
+                  href="https://recruitment.savanait.com/auth/login.php"
+                  className="btn btn-sm btn-warning px-6 text-white font-bold md:text-lg"
+                >
                   Daftar
-                </button>
+                </a>
               </div>
             </div>
           </div>

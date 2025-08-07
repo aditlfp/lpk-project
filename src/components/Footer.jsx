@@ -26,7 +26,7 @@ function Footer() {
   return (
     <>
       {/* Bagian atas footer */}
-      <div className="bg-blue-950 pt-[84%] md:pt-[30%] lg:pt-[14%] lg:px-4 relative z-0 w-screen">
+      <div className="bg-blue-950 pt-[230pt] md:pt-[30%] lg:pt-[14%] lg:px-4 relative z-0 w-screen">
         {/* Kartu floating yang masuk ke dalam */}
         <div className="absolute -top-1 w-full">
           <FooterAction />
@@ -37,17 +37,33 @@ function Footer() {
         <footer className="flex flex-col md:flex-row flex-wrap gap-10 px-6 pb-10 text-white max-w-7xl mx-auto">
           {/* Kolom 1: Kontak & Logo */}
           <div className="flex-1 min-w-[220px] md:w-full md:max-w-[350px]  space-y-4">
-            <img src={icon} alt="Asa Hikari Mulya" className="w-[7rem] bg-white" />
+            <img
+              src={icon}
+              alt="Asa Hikari Mulya"
+              className="w-[7rem] bg-white"
+            />
             <p className="text-sm md:text-lg text-gray-300">
               Pusat Pelatihan dan Pendidikan Bahasa Serta Budaya Jepang
             </p>
             <div className="flex flex-col gap-y-5 mt-5 text-blue-500">
               <div className="flex items-start gap-x-3">
                 <MapPin className="mt-1 w-10 h-10 md:max-w-24 md:h-auto" />
-                <p className="text-sm md:text-base text-white">
-                 Jl. Betoro Katong, Nomor 22, Kelurahan Nologaten, Kecamatan Ponorogo,
-                 Kabupaten Ponorogo, Kode Pos 63411
-                </p>
+                <div className="flex flex-col gap-2">
+                  <p className="text-sm md:text-base text-white">
+                    Jl. Betoro Katong, Nomor 22, Kelurahan Nologaten, Kecamatan
+                    Ponorogo, Kabupaten Ponorogo, Kode Pos 63411
+                  </p>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.3229227737447!2d111.47399047405082!3d-7.861234578145226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79a18cbe9a9b4d%3A0xc2a43dddf592cecb!2sPT%20ASA%20HIKARI%20MULYA%20(LPK)!5e0!3m2!1sid!2sid!4v1754570821563!5m2!1sid!2sid"
+                    width="220"
+                    height="120"
+                    style={{ border: 0 }}
+                    className="rounded-lg"
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
               </div>
               <div className="flex items-start gap-x-3">
                 <Mail className="mt-1 w-5 h-5 md:max-w-7 md:h-auto" />
@@ -64,14 +80,16 @@ function Footer() {
             </div>
           </div>
 
-          <div className="md:flex md:flex-col md:gap-4 md:w-full md:max-w-[250px]">
+          <div className="flex md:flex-col md:gap-4 md:w-full md:max-w-[250px]">
             {/* Kolom 2: Link Cepat */}
             <div className="flex-1 min-w-[150px]">
               <h3 className="font-semibold text-lg md:text-xl mb-2 border-b border-blue-400 w-fit">
                 Link Cepat
               </h3>
               <ul className="space-y-2 md:space-y-1 text-sm md:text-lg">
-                <li>Kelas</li>
+                <li>
+                  <a href="#kelas">Kelas</a>
+                </li>
                 <li>Artikel</li>
                 <li>Program</li>
                 <li>Pengajar</li>
@@ -90,7 +108,9 @@ function Footer() {
                 <li>Kebijakan Privasi (English)</li>
                 <li>Syarat dan Ketentuan</li>
                 <li>Kontak</li>
-                <li>FAQ</li>
+                <li>
+                  <a href="#faq">FAQ</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -112,7 +132,7 @@ function Footer() {
               Pelayanan Kami Pada Jam Kerja di atas, Silahkan Hubungi Kami
               Melalui Nomor Telepon atau WhatsApp Untuk Informasi Lebih Lanjut.
             </p>
-            <div className="flex space-x-3 mt-2">
+            <div className="flex space-x-3 mt-2 md:mt-4">
               <a className="bg-blue-600 p-2 rounded-full" href="#">
                 <FaYoutube />
               </a>
@@ -126,9 +146,12 @@ function Footer() {
                 <FaTiktok />
               </a>
             </div>
-            <button className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-4 py-2 rounded">
+            <a
+              href="https://recruitment.savanait.com/auth/login.php"
+              className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-4 py-2 rounded"
+            >
               Daftar Sekarang
-            </button>
+            </a>
           </div>
         </footer>
 

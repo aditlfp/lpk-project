@@ -19,8 +19,8 @@ function Navbar() {
   };
   return (
     <div className="navbar bg-base-100 shadow-sm fixed mb-10 z-50 top-0 left-0 w-screen">
-      <div className="flex justify-center w-screen">
-        <div className="flex justify-between md:justify-evenly items-center lg:gap-x-10 p-3 sm:p-3">
+      <div className="flex justify-center lg:justify-around w-screen">
+        <div className="flex justify-between md:justify-evenly items-center lg:gap-x-10 p-3 sm:p-3 lg:p-0">
           <div className="w-[33%] md:w-auto flex items-center gap-1 md:gap-2">
             <img
               src={logo}
@@ -54,13 +54,14 @@ function Navbar() {
               <li className="flex flex-col items-start w-full ">
                 {/* Sign In */}
                 <div className="dropdown dropdown-hover w-full ">
-                  <label
+                  <a
                     tabIndex="0"
+                    href="https://recruitment.savanait.com/auth/login.php"
                     className="bg-white rounded-t-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold text-gray-700 hover:text-amber-500 transition-colors duration-200"
                   >
                     <span>SIGN IN</span>
                     <PiSignInBold className="w-5 h-5" />
-                  </label>
+                  </a>
                 </div>
 
                 {/* Divider */}
@@ -68,19 +69,23 @@ function Navbar() {
 
                 {/* Sign Up */}
                 <div className="dropdown dropdown-hover w-full">
-                  <label
+                  <a
                     tabIndex="0"
+                    href="https://recruitment.savanait.com/auth/login.php"
                     className="bg-white rounded-b-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold text-gray-700 hover:text-amber-500 transition-colors duration-200"
                   >
                     <span>SIGN UP</span>
                     <PiSignInBold className="w-5 h-5" />
-                  </label>
+                  </a>
                 </div>
               </li>
             </ul>
           </div>
           <div className="md:hidden w-[33%]">
-            <a className="btn btn-warning text-xs text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none flex flex-col leading-tight items-center">
+            <a
+              href="https://recruitment.savanait.com/auth/login.php"
+              className="btn btn-warning text-xs text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none flex flex-col leading-tight items-center"
+            >
               <span>Daftar</span>
               <span>Sekarang</span>
             </a>
@@ -90,14 +95,23 @@ function Navbar() {
 
         {/* Nav Pc */}
         <div className="navbar-center hidden md:flex gap-x-9">
-          <div className="dropdown dropdown-hover uppercase font-bold w-full ml-3">
+          <a
+            href="https://recruitment.savanait.com/auth/login.php"
+            className="dropdown dropdown-hover uppercase font-bold w-full ml-3"
+          >
             <SignInButton />
-          </div>
-          <div className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3">
+          </a>
+          <a
+            href="https://recruitment.savanait.com/auth/login.php"
+            className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3"
+          >
             <SignUpButton />
-          </div>
+          </a>
           <div className="navbar-end md:ml-8 lg:ml-16 md:mr-4">
-            <a className="btn lg:btn-lg btn-warning text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none">
+            <a
+              href="https://recruitment.savanait.com/auth/login.php"
+              className="btn lg:btn-lg lg:text-base btn-warning text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none"
+            >
               Daftar Sekarang
             </a>
           </div>

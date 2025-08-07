@@ -19,7 +19,7 @@ const CallToAction = () => {
         {/* Buttons */}
         <div className="w-full md:w-auto flex flex-col md:items-end gap-3">
           <a
-            href="#daftar"
+            href="https://recruitment.savanait.com/auth/login.php"
             className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-6 py-3 rounded-md transition duration-200"
           >
             Daftar Sekarang

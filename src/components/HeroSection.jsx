@@ -47,9 +47,12 @@ export default function HeroSection() {
         </p>
 
         {/* Tombol */}
-        <button className="btn btn-warning text-white font-bold btn-xl text-sm md:text-2xl p-4 md:p-6 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-600 hover:border-0 shadow-none">
+        <a
+          href="https://recruitment.savanait.com/auth/login.php"
+          className="btn btn-warning text-white font-bold btn-xl text-sm md:text-2xl p-4 md:p-6 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-600 hover:border-0 shadow-none"
+        >
           Daftar Sekarang
-        </button>
+        </a>
 
         {/* Kolaborator */}
         {/* <div className="mt-5 md:mt-10 lg:mt-5">
