@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Play, Calendar, Users } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
@@ -9,6 +9,7 @@ import bg1 from "../assets/Test1.jpg";
 import bg2 from "../assets/Test2.jpg";
 import bg3 from "../assets/Test3.jpg";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import api from "../utils/axios";
 
 const videoData = [
   {
@@ -74,9 +75,43 @@ const galery = [
 ];
 
 export default function VideoGallerySection() {
+  const [imgGalery, setImgGallery] = useState(galery);
+  const [video, setVideo] = useState(videoData);
+
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const galerySwiperRef = useRef(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // Request both endpoints in parallel
+        const [resImg, resVid] = await Promise.all([
+          api.get("/gallery-media"),
+          api.get("/post-video-youtubes"),
+        ]);
+
+        const getActiveUrl = (data) => {
+          if (Array.isArray(data)) {
+            const activeItem = data.find((item) => item.aktif);
+            return activeItem?.url || null;
+          }
+          return null;
+        };
+
+        // Update states only if URLs are found
+        const imgUrl = getActiveUrl(resImg.data);
+        if (imgUrl) setImgGallery(imgUrl);
+
+        const videoUrl = getActiveUrl(resVid.data);
+        if (videoUrl) setVideo(videoUrl);
+      } catch (err) {
+        console.error("Failed to fetch gallery or video:", err);
+      }
+    }
+
+    fetchData();
+  }, []); // ✅ only run once on mount
 
   useEffect(() => {
     if (galerySwiperRef.current && prevRef.current && nextRef.current) {
@@ -102,7 +137,7 @@ export default function VideoGallerySection() {
 
         {/* Video Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 md:mx-10 lg:mx-20 lg:gap-4 gap-8">
-          {videoData.map((video) => (
+          {video.map((video) => (
             <div
               key={video.id}
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
@@ -199,7 +234,7 @@ export default function VideoGallerySection() {
           allowTouchMove={false}
           className="h-[75vh] md:h-[62vh]  lg:min-h-[540pt] mb-10 lg:mb-0"
         >
-          {galery.map((item, index) => (
+          {imgGalery.map((item, index) => (
             <SwiperSlide key={index}>
               <section
                 className="h-full bg-cover bg-center"
@@ -236,7 +271,7 @@ export default function VideoGallerySection() {
           loop
           className="!absolute top-[110pt] md:top-[100pt] lg:top-[150pt] min-h-[380pt] md:min-h-[330pt] lg:min-h-[300pt] left-0 w-full z-10 "
         >
-          {galery.map((item, index) => (
+          {imgGalery.map((item, index) => (
             <SwiperSlide key={index}>
               <section className="min-h-full flex items-end justify-center text-white mt-10 pb-0 lg:pb-24">
                 <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">

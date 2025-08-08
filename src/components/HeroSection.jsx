@@ -1,16 +1,36 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import home from "../assets/img_fix/hero.jpg"; // Pastikan path ini sesuai dengan struktur folder Anda
 import logo from "../assets/img_fix/logo_dark.png";
-import logo_white from "../assets/img_fix/logo_white.jpg";
+import api from "../utils/axios";
 
 export default function HeroSection() {
+  const [imgHero, setImgHero] = useState(home);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const res = await api.get("/main_hero");
+
+        if (Array.isArray(res.data)) {
+          const activeHero = res.data.find((item) => item.aktif);
+
+          if (activeHero?.url) {
+            setImgHero(activeHero.url); // use your API's actual field name for the image
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch hero image:", err);
+      }
+    }
+    getData();
+  }, []); // ✅ only run once on mount
   return (
     <div className="relative h-[100vh]">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url(${home})`, // ← ganti dengan path atau URL gambar
+          backgroundImage: `url(${imgHero})`, // ← ganti dengan path atau URL gambar
           backgroundAttachment: "fixed",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -23,7 +43,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center text-white h-full px-4">
         {/* Logo */}
-        <div className="flex w-full justify-center items-center gap-x-4 mb-6 mt-10 lg:mt-24">
+        <div className="flex w-full justify-center items-center gap-x-4 mb-6 mt-[30pt] lg:mt-[10pt]">
           <img
             src={logo}
             alt="Asa Hikari Mulya"
