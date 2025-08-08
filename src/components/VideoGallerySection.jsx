@@ -96,13 +96,13 @@ export default function VideoGallerySection() {
         const imgList = resImg?.data?.data;
         // console.log(imgList);
 
-        if (Array.isArray(imgList) && imgList.length > 0) {
+        if (Array.isArray(imgList) && imgList.length > 2) {
           setImgGalery(imgList);
           setIsImg(true);
         }
 
         const vidList = resVid?.data?.data;
-        if (Array.isArray(vidList) && vidList.length > 0) {
+        if (Array.isArray(vidList) && vidList.length > 1) {
           setVideo(vidList);
           setIsVid(true);
         }
