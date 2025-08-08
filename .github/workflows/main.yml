@@ -1,4 +1,4 @@
-name: Build and Deploy to Niagahoster via FTP
+name: Build and Deploy to JAGOANHOSTING via FTP
 
 on:
   push:
