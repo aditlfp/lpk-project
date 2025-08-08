@@ -94,7 +94,7 @@ export default function VideoGallerySection() {
         ]);
 
         const imgList = resImg?.data?.data;
-        console.log(imgList);
+        // console.log(imgList);
 
         if (Array.isArray(imgList) && imgList.length > 0) {
           setImgGalery(imgList);
