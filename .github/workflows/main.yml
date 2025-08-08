@@ -1,29 +1,35 @@
-name: 🚀 Deploy to JagoanHosting
+name: 🚀 Build & Deploy React to JagoanHosting
 
 on:
+  workflow_dispatch: # Bisa dijalankan manual
   push:
     branches:
-      - main
-  workflow_dispatch:
-    inputs:
-      full_upload:
-        description: "Force upload all files? (true/false)"
-        required: false
-        default: "false"
+      - main # Atau branch yang mau kamu pakai
 
 jobs:
-  ftp-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📂 Checkout repository
-        uses: actions/checkout@v3
+      # 1. Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: 🧹 Remove FTP sync state if full upload
-        if: ${{ github.event.inputs.full_upload == 'true' }}
-        run: rm -f .ftp-deploy-sync-state.json
+      # 2. Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: 📤 Deploy to JagoanHosting via FTP To ${{ secrets.FTP_HOST }}
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+
+      - name: Build React
+        run: npm run build
+
+      - name: Deploy To FTP SERVER ${{ secrets.FTP_HOST }}
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
