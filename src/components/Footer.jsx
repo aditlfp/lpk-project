@@ -144,16 +144,16 @@ function Footer() {
               Melalui Nomor Telepon atau WhatsApp Untuk Informasi Lebih Lanjut.
             </p>
             <div className="flex space-x-3 mt-2 md:mt-4">
-              <a className="bg-blue-600 p-2 rounded-full" href="#">
+              <a className="bg-blue-600 p-2 rounded-full" href="https://www.youtube.com/@asahikarimulyaofficiall" target="_blank">
                 <FaYoutube />
               </a>
-              <a className="bg-blue-800 p-2 rounded-full" href="#">
+              <a className="bg-blue-800 p-2 rounded-full" href="https://www.facebook.com/profile.php?id=61550357071704" target="_blank">
                 <FaFacebookF />
               </a>
-              <a className="bg-blue-400 p-2 rounded-full" href="#">
+              <a className="bg-blue-400 p-2 rounded-full" href="https://www.instagram.com/asahikarimulya.official?igsh=bzIwb3gzdXVjY2Iy" target="_blank">
                 <FaInstagram />
               </a>
-              <a className="bg-gray-500 p-2 rounded-full" href="#">
+              <a className="bg-gray-500 p-2 rounded-full" href="tiktok.com/@asahikarimulya.official" target="_blank">
                 <FaTiktok />
               </a>
             </div>
