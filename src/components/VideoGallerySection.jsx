@@ -59,24 +59,27 @@ const videoData = [
 const galery = [
   {
     bg: bg1,
-    name: "Peserta Didik Bidang Manufaktur",
+    title: "Peserta Didik Bidang Manufaktur",
     location: "Prefektur Kagoshima, Jepang",
   },
   {
     bg: bg2,
-    name: "Peserta Didik Bidang Perakitan Komponen Untuk HP & Laptop",
+    title: "Peserta Didik Bidang Perakitan Komponen Untuk HP & Laptop",
     location: "Prefektur Kagoshima, Jepang",
   },
   {
     bg: bg3,
-    name: "Peserta Didik Bidang Pengepakan di Perusahaan Roda 4",
+    title: "Peserta Didik Bidang Pengepakan di Perusahaan Roda 4",
     location: "Prefektur Oita, Jepang",
   },
 ];
 
 export default function VideoGallerySection() {
-  const [imgGalery, setImgGallery] = useState(galery);
-  const [video, setVideo] = useState(videoData);
+  const [imgGalery, setImgGalery] = useState(galery); // default to fallback
+  const [video, setVideo] = useState(videoData); // default to fallback
+
+  const [isImg, setIsImg] = useState(null);
+  const [isVid, setIsVid] = useState(null);
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -85,33 +88,31 @@ export default function VideoGallerySection() {
   useEffect(() => {
     async function fetchData() {
       try {
-        // Request both endpoints in parallel
         const [resImg, resVid] = await Promise.all([
           api.get("/gallery-media"),
           api.get("/post-video-youtubes"),
         ]);
 
-        const getActiveUrl = (data) => {
-          if (Array.isArray(data)) {
-            const activeItem = data.find((item) => item.aktif);
-            return activeItem?.url || null;
-          }
-          return null;
-        };
+        const imgList = resImg?.data?.data;
+        console.log(imgList);
 
-        // Update states only if URLs are found
-        const imgUrl = getActiveUrl(resImg.data);
-        if (imgUrl) setImgGallery(imgUrl);
+        if (Array.isArray(imgList) && imgList.length > 0) {
+          setImgGalery(imgList);
+          setIsImg(true);
+        }
 
-        const videoUrl = getActiveUrl(resVid.data);
-        if (videoUrl) setVideo(videoUrl);
+        const vidList = resVid?.data?.data;
+        if (Array.isArray(vidList) && vidList.length > 0) {
+          setVideo(vidList);
+          setIsVid(true);
+        }
       } catch (err) {
         console.error("Failed to fetch gallery or video:", err);
       }
     }
 
     fetchData();
-  }, []); // ✅ only run once on mount
+  }, []);
 
   useEffect(() => {
     if (galerySwiperRef.current && prevRef.current && nextRef.current) {
@@ -121,7 +122,7 @@ export default function VideoGallerySection() {
       swiper.navigation.init();
       swiper.navigation.update();
     }
-  }, []);
+  }, [imgGalery]); // run after gallery loads
   return (
     <section className="pt-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
@@ -145,7 +146,11 @@ export default function VideoGallerySection() {
               {/* Video Thumbnail */}
               <div className="relative">
                 <img
-                  src={video.thumbnail}
+                  src={
+                    isVid
+                      ? `https://lpk-backend.sac-po.com/storage/${video.thumbnail}`
+                      : video.thumbnail
+                  }
                   alt={video.title}
                   className="w-full h-64 object-cover"
                 />
@@ -239,7 +244,11 @@ export default function VideoGallerySection() {
               <section
                 className="h-full bg-cover bg-center"
                 style={{
-                  backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url(${item.bg})`,
+                  backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url(${
+                    isImg
+                      ? `https://lpk-backend.sac-po.com/storage/${item.bg_image[0]}`
+                      : item.bg
+                  })`,
                 }}
               ></section>
             </SwiperSlide>
@@ -278,12 +287,16 @@ export default function VideoGallerySection() {
                   <div className="bg-blue-300/10 backdrop-blur-sm rounded-2xl p-2 md:p-2 lg:p-4 border border-white/10">
                     <div className="flex flex-col items-center">
                       <img
-                        src={item.bg}
+                        src={
+                          isImg
+                            ? `https://lpk-backend.sac-po.com/storage/${item.img}`
+                            : item.bg
+                        }
                         alt={item.name}
                         className="w-[100%] h-[50%] md:w-[70%] lg:w-[90%] rounded-xl mb-4 border-3 aspect-[18/9] border-white/20 object-cover"
                       />
                       <h4 className="font-bold text-lg md:text-xl text-white">
-                        {item.name}
+                        {item.title}
                       </h4>
                       <p className="text-amber-400 text-sm md:text-base font-medium">
                         {item.location}
@@ -299,7 +312,7 @@ export default function VideoGallerySection() {
 
       <div className="divider"></div>
 
-      <style jsx>{`
+      <style jsx="true">{`
         .line-clamp-2 {
           display: -webkit-box;
           -webkit-line-clamp: 2;

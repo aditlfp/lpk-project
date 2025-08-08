@@ -25,7 +25,7 @@ function Navbar() {
             <img
               src={logo}
               alt=""
-              srcset=""
+              srcSet=""
               className="w-[40%] h-auto md:w-[25%] lg:w-[20%]"
             />
             <div className="flex flex-col text-xs md:text-sm lg:text-base font-bold">

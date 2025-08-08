@@ -4,24 +4,81 @@ import logo from "../assets/img_fix/logo_dark.png";
 import api from "../utils/axios";
 
 export default function HeroSection() {
-  const [imgHero, setImgHero] = useState(home);
+  const [imgHero, setImgHero] = useState(null);
+  const [logoHero, setLogoHero] = useState(null);
+  const [titleHero, setTitleHero] = useState(null);
+  const [descHero, setDescHero] = useState(null);
 
   useEffect(() => {
     async function getData() {
       try {
         const res = await api.get("/main_hero");
 
-        if (Array.isArray(res.data)) {
-          const activeHero = res.data.find((item) => item.aktif);
+        if (Array.isArray(res.data.data)) {
+          const activeHero = res.data.data.find(
+            (item) => item.is_pinned === "1"
+          );
 
-          if (activeHero?.url) {
-            setImgHero(activeHero.url); // use your API's actual field name for the image
+          if (activeHero) {
+            // Logo
+            setLogoHero(
+              activeHero.main_logo
+                ? `https://lpk-backend.sac-po.com/storage/${activeHero.main_logo}`
+                : logo
+            );
+
+            // Background Image
+            setImgHero(
+              activeHero.c_image
+                ? `https://lpk-backend.sac-po.com/storage/${activeHero.c_image}`
+                : home
+            );
+
+            // Title & Description
+            setTitleHero(
+              activeHero.title ||
+                "Kuasai Bahasa Jepang, Raih Peluang Kerja ke Jepang dengan Asa Hikari Mulya!"
+            );
+            setDescHero(
+              activeHero.desc ||
+                "Asa Hikari Mulya adalah pusat pelatihan bahasa Jepang terpercaya yang mempersiapkan Anda untuk bekerja di Jepang melalui program Specified Skilled Worker (SSW) dan Magang. Dapatkan pelatihan intensif, sertifikasi resmi, dan penempatan kerja dengan kurikulum berbasis kebutuhan pasar kerja Jepang."
+            );
+          } else {
+            // Fallback if no pinned hero found
+            setLogoHero(logo);
+            setImgHero(home);
+            setTitleHero(
+              "Kuasai Bahasa Jepang, Raih Peluang Kerja ke Jepang dengan Asa Hikari Mulya!"
+            );
+            setDescHero(
+              "Asa Hikari Mulya adalah pusat pelatihan bahasa Jepang terpercaya yang mempersiapkan Anda untuk bekerja di Jepang melalui program Specified Skilled Worker (SSW) dan Magang. Dapatkan pelatihan intensif, sertifikasi resmi, dan penempatan kerja dengan kurikulum berbasis kebutuhan pasar kerja Jepang."
+            );
           }
+        } else {
+          // Invalid API format fallback
+          setLogoHero(logo);
+          setImgHero(home);
+          setTitleHero(
+            "Kuasai Bahasa Jepang, Raih Peluang Kerja ke Jepang dengan Asa Hikari Mulya!"
+          );
+          setDescHero(
+            "Asa Hikari Mulya adalah pusat pelatihan bahasa Jepang terpercaya yang mempersiapkan Anda untuk bekerja di Jepang melalui program Specified Skilled Worker (SSW) dan Magang. Dapatkan pelatihan intensif, sertifikasi resmi, dan penempatan kerja dengan kurikulum berbasis kebutuhan pasar kerja Jepang."
+          );
         }
       } catch (err) {
         console.error("Failed to fetch hero image:", err);
+        // Fallback on error
+        setLogoHero(logo);
+        setImgHero(home);
+        setTitleHero(
+          "Kuasai Bahasa Jepang, Raih Peluang Kerja ke Jepang dengan Asa Hikari Mulya!"
+        );
+        setDescHero(
+          "Asa Hikari Mulya adalah pusat pelatihan bahasa Jepang terpercaya yang mempersiapkan Anda untuk bekerja di Jepang melalui program Specified Skilled Worker (SSW) dan Magang. Dapatkan pelatihan intensif, sertifikasi resmi, dan penempatan kerja dengan kurikulum berbasis kebutuhan pasar kerja Jepang."
+        );
       }
     }
+
     getData();
   }, []); // ✅ only run once on mount
   return (
@@ -45,25 +102,20 @@ export default function HeroSection() {
         {/* Logo */}
         <div className="flex w-full justify-center items-center gap-x-4 mb-6 mt-[30pt] lg:mt-[10pt]">
           <img
-            src={logo}
+            src={logoHero}
             alt="Asa Hikari Mulya"
-            className="w-1/3 md:w-1/6 lg:w-1/10 bg-white"
+            className="w-1/3 md:w-1/6 lg:w-1/10 bg-white rounded-sm"
           />
         </div>
 
         {/* Judul */}
         <h1 className="text-3xl md:text-[2.3rem] lg::text-[2.9rem] font-bold mb-4 md:mb-10 lg:mb-5 text-pretty max-w-5xl">
-          Kuasai Bahasa Jepang, Raih Peluang Kerja ke Jepang dengan Asa Hikari
-          Mulya!
+          {titleHero}
         </h1>
 
         {/* Deskripsi */}
         <p className="max-w-5xl md:max-w-[80rem] md:mx-10 font-bold text-sm md:text-lg text-gray-300 mb-6 md:mb-10 lg:mb-5">
-          Asa Hikari Mulya adalah pusat pelatihan bahasa Jepang terpercaya yang
-          mempersiapkan Anda untuk bekerja di Jepang melalui program Specified
-          Skilled Worker (SSW) dan Magang. Dapatkan pelatihan intensif,
-          sertifikasi resmi, dan penempatan kerja dengan kurikulum berbasis
-          kebutuhan pasar kerja Jepang.
+          {descHero}
         </p>
 
         {/* Tombol */}

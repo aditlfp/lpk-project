@@ -174,7 +174,7 @@ export default function TestimoniCarousel() {
       </Swiper>
 
       {/* Pagination bullet override */}
-      <style jsx>{`
+      <style jsx="true">{`
         .swiper-pagination {
           bottom: 0px !important;
         }

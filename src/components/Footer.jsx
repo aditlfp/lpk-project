@@ -23,6 +23,10 @@ function Footer() {
     window.open(url, "_blank");
   };
 
+  const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    message
+  )}`;
+
   return (
     <>
       {/* Bagian atas footer */}
@@ -74,7 +78,14 @@ function Footer() {
               <div className="flex items-start gap-x-3">
                 <TbBrandWhatsappFilled className="mt-1 w-5 h-5 md:max-w-7 md:h-auto text-xl" />
                 <p className="text-sm md:text-base text-white">
-                  <a href={handleClick}>{whatsappNumber}</a>
+                  <a
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleClick}
+                  >
+                    {whatsappNumber}
+                  </a>
                 </p>
               </div>
             </div>

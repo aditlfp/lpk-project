@@ -153,7 +153,7 @@ const SSWTokuteiGinou = () => {
                       <img
                         src={industry.icon}
                         alt={industry.icon}
-                        srcset={industry.icon}
+                        srcSet={industry.icon}
                       />
                     </span>
                   </div>
