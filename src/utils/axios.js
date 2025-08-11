@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://lpk-backend.sac-po.com/api/admin",
+  baseURL: "https://admin.asahikarimulya.co.id/api/admin",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

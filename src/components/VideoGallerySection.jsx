@@ -19,7 +19,7 @@ const videoData = [
     duration: "5:45",
     category: "Asa Hikari Mulya",
     tag: "Kegiatan",
-    description:
+    desc:
       "Kegiatan Peserta Asa Hikari Mulya Dalam Mengikuti Kegiatan Besar dalam Sebuah Kurikulum Asa Hikari Mulya. Kurikulum yang Mengajakan Peserta Asa Hikari Mulya Menjaga Berkualitas Jepang dan Manjur Menghadapi Keadaan Seridaki Dimengerti Pada Perusahaan Jepang.",
   },
   {
@@ -29,7 +29,7 @@ const videoData = [
     duration: "1:43",
     category: "Asa Hikari Mulya",
     tag: "Registrasi",
-    description:
+    desc:
       "Peserta Didik Asa Hikari Mulya Online Akan diberikan Pembelajaran Bahasa Jepang via Aplikasi buat Asa Hikari Mulya yang bernama Pera Pera Aplikasi ini memfig ukan men bantu peserta mencapai Bahasa Jepang dalam dengan Cepat sekaligus memahami Huruf Hiragana.",
   },
   {
@@ -40,7 +40,7 @@ const videoData = [
     duration: "6:32",
     category: "Asa Hikari Mulya",
     tag: "Program",
-    description:
+    desc:
       "Pada Akhir Tahun 2021 Asa Hikari Mulya Mengadakan Class Online Untuk Peserta Asa Hikari Mulya Dalam Mengikuti Kegiatan Online Bersama Pendamfkan Kota Palu. Class Online Asa Hikari Mulya Dihata Langsung Secara Online via Zoom Oleh Ibu Ida Fauziyah Mentri Ketenagakerjaan Republik Indonesia Acara Berlangsung Sangat Seru dan Spektakular.",
   },
   {
@@ -51,7 +51,7 @@ const videoData = [
     duration: "12:31",
     category: "Asa Hikari Mulya",
     tag: "Testimoni",
-    description:
+    desc:
       "Testimoni 20 Peserta yang Lulus Wawancara Perusahaan Jepang di Bidang Perakitan Mobil Perusahaan Wawancara Jepang dilI Toyota ini Berhasil dari Berbagai Faktor yang ada di Indonesia Mereka adalah yang bersekolah dari Medan Acunaela, Makassar, Lampung, Janti Bersekolah Provinsi yang ada di Pulau Jawa Para Peserta Uni Sudah Berangkat ke Jepang Untuk Mengikuti Kursus Kerja Selama 3 Tahun.",
   },
 ];
@@ -148,7 +148,7 @@ export default function VideoGallerySection() {
                 <img
                   src={
                     isVid
-                      ? `https://lpk-backend.sac-po.com/storage/${video.thumbnail}`
+                      ? `https://admin.asahikarimulya.co.id/storage/${video.thumbnail}`
                       : video.thumbnail
                   }
                   alt={video.title}
@@ -156,7 +156,7 @@ export default function VideoGallerySection() {
                 />
                 {/* Play Button Overlay */}
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center group hover:bg-black/40 transition-colors cursor-pointer">
-                  <div className="bg-white/90 rounded-full p-4 group-hover:scale-110 transition-transform">
+                  <div onClick={() =>  window.open(video.url_video)} className="bg-white/90 rounded-full p-4 group-hover:scale-110 transition-transform">
                     <Play
                       className="w-8 h-8 text-blue-600 ml-1"
                       fill="currentColor"
@@ -190,11 +190,11 @@ export default function VideoGallerySection() {
 
                 {/* Description */}
                 <p className="text-gray-600 text-sm leading-relaxed line-clamp-4">
-                  {video.description}
+                  {video.desc}
                 </p>
 
                 {/* Watch Button */}
-                <button className="mt-4 inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors">
+                <button onClick={() => window.open(video.url_video)} className="mt-4 inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors hover:cursor-pointer">
                   <Play className="w-4 h-4" fill="currentColor" />
                   Tonton Video
                 </button>
@@ -246,7 +246,7 @@ export default function VideoGallerySection() {
                 style={{
                   backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url(${
                     isImg
-                      ? `https://lpk-backend.sac-po.com/storage/${item.bg_image[0]}`
+                      ? `https://admin.asahikarimulya.co.id/storage/${item.bg_image[0]}`
                       : item.bg
                   })`,
                 }}
@@ -289,7 +289,7 @@ export default function VideoGallerySection() {
                       <img
                         src={
                           isImg
-                            ? `https://lpk-backend.sac-po.com/storage/${item.img}`
+                            ? `https://admin.asahikarimulya.co.id/storage/${item.img}`
                             : item.bg
                         }
                         alt={item.name}
