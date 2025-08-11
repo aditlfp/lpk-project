@@ -153,7 +153,7 @@ function Footer() {
               <a className="bg-blue-400 p-2 rounded-full" href="https://www.instagram.com/asahikarimulya.official?igsh=bzIwb3gzdXVjY2Iy" target="_blank">
                 <FaInstagram />
               </a>
-              <a className="bg-gray-500 p-2 rounded-full" href="tiktok.com/@asahikarimulya.official" target="_blank">
+              <a className="bg-gray-500 p-2 rounded-full" href="https://www.tiktok.com/@asahikarimulya.official?_t=ZS-8ymiuOWavwu&_r=1" target="_blank">
                 <FaTiktok />
               </a>
             </div>

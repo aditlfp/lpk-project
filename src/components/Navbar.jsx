@@ -2,21 +2,11 @@ import { LuX } from "react-icons/lu";
 import logo from "../assets/img_fix/logo_dark.png";
 import { RiMenu5Fill } from "react-icons/ri";
 import { useState } from "react";
-import { PiSignInBold } from "react-icons/pi";
-import { SignInButton, SignUpButton } from "./partials/SignButton";
+import { HomeButton, ReqButton, SignInButton, SignUpButton } from "./partials/SignButton";
+import { FilePenLine, House, KeyRound } from "lucide-react";
 
-function Navbar() {
+function Navbar({ navigateTo, currentPage }) {
   const [mobileNav, setMobileNav] = useState(false);
-  const whatsappNumber = "6281395554334"; // Replace with your WhatsApp number (with country code)
-  const message =
-    "Halo Admin LPK Asa Hikari Mulya, Saya ingin menanyakan informasi lebih lanjut mengenai program pelatihan yang tersedia!"; // Optional default message
-
-  const handleClick = () => {
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(url, "_blank");
-  };
   return (
     <div className="navbar bg-base-100 shadow-sm fixed mb-10 z-50 top-0 left-0 w-screen">
       <div className="flex justify-center lg:justify-around w-screen">
@@ -52,6 +42,30 @@ function Navbar() {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box rounded-t-none z-0 mt-[48pt] sm:mt-[22.5pt] w-[80vw] p-2"
             >
               <li className="flex flex-col items-start w-full ">
+                {/* Home */}
+                <div className="dropdown dropdown-hover w-full" onClick={() => navigateTo('home')}>
+                  <a
+                    tabIndex="0"
+                    href={null}
+                    className={`bg-white rounded-t-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold  transition-colors duration-200 ${currentPage == 'home' ? 'text-amber-500' : 'hover:text-amber-500 text-gray-700 '}`}
+                  >
+                    <span>Home</span>
+                    <House className="w-5 h-5" />
+                  </a>
+                </div>
+
+                {/* Requirement */}
+                <div className="dropdown dropdown-hover w-full" onClick={() => navigateTo('requirement')}>
+                  <a
+                    tabIndex="0"
+                    href={null}
+                    className={`bg-white rounded-t-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold transition-colors duration-200 ${currentPage == 'requirement' ? 'text-amber-500' : 'text-gray-700 hover:text-amber-500'}`}
+                  >
+                    <span>Syarat Pendaftaran</span>
+                    <FilePenLine  className="w-5 h-5" />
+                  </a>
+                </div>
+
                 {/* Sign In */}
                 <div className="dropdown dropdown-hover w-full ">
                   <a
@@ -60,12 +74,9 @@ function Navbar() {
                     className="bg-white rounded-t-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold text-gray-700 hover:text-amber-500 transition-colors duration-200"
                   >
                     <span>SIGN IN</span>
-                    <PiSignInBold className="w-5 h-5" />
+                    <KeyRound className="w-5 h-5" />
                   </a>
                 </div>
-
-                {/* Divider */}
-                <div className="divider"></div>
 
                 {/* Sign Up */}
                 <div className="dropdown dropdown-hover w-full">
@@ -75,7 +86,7 @@ function Navbar() {
                     className="bg-white rounded-b-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold text-gray-700 hover:text-amber-500 transition-colors duration-200"
                   >
                     <span>SIGN UP</span>
-                    <PiSignInBold className="w-5 h-5" />
+                    <KeyRound className="w-5 h-5" />
                   </a>
                 </div>
               </li>
@@ -95,6 +106,9 @@ function Navbar() {
 
         {/* Nav Pc */}
         <div className="navbar-center hidden md:flex gap-x-9">
+           <a className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3" onClick={() => navigateTo('home')}>
+              <HomeButton isActive={currentPage == 'home'}/>
+           </a>
           <a
             href="https://recruitment.savanait.com/auth/login.php"
             className="dropdown dropdown-hover uppercase font-bold w-full ml-3"
@@ -107,6 +121,9 @@ function Navbar() {
           >
             <SignUpButton />
           </a>
+           <a className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3" onClick={() => navigateTo('requirement')}>
+              <ReqButton isActive={currentPage == 'requirement'}/>
+           </a>
           <div className="navbar-end md:ml-8 lg:ml-16 md:mr-4">
             <a
               href="https://recruitment.savanait.com/auth/login.php"

@@ -1,68 +1,98 @@
+import { useState } from 'react';
+
+// Import all the components from the original file
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import KelasTerbaik from "./components/KelasTerbaik";
 import TestimonialCarousel from "./components/TestimonialCarousel";
 import VideoGallerySection from "./components/VideoGallerySection";
 import CallToAction from "./components/CallToAction";
-import HeroImageSection from "./components/HeroImageSection";
-import SupportSection from "./components/SupportSection";
 import CustomFAQ from "./components/CustomFAQ";
 import Footer from "./components/Footer";
 import SSWTokuteiGinou from "./components/SSWTokuteiGinou";
 import EmployeRequired from "./components/EmployeRequired";
 import CandidateCard from "./components/CandidateCard";
 import WhatsappBubble from "./components/WhatsappBubble";
+import RequirementPages from './pages/RequirementPages';
 
+// This is the main application component
 export default function App() {
+  // We use the useState hook to manage which page is currently displayed.
+  // The default page is set to 'home'.
+  const [currentPage, setCurrentPage] = useState('home');
+
+  // This function will be passed to the Navbar to allow it to change the current page.
+  const navigateTo = (pageName) => {
+    setCurrentPage(pageName);
+  };
+
+
+  // This function decides which set of components to render based on the currentPage state.
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home':
+        // This is the "Home" page, and the component order is preserved from your original code.
+        return (
+          <>
+            {/* These components are part of the main landing page */}
+            <HeroSection />
+            <VideoGallerySection />
+            <EmployeRequired />
+            <CandidateCard />
+            <KelasTerbaik />
+            <SSWTokuteiGinou />
+            <TestimonialCarousel />
+            <CallToAction />
+            <CustomFAQ />
+          </>
+        );
+      case 'program':
+        // This is a new "Program" page, for demonstration purposes.
+        return (
+          <>
+            {/* The component order for this page is defined here. */}
+            <h2 className="text-4xl font-bold text-center my-8">Program Details</h2>
+            <SSWTokuteiGinou />
+            <EmployeRequired />
+            <CandidateCard />
+          </>
+        );
+      case 'requirement':
+        return (
+          <RequirementPages />
+        )
+      default:
+        // Render the home page by default if the state is not recognized.
+        // The component order for this page is also preserved.
+        return (
+          <>
+            <HeroSection />
+            <VideoGallerySection />
+            <EmployeRequired />
+            <CandidateCard />
+            <KelasTerbaik />
+            <SSWTokuteiGinou />
+            <TestimonialCarousel />
+            <CallToAction />
+            <CustomFAQ />
+          </>
+        );
+    }
+  };
+
   return (
     <div className="bg-gray-50">
+      {/* The Navbar, Footer, and WhatsappBubble are rendered consistently across all pages. */}
+      {/* We pass the navigateTo function to the Navbar so it can change the app's state. */}
+      <Navbar navigateTo={navigateTo} currentPage={currentPage}/>
+      
       <div className="!min-h-screen !w-screen py-12">
-        <Navbar />
-        <HeroSection />
-        <VideoGallerySection />
-        <EmployeRequired />
-        <CandidateCard />
-        <KelasTerbaik />
-        <SSWTokuteiGinou />
-        {/* <h2 className="text-3xl font-bold text-center my-8 text-blue-900">
-          Berita dan Artikel Terakhir ISO Jepang
-        </h2>
-        <div className="flex justify-center mb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center">
-            <ArtikelCard
-              image={home}
-              tag="Artikel"
-              title="Tas Anak Jepang Randoseru: 7 Fakta Mengejutkan"
-              description="Tas Anak Jepang Randoseru: 7 Fakta Mengejutkan yang Nggak Kamu Sangka!"
-              date="July 30, 2025"
-              link="#"
-            />
-            <ArtikelCard
-              image={home}
-              tag="Artikel"
-              title="Peringatan Tsunami: Jepang Kembali Terancam"
-              description="Mengapa Negeri Sakura Selalu Jadi Langganan Bencana Laut?"
-              date="July 30, 2025"
-              link="#"
-            />
-            <ArtikelCard
-              image={home}
-              tag="Artikel"
-              title="Tips Adaptasi kehidupan di Jepang"
-              description="Untuk Pekerja Migran Indonesia (PMI)"
-              date="July 28, 2025"
-              link="#"
-            />
-          </div>
-        </div> */}
-        <TestimonialCarousel />
-        <CallToAction />
-        {/* <HeroImageSection /> */}
-        {/* <SupportSection /> */}
-        <CustomFAQ />
+        {/* The content of the page is determined by the renderPage function */}
+        {renderPage()}
       </div>
-        <Footer />
-        <WhatsappBubble /> 
+      
+      <Footer />
+      <WhatsappBubble />
     </div>
   );
 }
