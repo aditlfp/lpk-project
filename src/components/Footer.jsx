@@ -168,7 +168,7 @@ function Footer() {
 
         {/* Bottom footer */}
         <div className="border-t border-blue-700 py-4 px-6 text-gray-300 font-medium text-xs md:text-base flex justify-between items-center  max-w-7xl mx-auto">
-          <span>Coded By Adityalfp</span>
+          <a href="https://github.com/aditlfp" target="_blank">Support By SavanaIt</a>
           <span>Copyright © 2025. All rights reserved.</span>
         </div>
       </div>
