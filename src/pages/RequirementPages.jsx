@@ -8,7 +8,7 @@ import samplePdfUrl from "../assets/pdf_file/requirement.pdf"
 // Set the workerSrc for pdf.js to a reliable CDN URL.
 // We are using a hardcoded, stable version from unpkg to prevent 404 errors.
 // The .mjs extension is used as requested.
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.mjs`;
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 // The main PDF viewer component
 const RequirementPages = () => {
@@ -28,7 +28,7 @@ const RequirementPages = () => {
   const goToNextPage = () => setPageNumber(prevPage => Math.min(prevPage + 1, numPages));
 
   return (
-    <div className="bg-gray-100 flex flex-col items-center p-8 min-h-screen font-sans antialiased mt-20">
+    <div className="bg-gray-100 flex flex-col items-center p-8 min-h-screen font-sans antialiased mt-20 mb-10">
       <div className="bg-white rounded-xl shadow-2xl p-8 max-w-4xl w-full text-center">
         <h1 className="text-3xl font-extrabold text-blue-800 mb-6">PDF Viewer</h1>
         
