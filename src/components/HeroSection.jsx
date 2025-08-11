@@ -103,7 +103,7 @@ const useHeroData = () => {
  * This component is now a "presentational" component. Its only job is to display the UI.
  * All the complex logic is handled by the `useHeroData` hook.
  */
-export default function HeroSection() {
+export default function HeroSection({ navigateTo }) {
   const { heroData, loading } = useHeroData();
 
   // --- Performance Optimization with useMemo ---
@@ -181,12 +181,28 @@ export default function HeroSection() {
         </p>
 
         {/* Button */}
-        <a
-          href="https://recruitment.savanait.com/auth/login.php"
-          className="btn btn-warning text-white font-bold btn-xl text-sm md:text-2xl p-4 md:p-6 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-600 hover:border-0 shadow-none"
-        >
-          Daftar Sekarang
-        </a>
+        <div className="flex w-full gap-x-4 justify-center items-center">
+          <>
+            <a
+              href="https://recruitment.savanait.com/auth/login.php"
+              className="btn btn-warning text-white font-bold btn-xl text-sm md:text-2xl p-4 md:p-6 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-600 hover:border-0 shadow-none"
+            >
+              Daftar Sekarang
+            </a>
+          </>
+
+          {/* Button */}
+          <>
+            <a
+              href={null}
+              onClick={() => navigateTo('requirement')}
+              className="btn btn-warning text-white font-bold btn-xl text-sm md:text-2xl p-4 md:p-6 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-600 hover:border-0 shadow-none"
+            >
+              Syarat Pendaftaran
+            </a>
+          </>
+
+        </div>
       </div>
     </div>
   );

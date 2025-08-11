@@ -35,7 +35,7 @@ export default function App() {
         return (
           <>
             {/* These components are part of the main landing page */}
-            <HeroSection />
+            <HeroSection navigateTo={navigateTo} />
             <VideoGallerySection />
             <EmployeRequired />
             <CandidateCard />
@@ -66,7 +66,7 @@ export default function App() {
         // The component order for this page is also preserved.
         return (
           <>
-            <HeroSection />
+            <HeroSection navigateTo={navigateTo}/>
             <VideoGallerySection />
             <EmployeRequired />
             <CandidateCard />
