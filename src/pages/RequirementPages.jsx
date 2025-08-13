@@ -1,101 +1,123 @@
-import React, { useState } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
-import 'react-pdf/dist/Page/AnnotationLayer.css';
-import 'react-pdf/dist/Page/TextLayer.css';
-import { FaArrowLeft, FaArrowRight, FaDownload } from 'react-icons/fa';
-import samplePdfUrl from "../assets/pdf_file/requirement.pdf"
+import React, { useState, useRef, useEffect } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
+import pdf_file from "../assets/pdf_file/requirement.pdf"
+function RequirementPages() {
+  const faqItems = [
+    {
+      question: "Persyaratan untuk mendaftar siswa",
+      answer: (
+        <>
+          <div className="flex justify-between items-center">
+              <p className="mb-2">Syarat Wajib </p>
+             {/* <a href={pdf_file} download="my_file.pdf">
+              <button className="btn btn-sm rounded-sm">Download PDF</button>
+            </a> */}
+          </div>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>1. Scan KTP Pendaftar </li>
+            <li> 2. Scan KTP Orang Tua/Wali</li>
+            <li> 3. Scan Akta Kelahiran</li>
+            <li> 4. Scan Kartu Keluarga</li>
+            <li> 5. Scan Ijazah SD/MI, SMP/Mts, SMA/SMK/MA</li>
+            <li> 6. Scan Ijazah Sarjana</li>
+            <li> 7. Surat keterangan sehat dari dokter/klinik/puskesmas</li>
+            <li> 8. Surat Izin Orang Tua/Wali/Suami/Istri</li>
+            <li> 9. Sertifikat keahlian (Opsional)</li>
+            <li> 10. Surat pernyataan kesanggupan</li>
+            <li>
+              11. Pas Photo 3x4, 4x6 (Laki/Perempuan Baju putih berdasi,
+              baground merah, LakiLaki rambut rapi/perempuan tanpa Hijab)
+              masing-masing berjumlah 5 lembar
+            </li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      question: "Persyaratan untuk mendaftar Guru/Sensei",
+      answer: (
+        <>
+          <div className="flex justify-between items-center">
+              <p className="mb-2">Syarat Wajib </p>
+             {/* <a href={pdf_file} download="my_file.pdf">
+              <button className="btn btn-sm rounded-sm">Download PDF</button>
+            </a> */}
+          </div>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>1. Scan KTP Pendaftar </li>
+            <li> 2. Scan Ijazah terakhir</li>
+            <li> 3. Scan Sertifikat N4/N3/N2/N1</li>
+            <li> 4. Sertifikat Profesi</li>
+            <li> 5. Pas Photo Bebas Rapi</li>
+          </ul>
+        </>
+      ),
+    },
+  ];
 
-// Set the workerSrc for pdf.js to a reliable CDN URL.
-// We are using a hardcoded, stable version from unpkg to prevent 404 errors.
-// The .mjs extension is used as requested.
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+  const [activeIndex, setActiveIndex] = useState(null);
+  const contentRefs = useRef([]);
 
-// The main PDF viewer component
-const RequirementPages = () => {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // This function is called when the PDF document successfully loads.
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-    setPageNumber(1);
-    setIsLoading(false); // Hide the loading indicator once the document is ready
-  };
-
-  // Event handler for navigation buttons.
-  const goToPrevPage = () => setPageNumber(prevPage => Math.max(prevPage - 1, 1));
-  const goToNextPage = () => setPageNumber(prevPage => Math.min(prevPage + 1, numPages));
+  useEffect(() => {
+    faqItems.forEach((_, i) => {
+      const content = contentRefs.current[i];
+      if (content) {
+        if (i === activeIndex) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          content.style.maxHeight = "0px";
+        }
+      }
+    });
+  }, [activeIndex]);
 
   return (
-    <div className="bg-gray-100 flex flex-col items-center p-8 min-h-screen font-sans antialiased mt-20 mb-10">
-      <div className="bg-white rounded-xl shadow-2xl p-8 max-w-4xl w-full text-center">
-        <h1 className="text-3xl font-extrabold text-blue-800 mb-6">PDF Viewer</h1>
-        
-        {/* Conditional rendering for the loading state */}
-        {isLoading && (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500"></div>
+    <section id="faq" className="px-4 py-10 mb-16 md:mx-20 md:mb-5 mt-20">
+      <div className="max-w-3xl mx-auto space-y-4">
+        <div className="flex flex-col gap-y-4 mb-2 md:mb-10">
+          <h1 className="text-4xl font-semibold">Persyaratan Pendaftaran</h1>
+          <span className="text-gray-400 font-semibold md:text-xl">
+            Persyaratan yang wajib dipenuhi sebelum mendaftarkan diri
+          </span>
+        </div>
+        {faqItems.map((item, i) => (
+          <div
+            key={i}
+            className="rounded-lg overflow-hidden shadow-md transition"
+          >
+            {/* Header */}
+            <button
+              onClick={() => setActiveIndex(i === activeIndex ? null : i)}
+              className={`w-full text-left px-6 py-4 font-medium text-base transition-colors duration-300 ${
+                activeIndex === i
+                  ? "bg-blue-500/70 text-white"
+                  : "bg-white text-gray-800"
+              }`}
+            >
+              <div className="flex justify-between items-center md:text-xl">
+                <span>{item.question}</span>
+                <span>
+                  {activeIndex === i ? (
+                    <FaChevronUp className="text-white" />
+                  ) : (
+                    <FaChevronDown className="text-amber-500/70" />
+                  )}
+                </span>
+              </div>
+            </button>
+            {/* Body */}
+            <div
+              ref={(el) => (contentRefs.current[i] = el)}
+              className="overflow-hidden transition-all duration-500 bg-white px-6 text-sm md:text-xl text-gray-800"
+             
+            >
+              <div className="py-8">{item.answer}</div>
+            </div>
           </div>
-        )}
-
-        {/* This div adds horizontal scroll for responsiveness */}
-        <div className="border border-gray-300 p-4 rounded-lg overflow-x-auto">
-          <Document
-            file={samplePdfUrl}
-            onLoadSuccess={onDocumentLoadSuccess}
-            onLoadError={console.error}
-            className="w-full"
-          >
-            <Page
-              pageNumber={pageNumber}
-              renderAnnotationLayer={true}
-              renderTextLayer={true}
-              className="w-full"
-            />
-          </Document>
-        </div>
-
-        {/* Navigation and Download controls */}
-        <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 mt-6">
-          {/* Previous Page Button */}
-          <button
-            onClick={goToPrevPage}
-            disabled={pageNumber <= 1}
-            className="p-3 bg-gray-200 text-gray-700 rounded-full shadow-lg hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-            aria-label="Previous Page"
-          >
-            <FaArrowLeft />
-          </button>
-          
-          {/* Page Number Display */}
-          <p className="text-lg font-semibold text-gray-700">
-            Page {pageNumber} of {numPages || '...'}
-          </p>
-          
-          {/* Next Page Button */}
-          <button
-            onClick={goToNextPage}
-            disabled={pageNumber >= numPages}
-            className="p-3 bg-gray-200 text-gray-700 rounded-full shadow-lg hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-            aria-label="Next Page"
-          >
-            <FaArrowRight />
-          </button>
-
-          {/* Download Button */}
-          <a
-            href={samplePdfUrl}
-            download="requirement_file.pdf"
-            className="flex items-center space-x-2 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors"
-          >
-            <FaDownload />
-            <span>Download PDF</span>
-          </a>
-        </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default RequirementPages;

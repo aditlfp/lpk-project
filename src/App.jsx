@@ -86,7 +86,7 @@ export default function App() {
       {/* We pass the navigateTo function to the Navbar so it can change the app's state. */}
       <Navbar navigateTo={navigateTo} currentPage={currentPage}/>
       
-      <div className="!min-h-screen !w-screen py-12">
+      <div className={`!min-h-screen !w-screen ${currentPage == 'requirement' ? '' : 'py-12'}`}>
         {/* The content of the page is determined by the renderPage function */}
         {renderPage()}
       </div>
