@@ -72,7 +72,7 @@ function RequirementPages() {
   }, [activeIndex]);
 
   return (
-    <section id="faq" className="px-4 py-10 mb-16 md:mx-20 md:mb-5 mt-20">
+    <section id="faq" className="px-4 pt-20 mb-16 md:mx-20 md:mb-5 mt-20">
       <div className="max-w-3xl mx-auto space-y-4">
         <div className="flex flex-col gap-y-4 mb-2 md:mb-10">
           <h1 className="text-4xl font-semibold">Persyaratan Pendaftaran</h1>
