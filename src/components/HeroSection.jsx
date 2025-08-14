@@ -58,10 +58,10 @@ const useHeroData = () => {
               // Update the state with the data from the latest hero item.
               setHeroData({
                 logo: latestHero.main_logo
-                  ? `https://admin.asahikarimulya.co.id/storage/${latestHero.main_logo}`
+                  ? VITE_BACKEND_URL_STORAGE + latestHero.main_logo
                   : DEFAULT_HERO_CONTENT.logo,
                 image: latestHero.c_image
-                  ? `https://admin.asahikarimulya.co.id/storage/${latestHero.c_image}`
+                  ? VITE_BACKEND_URL_STORAGE + latestHero.c_image
                   : DEFAULT_HERO_CONTENT.image,
                 title: latestHero.title || DEFAULT_HERO_CONTENT.title,
                 description: latestHero.desc || DEFAULT_HERO_CONTENT.description,

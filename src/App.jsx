@@ -14,6 +14,7 @@ import EmployeRequired from "./components/EmployeRequired";
 import CandidateCard from "./components/CandidateCard";
 import WhatsappBubble from "./components/WhatsappBubble";
 import RequirementPages from './pages/RequirementPages';
+import AllVideosPage from './pages/AllVideosPage';
 
 // This is the main application component
 export default function App() {
@@ -26,6 +27,15 @@ export default function App() {
     setCurrentPage(pageName);
   };
 
+  const navigateToHome = () => {
+    setCurrentPage('home');
+  };
+
+   const navigateToAllVideos = () => {
+    setCurrentPage('allVideos');
+    window.scrollTo(0, 0); // Scroll to top on page change
+  };
+
 
   // This function decides which set of components to render based on the currentPage state.
   const renderPage = () => {
@@ -36,7 +46,7 @@ export default function App() {
           <>
             {/* These components are part of the main landing page */}
             <HeroSection navigateTo={navigateTo} />
-            <VideoGallerySection />
+            <VideoGallerySection onSeeAllClick={navigateToAllVideos} />
             <EmployeRequired />
             <CandidateCard />
             <KelasTerbaik />
@@ -61,13 +71,15 @@ export default function App() {
         return (
           <RequirementPages />
         )
+      case 'allVideos':
+        return <AllVideosPage onBackClick={navigateToHome} />;
       default:
         // Render the home page by default if the state is not recognized.
         // The component order for this page is also preserved.
         return (
           <>
             <HeroSection navigateTo={navigateTo}/>
-            <VideoGallerySection />
+            <VideoGallerySection onSeeAllClick={navigateToAllVideos} />
             <EmployeRequired />
             <CandidateCard />
             <KelasTerbaik />
