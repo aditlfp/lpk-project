@@ -29,7 +29,7 @@ export default function AllVideosPage({ onBackClick }) {
   }
 
   return (
-    <section className="pt-16 bg-gray-50 min-h-screen">
+    <section className="pt-16 bg-gray-50 min-h-screen my-12">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header with Back Button */}
         <div className="flex items-center mb-12">

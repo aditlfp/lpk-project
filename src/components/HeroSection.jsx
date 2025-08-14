@@ -6,7 +6,6 @@ import api from "../utils/axios";
 // --- Default/Fallback Content ---
 // Storing default values in a constant object makes them easy to manage and reuse.
 const DEFAULT_HERO_CONTENT = {
-  logo: logo,
   image: home,
   title: "Kuasai Bahasa Jepang, Raih Peluang Kerja ke Jepang dengan Asa Hikari Mulya!",
   description: "Asa Hikari Mulya adalah pusat pelatihan bahasa Jepang terpercaya yang mempersiapkan Anda untuk bekerja di Jepang melalui program Specified Skilled Worker (SSW) dan Magang. Dapatkan pelatihan intensif, sertifikasi resmi, dan penempatan kerja dengan kurikulum berbasis kebutuhan pasar kerja Jepang.",
@@ -59,7 +58,7 @@ const useHeroData = () => {
               setHeroData({
                 logo: latestHero.main_logo
                   ? VITE_BACKEND_URL_STORAGE + latestHero.main_logo
-                  : DEFAULT_HERO_CONTENT.logo,
+                  : "",
                 image: latestHero.c_image
                   ? VITE_BACKEND_URL_STORAGE + latestHero.c_image
                   : DEFAULT_HERO_CONTENT.image,
@@ -162,16 +161,18 @@ export default function HeroSection({ navigateTo }) {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center text-white h-full px-4">
         {/* Logo */}
-        <div className="flex w-full justify-center items-center gap-x-4 mb-6 mt-[30pt] lg:mt-[10pt]">
-          <img
-            src={heroData.logo}
-            alt="Asa Hikari Mulya"
-            className="w-1/3 md:w-1/6 lg:w-1/10 bg-white rounded-sm"
-          />
-        </div>
+        {heroData.logo && (
+          <div className="flex w-full justify-center items-center gap-x-4 mb-6 mt-[30pt] lg:mt-[10pt]">
+            <img
+              src={heroData.logo}
+              alt="Asa Hikari Mulya"
+              className="w-1/3 md:w-1/6 lg:w-1/10 bg-white rounded-sm"
+            />
+          </div>
+        )}
 
         {/* Title */}
-        <h1 className="text-3xl md:text-[2.3rem] lg:text-[2.9rem] font-bold mb-4 md:mb-10 lg:mb-5 text-pretty max-w-5xl">
+        <h1 className="text-3xl md:text-[2.3rem] lg:text-[2.9rem] font-bold mb-4 md:mb-10 lg:mb-5 text-pretty max-w-5xl mt-60">
           {heroData.title}
         </h1>
 
@@ -181,7 +182,7 @@ export default function HeroSection({ navigateTo }) {
         </p>
 
         {/* Button */}
-        <div className="flex w-full gap-x-4 justify-center items-center">
+        <div className="flex w-full justify-center items-center">
           <>
             <a
               href="https://recruitment.savanait.com/auth/login.php"

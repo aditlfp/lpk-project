@@ -20,6 +20,8 @@ const LoadingSpinner = () => (
 export default function VideoGallerySection({ onSeeAllClick }) {
   // The hook is now called without arguments to get the default (limited) data
   const { videos, gallery, isLoading, error } = useApiData();
+  console.log(videos);
+  
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -42,16 +44,16 @@ export default function VideoGallerySection({ onSeeAllClick }) {
           </h2>
         </div>
 
-        {/* Video Grid */}
-        {videos.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 md:mx-10 lg:mx-20 lg:gap-4 gap-8">
-            {videos.map((video) => (
-              <VideoCard key={video.id} video={video} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-center text-gray-500">Tidak ada video yang tersedia saat ini.</p>
-        )}
+         {/* Video Grid */}
+          {videos.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:mx-10 lg:mx-20 gap-8">
+              {videos.map((video) => (
+                <VideoCard key={video.id} video={video} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-500 py-10">Tidak ada video yang tersedia saat ini.</p>
+          )}
 
 
         {/* View More Button - Now uses the passed-in function */}
