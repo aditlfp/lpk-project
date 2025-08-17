@@ -185,7 +185,7 @@ export default function HeroSection({ navigateTo }) {
         <div className="flex w-full justify-center items-center gap-x-1 sm:gap-x-2">
           <>
             <a
-              href="https://recruitment.savanait.com/auth/login.php"
+              href={import.meta.env.VITE_URL_SIGN_UP}
               className="btn btn-warning text-white font-bold btn-xl text-sm md:text-2xl p-4 md:p-6 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-600 hover:border-0 shadow-none"
             >
               Daftar Sekarang
