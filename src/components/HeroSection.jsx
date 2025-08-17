@@ -182,7 +182,7 @@ export default function HeroSection({ navigateTo }) {
         </p>
 
         {/* Button */}
-        <div className="flex w-full justify-center items-center">
+        <div className="flex w-full justify-center items-center gap-x-1 sm:gap-x-2">
           <>
             <a
               href="https://recruitment.savanait.com/auth/login.php"

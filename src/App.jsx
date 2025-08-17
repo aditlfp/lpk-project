@@ -69,7 +69,7 @@ export default function App() {
         );
       case 'requirement':
         return (
-          <RequirementPages />
+          <RequirementPages onBackClick={navigateToHome} />
         )
       case 'allVideos':
         return <AllVideosPage onBackClick={navigateToHome} />;

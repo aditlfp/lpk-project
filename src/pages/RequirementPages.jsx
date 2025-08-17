@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import pdf_file from "../assets/pdf_file/requirement.pdf"
-function RequirementPages() {
+import { ArrowLeft } from "lucide-react";
+function RequirementPages({onBackClick}) {
   const faqItems = [
     {
       question: "Persyaratan untuk mendaftar siswa",
@@ -75,7 +76,17 @@ function RequirementPages() {
     <section id="faq" className="px-4 pt-20 mb-16 md:mx-20 md:mb-5 mt-20">
       <div className="max-w-3xl mx-auto space-y-4">
         <div className="flex flex-col gap-y-4 mb-2 md:mb-10">
-          <h1 className="text-4xl font-semibold">Persyaratan Pendaftaran</h1>
+          <div className="flex">
+            <button 
+              onClick={onBackClick} 
+              className="p-2 rounded-full hover:bg-gray-200 transition-colors mr-4"
+              aria-label="Kembali ke halaman utama"
+            >
+              <ArrowLeft className="w-6 h-6 text-gray-800" />
+            </button>
+            <h1 className="text-4xl font-semibold">Persyaratan Pendaftaran</h1>
+          </div>
+
           <span className="text-gray-400 font-semibold md:text-xl">
             Persyaratan yang wajib dipenuhi sebelum mendaftarkan diri
           </span>

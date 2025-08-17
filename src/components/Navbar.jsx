@@ -25,76 +25,15 @@ function Navbar({ navigateTo, currentPage }) {
             </div>
           </div>
 
-          {/* Nav Mobile */}
-          <div
-            className="dropdown flex justify-center w-[33%]"
-            onClick={() => setMobileNav(!mobileNav)}
+          <div className="md:hidden w-[45%] flex gap-x-2">
+           <a
+            href={import.meta.env.VITE_URL_SIGN_IN}
+            className="btn btn-warning text-xs text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none flex flex-col leading-tight items-center"
           >
-            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
-              {mobileNav ? (
-                <LuX className="w-6 h-6" />
-              ) : (
-                <RiMenu5Fill className="w-6 h-6" />
-              )}
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box rounded-t-none z-0 mt-[48pt] sm:mt-[22.5pt] w-[80vw] p-2"
-            >
-              <li className="flex flex-col items-start w-full ">
-                {/* Home */}
-                <div className="dropdown dropdown-hover w-full" onClick={() => navigateTo('home')}>
-                  <a
-                    tabIndex="0"
-                    href={null}
-                    className={`bg-white rounded-t-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold  transition-colors duration-200 ${currentPage == 'home' ? 'text-amber-500' : 'hover:text-amber-500 text-gray-700 '}`}
-                  >
-                    <span>Home</span>
-                    <House className="w-5 h-5" />
-                  </a>
-                </div>
-
-                {/* Requirement */}
-                <div className="dropdown dropdown-hover w-full" onClick={() => navigateTo('requirement')}>
-                  <a
-                    tabIndex="0"
-                    href={null}
-                    className={`bg-white rounded-t-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold transition-colors duration-200 ${currentPage == 'requirement' ? 'text-amber-500' : 'text-gray-700 hover:text-amber-500'}`}
-                  >
-                    <span>Syarat Pendaftaran</span>
-                    <FilePenLine  className="w-5 h-5" />
-                  </a>
-                </div>
-
-                {/* Sign In */}
-                <div className="dropdown dropdown-hover w-full ">
-                  <a
-                    tabIndex="0"
-                    href="https://recruitment.savanait.com/auth/login.php"
-                    className="bg-white rounded-t-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold text-gray-700 hover:text-amber-500 transition-colors duration-200"
-                  >
-                    <span>SIGN IN</span>
-                    <KeyRound className="w-5 h-5" />
-                  </a>
-                </div>
-
-                {/* Sign Up */}
-                <div className="dropdown dropdown-hover w-full">
-                  <a
-                    tabIndex="0"
-                    href="https://recruitment.savanait.com/auth/login.php"
-                    className="bg-white rounded-b-md px-4 py-2 flex justify-between items-center w-full text-sm font-semibold text-gray-700 hover:text-amber-500 transition-colors duration-200"
-                  >
-                    <span>SIGN UP</span>
-                    <KeyRound className="w-5 h-5" />
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div className="md:hidden w-[33%]">
+            <span>Sign In</span>
+          </a>
             <a
-              href="https://recruitment.savanait.com/auth/login.php"
+              href={import.meta.env.VITE_URL_SIGN_UP}
               className="btn btn-warning text-xs text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none flex flex-col leading-tight items-center"
             >
               <span>Daftar</span>
@@ -110,13 +49,13 @@ function Navbar({ navigateTo, currentPage }) {
               <HomeButton isActive={currentPage == 'home'}/>
            </a>
           <a
-            href="https://recruitment.savanait.com/auth/login.php"
+            href={import.meta.env.VITE_URL_SIGN_IN}
             className="dropdown dropdown-hover uppercase font-bold w-full ml-3"
           >
             <SignInButton />
           </a>
           <a
-            href="https://recruitment.savanait.com/auth/login.php"
+            href={import.meta.env.VITE_URL_SIGN_UP}
             className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3"
           >
             <SignUpButton />
@@ -126,7 +65,7 @@ function Navbar({ navigateTo, currentPage }) {
            </a>
           <div className="navbar-end md:ml-8 lg:ml-16 md:mr-4">
             <a
-              href="https://recruitment.savanait.com/auth/login.php"
+              href={import.meta.env.VITE_URL_SIGN_UP}
               className="btn lg:btn-lg lg:text-base btn-warning text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none"
             >
               Daftar Sekarang

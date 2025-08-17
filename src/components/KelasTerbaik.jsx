@@ -112,7 +112,7 @@ const KelasTerbaik = () => {
                   <FaStar />
                 </div>
                 <a
-                  href="https://recruitment.savanait.com/auth/login.php"
+                  href={import.meta.env.VITE_URL_SIGN_UP}
                   className="btn btn-sm btn-warning px-6 text-white font-bold md:text-lg"
                 >
                   Daftar

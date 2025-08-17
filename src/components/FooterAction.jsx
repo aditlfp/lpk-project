@@ -16,7 +16,7 @@ const FooterAction = () => {
         {/* Buttons */}
         <div className="w-full md:w-auto flex flex-col md:items-end gap-3">
           <a
-            href="https://recruitment.savanait.com/auth/login.php"
+            href={import.meta.env.VITE_URL_SIGN_UP}
             className="bg-orange-400 hover:bg-orange-500 text-white font-semibold md:text-center px-6 py-3 rounded-md transition duration-200"
           >
             Daftar Sekarang

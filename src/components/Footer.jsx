@@ -158,7 +158,7 @@ function Footer() {
               </a>
             </div>
             <a
-              href="https://recruitment.savanait.com/auth/login.php"
+              href={import.meta.env.VITE_URL_SIGN_UP}
               className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-4 py-2 rounded"
             >
               Daftar Sekarang
