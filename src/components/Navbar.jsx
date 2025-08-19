@@ -4,6 +4,7 @@ import { RiMenu5Fill } from "react-icons/ri";
 import { useState } from "react";
 import { HomeButton, ReqButton, SignInButton, SignUpButton } from "./partials/SignButton";
 import { FilePenLine, House, KeyRound } from "lucide-react";
+import ButtonBlueMobile from "./partials/ButtonBlueMobile";
 
 function Navbar({ navigateTo, currentPage }) {
   const [mobileNav, setMobileNav] = useState(false);
@@ -25,20 +26,12 @@ function Navbar({ navigateTo, currentPage }) {
             </div>
           </div>
 
-          <div className="md:hidden w-[45%] flex gap-x-2">
-           <a
-            href={import.meta.env.VITE_URL_SIGN_IN}
-            className="btn btn-warning text-xs text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none flex flex-col leading-tight items-center"
-          >
-            <span>Sign In</span>
-          </a>
-            <a
-              href={import.meta.env.VITE_URL_SIGN_UP}
-              className="btn btn-warning text-xs text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none flex flex-col leading-tight items-center"
-            >
+          <div className="sm:hidden w-[50%] flex gap-x-2 mr-2">
+          <ButtonBlueMobile href={import.meta.env.VITE_URL_SIGN_IN}><span>Sign In</span></ButtonBlueMobile>
+           <ButtonBlueMobile href={import.meta.env.VITE_URL_SIGN_UP}>
               <span>Daftar</span>
               <span>Sekarang</span>
-            </a>
+           </ButtonBlueMobile>
           </div>
         </div>
         {/* End Nav Mobile */}
@@ -64,12 +57,9 @@ function Navbar({ navigateTo, currentPage }) {
               <ReqButton isActive={currentPage == 'requirement'}/>
            </a>
           <div className="navbar-end md:ml-8 lg:ml-16 md:mr-4">
-            <a
-              href={import.meta.env.VITE_URL_SIGN_UP}
-              className="btn lg:btn-lg lg:text-base btn-warning text-white font-bold transition-transform duration-300 hover:scale-105 hover:bg-blue-600 hover:border-0 shadow-none"
-            >
+            <ButtonBlueMobile href={import.meta.env.VITE_URL_SIGN_UP} isBgWhite={true}>
               Daftar Sekarang
-            </a>
+            </ButtonBlueMobile>
           </div>
         </div>
       </div>

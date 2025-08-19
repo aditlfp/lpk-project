@@ -153,7 +153,7 @@ export default function TestimoniCarousel() {
                       {[...Array(item.stars)].map((_, starIndex) => (
                         <span
                           key={starIndex}
-                          className="text-amber-400 text-xl mx-0.5"
+                          className="text-blue-400 text-xl mx-0.5"
                         >
                           ★
                         </span>
@@ -162,7 +162,7 @@ export default function TestimoniCarousel() {
                     <h4 className="font-bold text-lg lg:text-xl text-white">
                       {item.name}
                     </h4>
-                    <p className="text-amber-400 text-sm md:text-base font-medium">
+                    <p className="text-blue-400 text-sm md:text-base font-medium">
                       {item.location}
                     </p>
                   </div>

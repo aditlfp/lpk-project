@@ -2,6 +2,7 @@ import ButtonEffect from "./partials/ButtonEffect";
 import penerbangan from "../assets/Penerbangan.png";
 import perhotelan from "../assets/Perhotelan.webp";
 import it from "../assets/IT.webp";
+import ButtonBlue from "./partials/ButtonBlue";
 
 const SSWTokuteiGinou = () => {
   const industries = [
@@ -183,7 +184,10 @@ const SSWTokuteiGinou = () => {
           })}
         </div>
         {/* Lihat Selengkapnya Button */}
-        <ButtonEffect />
+        {/* <ButtonEffect /> */}
+        <div className="flex justify-center items-center mt-10">
+          <ButtonBlue title={'Lihat Selengkapnya'} className={'hover:shadow-md btn-sm text-lg'}/>
+        </div>
       </div>
     </div>
   );

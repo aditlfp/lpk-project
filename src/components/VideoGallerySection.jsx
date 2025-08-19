@@ -2,6 +2,7 @@ import React from 'react';
 import { useApiData } from '../hooks/useApiData';
 import VideoCard from './sections/VideoCard';
 import GalleryCarousel from './sections/GalleryCarousel';
+import ButtonBlue from './partials/ButtonBlue';
 
 // ... (LoadingSpinner and ErrorMessage components remain the same) ...
 const LoadingSpinner = () => (
@@ -20,8 +21,6 @@ const LoadingSpinner = () => (
 export default function VideoGallerySection({ onSeeAllClick }) {
   // The hook is now called without arguments to get the default (limited) data
   const { videos, gallery, isLoading, error } = useApiData();
-  console.log(videos);
-  
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -57,20 +56,17 @@ export default function VideoGallerySection({ onSeeAllClick }) {
 
 
         {/* View More Button - Now uses the passed-in function */}
-        <div className="text-center mt-12">
-          <button 
-            onClick={onSeeAllClick}
-            className="btn btn-md btn-warning text-white md:text-lg font-bold transition-transform duration-300 hover:scale-110 hover:bg-blue-600 hover:border-0 shadow-none"
-          >
-            Lihat Semua Video
-          </button>
+        <div className="text-center pb-2 my-12">
+          <ButtonBlue navigateToLink={onSeeAllClick} title={'Lihat Semua Video'} className={'btn-md hover:shadow-md'}/>
         </div>
       </div>
 
       <div className="divider"></div>
 
       {/* Gallery Carousel Section */}
-      <GalleryCarousel galleryItems={gallery} />
+      <div>
+        <GalleryCarousel galleryItems={gallery} />
+      </div>
 
       <div className="divider"></div>
     </section>

@@ -107,7 +107,7 @@ export default function GalleryCarousel({ galleryItems }) {
                     <h4 className="font-bold text-lg md:text-xl text-white">
                       {item.title}
                     </h4>
-                    <p className="text-amber-400 text-sm md:text-base font-medium">
+                    <p className="text-blue-400 text-sm md:text-base font-medium">
                       {item.location}
                     </p>
                   </div>

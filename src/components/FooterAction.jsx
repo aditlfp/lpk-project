@@ -1,3 +1,5 @@
+import ButtonBlue from "./partials/ButtonBlue";
+
 const FooterAction = () => {
   return (
     <section className="relative z-10 -mt-20 px-4">
@@ -15,12 +17,7 @@ const FooterAction = () => {
 
         {/* Buttons */}
         <div className="w-full md:w-auto flex flex-col md:items-end gap-3">
-          <a
-            href={import.meta.env.VITE_URL_SIGN_UP}
-            className="bg-orange-400 hover:bg-orange-500 text-white font-semibold md:text-center px-6 py-3 rounded-md transition duration-200"
-          >
-            Daftar Sekarang
-          </a>
+           <ButtonBlue href={import.meta.env.VITE_URL_SIGN_UP} className={'hover:shadow-md btn-sm text-lg'} title={'Daftar Sekarang'} />
         </div>
       </div>
     </section>

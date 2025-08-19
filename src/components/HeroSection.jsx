@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import home from "../assets/img_fix/hero.jpg"; // Fallback background image
-import logo from "../assets/img_fix/logo_dark.png"; // Fallback logo
 import api from "../utils/axios";
+import ButtonBlue from "./partials/ButtonBlue";
 
 // --- Default/Fallback Content ---
 // Storing default values in a constant object makes them easy to manage and reuse.
@@ -184,23 +184,12 @@ export default function HeroSection({ navigateTo }) {
         {/* Button */}
         <div className="flex w-full justify-center items-center gap-x-1 sm:gap-x-2">
           <>
-            <a
-              href={import.meta.env.VITE_URL_SIGN_UP}
-              className="btn btn-warning text-white font-bold btn-xl text-sm md:text-2xl p-4 md:p-6 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-600 hover:border-0 shadow-none"
-            >
-              Daftar Sekarang
-            </a>
+            <ButtonBlue href={import.meta.env.VITE_URL_SIGN_UP} title={'Daftar Sekarang'}/>
           </>
 
           {/* Button */}
           <>
-            <a
-              href={null}
-              onClick={() => navigateTo('requirement')}
-              className="btn btn-warning text-white font-bold btn-xl text-sm md:text-2xl p-4 md:p-6 transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-blue-600 hover:border-0 shadow-none"
-            >
-              Syarat Pendaftaran
-            </a>
+          <ButtonBlue href={null} navigateToLink={() => navigateTo('requirement')} title={'Syarat Pendaftaran'}/>
           </>
 
         </div>

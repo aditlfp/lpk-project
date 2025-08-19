@@ -101,7 +101,7 @@ function RequirementPages({onBackClick}) {
               onClick={() => setActiveIndex(i === activeIndex ? null : i)}
               className={`w-full text-left px-6 py-4 font-medium text-base transition-colors duration-300 ${
                 activeIndex === i
-                  ? "bg-blue-500/70 text-white"
+                  ? "bg-primary text-white"
                   : "bg-white text-gray-800"
               }`}
             >
@@ -111,7 +111,7 @@ function RequirementPages({onBackClick}) {
                   {activeIndex === i ? (
                     <FaChevronUp className="text-white" />
                   ) : (
-                    <FaChevronDown className="text-amber-500/70" />
+                    <FaChevronDown className="text-primary" />
                   )}
                 </span>
               </div>

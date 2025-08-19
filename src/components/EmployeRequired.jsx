@@ -20,13 +20,11 @@ const EmployeRequired = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log("Form submitted:", formData);
     setIsModalOpen(false);
   };
 
   const handleGoogleSignIn = () => {
     // Handle Google sign in logic here
-    console.log("Google sign in clicked");
     setIsModalOpen(false);
   };
   // Animation variants
@@ -95,13 +93,13 @@ const EmployeRequired = () => {
       >
         {/* Floating Orbs with matching colors */}
         <motion.div
-          className="absolute top-16 left-16 w-32 h-32 bg-amber-400/15 rounded-full blur-2xl"
+          className="absolute top-16 left-16 w-32 h-32 bg-primary rounded-full blur-2xl"
           variants={floatingVariants}
           animate="floating"
         ></motion.div>
 
         <motion.div
-          className="absolute bottom-20 right-20 w-40 h-40 bg-orange-400/12 rounded-full blur-3xl"
+          className="absolute bottom-20 right-20 w-40 h-40 bg-primary rounded-full blur-3xl"
           variants={floatingVariants}
           animate="floating"
           transition={{ delay: 1 }}
@@ -116,7 +114,7 @@ const EmployeRequired = () => {
 
         {/* Rotating Rings */}
         <motion.div
-          className="absolute top-20 right-1/4 w-16 h-16 border-2 border-amber-400/25 rounded-full"
+          className="absolute top-20 right-1/4 w-16 h-16 border-2 border-primary rounded-full"
           variants={rotateVariants}
           animate="rotate"
         ></motion.div>
@@ -148,7 +146,7 @@ const EmployeRequired = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <motion.div
-                className="w-52 h-72 lg:w-60 lg:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-amber-500/30 bg-gradient-to-b from-slate-100 to-slate-200 backdrop-blur-sm"
+                className="w-52 h-72 lg:w-60 lg:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-primary bg-gradient-to-b from-slate-100 to-slate-200 backdrop-blur-sm"
                 initial={{ x: 100, opacity: 0, rotateY: -20 }}
                 animate={{ x: 0, opacity: 1, rotateY: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
@@ -156,7 +154,7 @@ const EmployeRequired = () => {
                 <div className="w-full h-full bg-gradient-to-b from-slate-600 to-slate-700 flex items-end justify-center relative">
                   {/* Animated Avatar */}
                   <motion.div
-                    className="w-24 h-24 bg-slate-400 rounded-full mb-8 relative border-3 border-amber-500/40"
+                    className="w-24 h-24 bg-slate-400 rounded-full mb-8 relative border-3 border-primary"
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
@@ -169,7 +167,7 @@ const EmployeRequired = () => {
 
                   {/* Floating Particles */}
                   <motion.div
-                    className="absolute top-4 right-4 w-2 h-2 bg-amber-400/70 rounded-full"
+                    className="absolute top-4 right-4 w-2 h-2 bg-primary rounded-full"
                     animate={{
                       y: [0, -10, 0],
                       opacity: [0.3, 0.7, 0.3],
@@ -187,14 +185,14 @@ const EmployeRequired = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <motion.div
-                className="w-44 h-60 lg:w-52 lg:h-68 rounded-3xl overflow-hidden shadow-xl border-4 border-orange-400/40 bg-gradient-to-b from-slate-100 to-slate-200 backdrop-blur-sm"
+                className="w-44 h-60 lg:w-52 lg:h-68 rounded-3xl overflow-hidden shadow-xl border-4 border-primary bg-gradient-to-b from-slate-100 to-slate-200 backdrop-blur-sm"
                 initial={{ x: -50, opacity: 0, rotateY: 20 }}
                 animate={{ x: 0, opacity: 1, rotateY: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
               >
                 <div className="w-full h-full bg-gradient-to-b from-slate-500 to-slate-600 flex items-end justify-center relative">
                   <motion.div
-                    className="w-20 h-20 bg-slate-300 rounded-full mb-6 border-2 border-orange-400/50"
+                    className="w-20 h-20 bg-slate-300 rounded-full mb-6 border-2 border-primary"
                     animate={{ scale: [1, 1.03, 1] }}
                     transition={{ duration: 2.5, repeat: Infinity, delay: 0.3 }}
                   >
@@ -214,13 +212,13 @@ const EmployeRequired = () => {
 
             {/* Decorative Animated Elements */}
             <motion.div
-              className="absolute -top-6 -left-6 w-12 h-12 bg-amber-500/60 rounded-full shadow-lg"
+              className="absolute -top-6 -left-6 w-12 h-12 bg-primary rounded-full shadow-lg"
               variants={pulseVariants}
               animate="pulse"
             ></motion.div>
 
             <motion.div
-              className="absolute -bottom-4 -right-4 w-8 h-8 bg-orange-500/80 rounded-full shadow-lg"
+              className="absolute -bottom-4 -right-4 w-8 h-8 bg-primary rounded-full shadow-lg"
               animate={{
                 scale: [1, 1.3, 1],
                 rotate: [0, 180, 360],
@@ -249,15 +247,15 @@ const EmployeRequired = () => {
         >
           {/* Animated Badge */}
           <motion.div
-            className="inline-flex items-center gap-3 bg-amber-500/80 text-slate-800 px-6 py-3 rounded-full text-sm font-bold md:mt-4 mb-8 shadow-2xl backdrop-blur-sm"
+            className="inline-flex items-center gap-3 bg-primary text-white px-6 py-3 rounded-full text-sm font-bold md:mt-4 mb-8 shadow-2xl backdrop-blur-sm"
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 25px 50px -12px rgba(245, 158, 11, 0.4)",
+              boxShadow: "0 25px 50px -12px rgba(0,123,255,0.4)",
             }}
             transition={{ type: "spring", stiffness: 400 }}
           >
             <motion.div
-              className="w-3 h-3 bg-slate-800 rounded-full"
+              className="w-3 h-3 bg-blue-900 rounded-full"
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             ></motion.div>
@@ -304,10 +302,10 @@ const EmployeRequired = () => {
             variants={itemVariants}
           >
             <motion.button
-              className="btn btn-lg bg-amber-500 text-slate-800 hover:bg-amber-400 border-none shadow-2xl font-bold px-10 rounded-full"
+              className="btn btn-lg bg-primary text-white hover:bg-primary border-none shadow-2xl font-bold px-10 rounded-full"
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 25px 50px -12px rgba(245, 158, 11, 0.3)",
+                boxShadow: "0 25px 50px -12px rgba(0,123,255, 0.3)",
                 y: -2,
               }}
               whileTap={{ scale: 0.95 }}
@@ -323,10 +321,10 @@ const EmployeRequired = () => {
             </motion.button>
 
             <motion.button
-              className="btn btn-lg btn-outline border-2 border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-slate-800 hover:border-amber-500 px-10 rounded-full font-bold backdrop-blur-sm"
+              className="btn btn-lg btn-outline border-2 border-primary text-primary hover:bg-primary hover:text-white hover:border-primary px-10 rounded-full font-bold backdrop-blur-sm"
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 25px 50px -12px rgba(245, 158, 11, 0.2)",
+                boxShadow: "0 25px 50px -12px rgba(0,123,255, 0.2)",
                 y: -2,
               }}
               whileTap={{ scale: 0.95 }}
@@ -396,7 +394,7 @@ const EmployeRequired = () => {
         <motion.svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
-          className="w-full h-20 fill-current text-amber-400/15"
+          className="w-full h-20 fill-current text-blue-400/15"
           animate={{
             d: [
               "M0,120 C200,80 400,40 600,60 C800,80 1000,100 1200,60 L1200,120 Z",

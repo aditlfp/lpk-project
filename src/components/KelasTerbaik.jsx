@@ -103,7 +103,7 @@ const KelasTerbaik = () => {
 
               {/* Footer always at bottom */}
               <div className="mt-5 flex justify-between items-end">
-                <div className="flex items-center gap-1 text-yellow-400 text-sm md:text-lg">
+                <div className="flex items-center gap-1 text-blue-400 text-sm md:text-lg">
                   <span>{kelas.rating}</span>
                   <FaStar />
                   <FaStar />
@@ -113,7 +113,7 @@ const KelasTerbaik = () => {
                 </div>
                 <a
                   href={import.meta.env.VITE_URL_SIGN_UP}
-                  className="btn btn-sm btn-warning px-6 text-white font-bold md:text-lg"
+                  className="btn btn-sm btn-primary px-6 text-white font-bold md:text-lg"
                 >
                   Daftar
                 </a>

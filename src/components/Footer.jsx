@@ -10,6 +10,7 @@ import {
 import icon from "../assets/img_fix/logo_dark.png";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { TbBrandWhatsappFilled } from "react-icons/tb";
+import ButtonBlueMobile from "./partials/ButtonBlueMobile";
 
 function Footer() {
   const whatsappNumber = "6281395554334"; // Replace with your WhatsApp number (with country code)
@@ -157,12 +158,9 @@ function Footer() {
                 <FaTiktok />
               </a>
             </div>
-            <a
-              href={import.meta.env.VITE_URL_SIGN_UP}
-              className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-4 py-2 rounded"
-            >
-              Daftar Sekarang
-            </a>
+            <div className="w-1/2 md:w-1/3">
+              <ButtonBlueMobile  href={import.meta.env.VITE_URL_SIGN_UP}>Daftar Sekarang</ButtonBlueMobile>
+            </div>
           </div>
         </footer>
 
