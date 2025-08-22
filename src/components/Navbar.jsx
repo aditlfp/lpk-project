@@ -17,45 +17,47 @@ function Navbar({ navigateTo, currentPage }) {
               src={logo}
               alt=""
               srcSet=""
-              className="w-[40%] h-auto md:w-[25%] lg:w-[20%]"
+              className="w-[40%] h-auto md:w-[50%] lg:w-[20%]"
             />
-            <div className="flex flex-col text-xs md:text-sm lg:text-base font-bold">
+            {/* <div className="hidden sm:flex flex-col text-xs md:text-sm lg:text-base font-bold">
               <span>Asa</span>
               <span>Hikari</span>
               <span>Mulya</span>
-            </div>
+            </div> */}
           </div>
 
           <div className="sm:hidden w-[50%] flex gap-x-2 mr-2">
-          <ButtonBlueMobile href={import.meta.env.VITE_URL_SIGN_IN}><span>Sign In</span></ButtonBlueMobile>
-           <ButtonBlueMobile href={import.meta.env.VITE_URL_SIGN_UP}>
-              <span>Daftar</span>
-              <span>Sekarang</span>
-           </ButtonBlueMobile>
+            <ButtonBlueMobile href={import.meta.env.VITE_URL_SIGN_IN}><span>Sign In</span></ButtonBlueMobile>
+            <ButtonBlueMobile href={import.meta.env.VITE_URL_SIGN_UP}>
+                <span>Daftar</span>
+                <span>Sekarang</span>
+            </ButtonBlueMobile>
           </div>
         </div>
         {/* End Nav Mobile */}
 
         {/* Nav Pc */}
-        <div className="navbar-center hidden md:flex gap-x-9">
-           <a className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3" onClick={() => navigateTo('home')}>
-              <HomeButton isActive={currentPage == 'home'}/>
-           </a>
-          <a
-            href={import.meta.env.VITE_URL_SIGN_IN}
-            className="dropdown dropdown-hover uppercase font-bold w-full ml-3"
-          >
-            <SignInButton />
-          </a>
-          <a
-            href={import.meta.env.VITE_URL_SIGN_UP}
-            className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3"
-          >
-            <SignUpButton />
-          </a>
-           <a className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3" onClick={() => navigateTo('requirement')}>
-              <ReqButton isActive={currentPage == 'requirement'}/>
-           </a>
+        <div className="navbar-center hidden md:flex gap-x-9 mr-20">
+          <div className="flex navbar-center gap-x-5">
+                <a className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3" onClick={() => navigateTo('home')}>
+                <HomeButton isActive={currentPage == 'home'}/>
+            </a>
+            <a
+              href={import.meta.env.VITE_URL_SIGN_IN}
+              className="dropdown dropdown-hover uppercase font-bold w-full ml-3"
+            >
+              <SignInButton />
+            </a>
+            <a
+              href={import.meta.env.VITE_URL_SIGN_UP}
+              className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3"
+            >
+              <SignUpButton />
+            </a>
+            <a className="dropdown dropdown-hover uppercase font-bold w-full lg:ml-3" onClick={() => navigateTo('requirement')}>
+                <ReqButton isActive={currentPage == 'requirement'}/>
+            </a>
+          </div>
           <div className="navbar-end md:ml-8 lg:ml-16 md:mr-4">
             <ButtonBlueMobile href={import.meta.env.VITE_URL_SIGN_UP} isBgWhite={true}>
               Daftar Sekarang

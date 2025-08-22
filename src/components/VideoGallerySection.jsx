@@ -1,4 +1,3 @@
-import React from 'react';
 import { useApiData } from '../hooks/useApiData';
 import VideoCard from './sections/VideoCard';
 import GalleryCarousel from './sections/GalleryCarousel';
