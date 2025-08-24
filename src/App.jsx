@@ -15,6 +15,7 @@ import CandidateCard from "./components/CandidateCard";
 import WhatsappBubble from "./components/WhatsappBubble";
 import RequirementPages from './pages/RequirementPages';
 import AllVideosPage from './pages/AllVideosPage';
+import AllSswPage from './pages/AllSswPage';
 
 // This is the main application component
 export default function App() {
@@ -36,6 +37,11 @@ export default function App() {
     window.scrollTo(0, 0); // Scroll to top on page change
   };
 
+   const navigateToAllSsw = () => {
+    setCurrentPage('all-ssw');
+    window.scrollTo(0, 0); // Scroll to top on page change
+  };
+
 
   // This function decides which set of components to render based on the currentPage state.
   const renderPage = () => {
@@ -50,7 +56,7 @@ export default function App() {
             <EmployeRequired />
             <CandidateCard />
             <KelasTerbaik />
-            <SSWTokuteiGinou />
+            <SSWTokuteiGinou onSeeAllClick={navigateToAllSsw}/>
             <TestimonialCarousel />
             <CallToAction />
             <CustomFAQ />
@@ -73,6 +79,8 @@ export default function App() {
         )
       case 'allVideos':
         return <AllVideosPage onBackClick={navigateToHome} />;
+      case 'all-ssw':
+        return <AllSswPage onBackClick={navigateToHome} />
       default:
         // Render the home page by default if the state is not recognized.
         // The component order for this page is also preserved.
@@ -83,7 +91,7 @@ export default function App() {
             <EmployeRequired />
             <CandidateCard />
             <KelasTerbaik />
-            <SSWTokuteiGinou />
+            <SSWTokuteiGinou onSeeAllClick={navigateToAllSsw}/>
             <TestimonialCarousel />
             <CallToAction />
             <CustomFAQ />

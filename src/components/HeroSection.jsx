@@ -1,15 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
-import home from "../assets/img_fix/hero.jpg"; // Fallback background image
 import api from "../utils/axios";
 import ButtonBlue from "./partials/ButtonBlue";
-
-// --- Default/Fallback Content ---
-// Storing default values in a constant object makes them easy to manage and reuse.
-const DEFAULT_HERO_CONTENT = {
-  image: home,
-  title: "Kuasai Bahasa Jepang, Raih Peluang Kerja ke Jepang dengan Asa Hikari Mulya!",
-  description: "Asa Hikari Mulya adalah pusat pelatihan bahasa Jepang terpercaya yang mempersiapkan Anda untuk bekerja di Jepang melalui program Specified Skilled Worker (SSW) dan Magang. Dapatkan pelatihan intensif, sertifikasi resmi, dan penempatan kerja dengan kurikulum berbasis kebutuhan pasar kerja Jepang.",
-};
 
 /**
  * Custom Hook: useHeroData
@@ -21,7 +12,7 @@ const useHeroData = () => {
   // --- State Management ---
   // A single state object is more efficient than multiple useState calls.
   // It triggers only one re-render when the data is updated.
-  const [heroData, setHeroData] = useState(DEFAULT_HERO_CONTENT);
+  const [heroData, setHeroData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -57,13 +48,13 @@ const useHeroData = () => {
               // Update the state with the data from the latest hero item.
               setHeroData({
                 logo: latestHero.main_logo
-                  ? VITE_BACKEND_URL_STORAGE + latestHero.main_logo
-                  : "",
+                  ? import.meta.env.VITE_BACKEND_URL_STORAGE + latestHero.main_logo
+                  : null,
                 image: latestHero.c_image
-                  ? VITE_BACKEND_URL_STORAGE + latestHero.c_image
-                  : DEFAULT_HERO_CONTENT.image,
-                title: latestHero.title || DEFAULT_HERO_CONTENT.title,
-                description: latestHero.desc || DEFAULT_HERO_CONTENT.description,
+                  ? import.meta.env.VITE_BACKEND_URL_STORAGE + latestHero.c_image
+                  : null,
+                title: latestHero.title,
+                description: latestHero.desc,
               });
             } else {
               // If no pinned hero is found, the state already holds the default content.
@@ -109,11 +100,11 @@ export default function HeroSection({ navigateTo }) {
   // useMemo caches the result of a calculation. Here, it prevents the `style` object
   // from being recreated on every render, which is a minor but good performance practice.
   const backgroundStyle = useMemo(() => ({
-    backgroundImage: `url(${heroData.image})`,
+    backgroundImage: `url(${heroData?.image})`,
     backgroundAttachment: "fixed",
     backgroundSize: "cover",
     backgroundPosition: "center",
-  }), [heroData.image]); // This will only re-calculate when heroData.image changes.
+  }), [heroData?.image]); // This will only re-calculate when heroData.image changes.
 
   // --- NEW: Loading state with DaisyUI Skeleton classes ---
   if (loading) {

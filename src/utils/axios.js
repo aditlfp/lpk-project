@@ -6,7 +6,7 @@ const api = axios.create({
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
-    Authorization: "Bearer 1|Pu9o3T9AcJGTujVadXVyxr1uP8O6fHxVuxCorun2e9a7b2a3",
+    Authorization: `Bearer ${import.meta.env.VITE_APP_KEY}`,
   },
 });
 

@@ -36,7 +36,6 @@
   --noise: 0;
 }
 
-
 body {
   overflow-x: hidden !important;
   overflow-y: scroll;
@@ -236,4 +235,9 @@ body {
     width: 40rem !important;
     height: 20rem !important;
   }
+}
+
+/* src/index.css atau global.css */
+.faq-content a {
+  @apply text-blue-600 underline hover:text-blue-800;
 }

@@ -1,45 +1,25 @@
-import ButtonEffect from "./partials/ButtonEffect";
-import penerbangan from "../assets/Penerbangan.png";
-import perhotelan from "../assets/Perhotelan.webp";
-import it from "../assets/IT.webp";
 import ButtonBlue from "./partials/ButtonBlue";
+import api from "../utils/axios";
+import { useEffect, useState } from "react";
+import SswCard from "./sections/SswCard";
 
-const SSWTokuteiGinou = () => {
-  const industries = [
-    {
-      id: 1,
-      title: "Industri Penerbangan",
-      subtitle: "(航空業)",
-      icon: penerbangan,
-      description:
-        "Industri Penerbangan ini berupa penanganan lapangan bandara (membantu ground running, menangani baggage/cargo, dll.), pemeliharaan pesawat (pemeliharaan pesawat dan perangkatnya)",
-      workers: "1.700 - 2.000 Orang",
-      bgColor: "bg-blue-100",
-      iconBg: "bg-transparant",
-    },
-    {
-      id: 2,
-      title: "Industri Perhotelan",
-      subtitle: "(宿泊業)",
-      icon: perhotelan,
-      description:
-        "Industri Perhotelan berupa penyediaan servis akomodasi seperti: front desk penginapan, perencanaan/relasi publik, hospitality, service restoran.",
-      workers: "20.000 - 22.000 Orang",
-      bgColor: "bg-orange-100",
-      iconBg: "bg-transparant",
-    },
-    {
-      id: 3,
-      title: "Industri Elektronik Informatika",
-      subtitle: "(電気・電子情報関連産業)",
-      icon: it,
-      description:
-        "Industri Elektronik Informatika melahirkan banyak perusahaan teknologi terkemuka dunia seperti: Sony, Panasonic, Toshiba, dan masih banyak lagi, serta Produk-produk elektronik Jepang terkenal",
-      workers: "5.000 - 7.000 Orang",
-      bgColor: "bg-gray-100",
-      iconBg: "bg-transparant",
-    },
-  ];
+const SSWTokuteiGinou = ({ onSeeAllClick }) => {
+  const [data, setData] = useState("");
+  const [isLoading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const res = await api.get("/ssw-fields");
+      setLoading(false)
+      setData(res.data.data.slice(0, 3))
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -130,63 +110,15 @@ const SSWTokuteiGinou = () => {
           </p>
         </div>
 
-        {/* Industry Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl lg:max-w-full mx-auto lg:mx-6">
-          {industries.map((industry, index) => {
-            const isLastOdd =
-              industries.length % 2 === 1 && index === industries.length - 1;
-            return (
-              <div
-                key={industry.id}
-                className={`group card bg-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-blue-200 relative overflow-hidden 
-          ${
-            isLastOdd ? "md:col-span-2 md:mx-[20%] lg:col-span-1 lg:mx-0" : ""
-          }`}
-              >
-                {/* Card gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                <div className="card-body text-center p-8 relative z-10 flex justify-center items-center">
-                  {/* Icon with enhanced styling */}
-                  <div className={`w-32 h-32 ${industry.iconBg}`}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-                    <span className="text-4xl text-white relative z-10">
-                      <img
-                        src={industry.icon}
-                        alt={industry.icon}
-                        srcSet={industry.icon}
-                      />
-                    </span>
-                  </div>
-
-                  {/* Title with gradient */}
-                  <h3 className="card-title text-xl md:text-2xl font-bold bg-gradient-to-r from-gray-800 to-blue-600 bg-clip-text text-transparent justify-center mb-2 group-hover:from-blue-600 group-hover:to-blue-600 transition-all duration-300">
-                    {industry.title}
-                  </h3>
-                  <p className="text-gray-500 mb-6 font-medium text-lg">
-                    {industry.subtitle}
-                  </p>
-
-                  {/* Description with better styling */}
-                  <p className="text-gray-600 text-sm md:text-lg leading-relaxed mb-8 group-hover:text-gray-700 transition-colors duration-300">
-                    {industry.description}
-                  </p>
-
-                  {/* Workers Count with gradient background */}
-                  <div className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-2xl p-6 shadow-inner group-hover:from-blue-100 group-hover:to-blue-100 transition-all duration-300 border border-blue-100">
-                    <p className="font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                      Dibutuhkan <br /> {industry.workers}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <SswCard data={data} isLoading={isLoading}/>
         {/* Lihat Selengkapnya Button */}
         {/* <ButtonEffect /> */}
         <div className="flex justify-center items-center mt-10">
-          <ButtonBlue title={'Lihat Selengkapnya'} className={'hover:shadow-md btn-sm text-lg'}/>
+          <ButtonBlue
+            title={"Lihat Selengkapnya"}
+            navigateToLink={onSeeAllClick}
+            className={"hover:shadow-md btn-sm text-lg"}
+          />
         </div>
       </div>
     </div>
