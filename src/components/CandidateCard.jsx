@@ -17,8 +17,6 @@ import api from '../utils/axios';
 
 // / --- Fungsi untuk mengubah data API ke format yang dibutuhkan ---
 const transformApiData = (apiData) => {
-  console.log(apiData);
-  
   const formattedData = [];
   
   apiData.forEach(period => {
