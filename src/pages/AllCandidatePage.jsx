@@ -202,18 +202,18 @@ function AllCandidatePage({ onBackClick }) {
         if (isLoading) {
             return <p className="text-center text-gray-500 col-span-full">Memuat...</p>;
         }
-        if (filteredData.length === 0) {
+        if (filteredData.length == 0) {
             return <p className="text-center text-gray-500 col-span-full">Tidak ada hasil ditemukan.</p>;
         }
 
         return filteredData.map(item => {
-            if (activeTab === "students") {
+            if (activeTab == "students") {
                 return <StudentCard key={item.id} student={item} />;
             }
-            if (activeTab === "officers") {
+            if (activeTab == "officers") {
                 return <OfficerCard key={item.id} officer={item} />;
             }
-            if (activeTab === "sensei") {
+            if (activeTab == "sensei") {
                 return <SenseiCard key={item.id} sensei={item} />;
             }
             return null;
@@ -240,9 +240,9 @@ function AllCandidatePage({ onBackClick }) {
                 </header>
 
                 <div className="mb-8 p-1.5 bg-gray-200 rounded-xl flex justify-center max-w-md mx-auto">
-                    <button onClick={() => setActiveTab('students')} className={`w-full py-2.5 rounded-lg text-sm font-semibold transition-colors ${activeTab === 'students' ? 'bg-white text-indigo-600 shadow' : 'text-gray-600 hover:bg-gray-300'}`}>Siswa Terbaik</button>
-                    <button onClick={() => setActiveTab('officers')} className={`w-full py-2.5 rounded-lg text-sm font-semibold transition-colors ${activeTab === 'officers' ? 'bg-white text-green-600 shadow' : 'text-gray-600 hover:bg-gray-300'}`}>Petugas Lapangan</button>
-                    <button onClick={() => setActiveTab('sensei')} className={`w-full py-2.5 rounded-lg text-sm font-semibold transition-colors ${activeTab === 'sensei' ? 'bg-white text-amber-600 shadow' : 'text-gray-600 hover:bg-gray-300'}`}>Sensei</button>
+                    <button onClick={() => setActiveTab('students')} className={`w-full py-2.5 rounded-lg text-sm font-semibold transition-colors ${activeTab == 'students' ? 'bg-white text-indigo-600 shadow' : 'text-gray-600 hover:bg-gray-300'}`}>Siswa Terbaik</button>
+                    <button onClick={() => setActiveTab('officers')} className={`w-full py-2.5 rounded-lg text-sm font-semibold transition-colors ${activeTab == 'officers' ? 'bg-white text-green-600 shadow' : 'text-gray-600 hover:bg-gray-300'}`}>Petugas Lapangan</button>
+                    <button onClick={() => setActiveTab('sensei')} className={`w-full py-2.5 rounded-lg text-sm font-semibold transition-colors ${activeTab == 'sensei' ? 'bg-white text-amber-600 shadow' : 'text-gray-600 hover:bg-gray-300'}`}>Sensei</button>
                 </div>
                 
                 <div className="mb-8 max-w-lg mx-auto">
