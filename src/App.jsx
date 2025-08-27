@@ -16,6 +16,7 @@ import WhatsappBubble from "./components/WhatsappBubble";
 import RequirementPages from './pages/RequirementPages';
 import AllVideosPage from './pages/AllVideosPage';
 import AllSswPage from './pages/AllSswPage';
+import AllCandidatePage from './pages/AllCandidatePage';
 
 // This is the main application component
 export default function App() {
@@ -42,6 +43,11 @@ export default function App() {
     window.scrollTo(0, 0); // Scroll to top on page change
   };
 
+  const navigateToAllCandidate = () => {
+    setCurrentPage('all-candidate');
+    window.scrollTo(0,0);
+  }
+
 
   // This function decides which set of components to render based on the currentPage state.
   const renderPage = () => {
@@ -54,7 +60,7 @@ export default function App() {
             <HeroSection navigateTo={navigateTo} />
             <VideoGallerySection onSeeAllClick={navigateToAllVideos} />
             <EmployeRequired />
-            <CandidateCard />
+            <CandidateCard onSeeAllClick={navigateToAllCandidate} />
             <KelasTerbaik />
             <SSWTokuteiGinou onSeeAllClick={navigateToAllSsw}/>
             <TestimonialCarousel />
@@ -70,7 +76,7 @@ export default function App() {
             <h2 className="text-4xl font-bold text-center my-8">Program Details</h2>
             <SSWTokuteiGinou />
             <EmployeRequired />
-            <CandidateCard />
+            <CandidateCard onSeeAllClick={navigateToAllCandidate}/>
           </>
         );
       case 'requirement':
@@ -81,6 +87,8 @@ export default function App() {
         return <AllVideosPage onBackClick={navigateToHome} />;
       case 'all-ssw':
         return <AllSswPage onBackClick={navigateToHome} />
+      case 'all-candidate':
+        return <AllCandidatePage onBackClick={navigateToHome} />
       default:
         // Render the home page by default if the state is not recognized.
         // The component order for this page is also preserved.
@@ -89,7 +97,7 @@ export default function App() {
             <HeroSection navigateTo={navigateTo}/>
             <VideoGallerySection onSeeAllClick={navigateToAllVideos} />
             <EmployeRequired />
-            <CandidateCard />
+            <CandidateCard onSeeAllClick={navigateToAllCandidate}/>
             <KelasTerbaik />
             <SSWTokuteiGinou onSeeAllClick={navigateToAllSsw}/>
             <TestimonialCarousel />

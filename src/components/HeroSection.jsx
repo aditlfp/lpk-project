@@ -27,11 +27,10 @@ const useHeroData = () => {
 
       try {
         const response = await api.get("/main_hero");
-
-        // --- NEW LOGIC ---
+        
         // Filter for all items that are pinned.
         const pinnedItems = response?.data?.data?.filter(
-          (item) => item.is_pinned === "1"
+          (item) => item.is_pinned == 1
         );
 
         // --- Check if Mounted Before State Update ---
@@ -44,7 +43,7 @@ const useHeroData = () => {
               pinnedItems.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
               
               const latestHero = pinnedItems[0]; // The most recent item is now the first in the array.
-
+              
               // Update the state with the data from the latest hero item.
               setHeroData({
                 logo: latestHero.main_logo
@@ -152,7 +151,7 @@ export default function HeroSection({ navigateTo }) {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center text-white h-full px-4">
         {/* Logo */}
-        {heroData.logo && (
+        {heroData?.logo && (
           <div className="flex w-full justify-center items-center gap-x-4 mb-6 mt-[30pt] lg:mt-[10pt]">
             <img
               src={heroData.logo}

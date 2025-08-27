@@ -1,348 +1,234 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import DetailModal from './partials/DetailModal';
+import api from '../utils/axios';
 
-const CandidateCard = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // --- Helper function untuk mendapatkan inisial nama ---
+  const getInitials = (name) => {
+    if (!name || typeof name !== 'string') return '?';
+    const names = name.split(' ');
+    if (names.length > 1) {
+      return `${names[0][0]}${names[1][0]}`.toUpperCase();
+    }
+    return `${names[0][0]}`.toUpperCase();
+  };
 
-  const candidates = [
-    {
-      id: 1,
-      name: "Yudi Sopiyudin",
-      location: "JFT Basic A2, Perhotelan,",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=96&fit=crop&crop=face",
-      badge: "belajar",
-    },
-    {
-      id: 2,
-      name: "Siti Nurhaliza",
-      location: "JFT Basic B1, Kuliner,",
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=96&fit=crop&crop=face",
-      badge: "aktif",
-    },
-    {
-      id: 3,
-      name: "Ahmad Ridwan",
-      location: "JFT Basic A3, Teknologi,",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=96&fit=crop&crop=face",
-      badge: "siap",
-    },
-    {
-      id: 4,
-      name: "Maria Gonzales",
-      location: "JFT Basic B2, Perawatan,",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=96&fit=crop&crop=face",
-      badge: "tersedia",
-    },
-  ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % candidates.length);
-    }, 4000);
+// / --- Fungsi untuk mengubah data API ke format yang dibutuhkan ---
+const transformApiData = (apiData) => {
+  console.log(apiData);
+  
+  const formattedData = [];
+  
+  apiData.forEach(period => {
+    // Cek dan proses data Siswa Terbaik
+    if (period.best_student) {
+      formattedData.push({
+        id: `student-${period.best_student.id}`,
+        category: "Siswa Terbaik",
+        name: period.best_student.nama_lengkap,
+        image: `https://placehold.co/600x400/003366/FFFFFF?text=${getInitials(period.best_student.nama_lengkap)}`,
+        description: period.best_student.prestasi || "Siswa dengan prestasi gemilang selama masa pendidikan.",
+        details: {
+          "Nama Lengkap": period.best_student.nama_lengkap,
+          "Jurusan": period.best_student.jurusan || "Tidak disebutkan",
+          "Angkatan": period.best_student.angkatan || "Tidak disebutkan",
+          "Prestasi": period.best_student.prestasi || "Tidak disebutkan",
+        }
+      });
+    }
 
-    return () => clearInterval(interval);
-  }, [candidates.length]);
+    // Cek dan proses data Pekerja Lapangan Terbaik
+    if (period.field_officiers) {
+      formattedData.push({
+        id: `officer-${period.field_officiers.id}`,
+        category: "Pekerja Lapangan Terbaik",
+        name: period.field_officiers.nama_lengkap,
+        image: `https://placehold.co/600x400/F5A200/000000?text=${getInitials(period.field_officiers.nama_lengkap)}`,
+        description: `Visi: "${period.field_officiers.visi}"`,
+        details: {
+          "Nama Lengkap": period.field_officiers.nama_lengkap,
+          "Area Penugasan": period.field_officiers.area_penugasan,
+          "Rating Kinerja": period.field_officiers.performance_rating,
+          "Misi": period.field_officiers.misi,
+        },
+        document: {
+          "file_path" : period.field_officiers.document.file_path
+        }
+      });
+    }
 
-  const currentCandidate = candidates[currentIndex];
+    // Cek dan proses data Sensei Terbaik
+    if (period.sensei) {
+      formattedData.push({
+        id: `sensei-${period.sensei.id}`,
+        category: "Sensei Terbaik",
+        name: period.sensei.nama_lengkap,
+        image: `https://placehold.co/600x400/EFEFEF/000000?text=${getInitials(period.sensei.nama_lengkap)}`,
+        description: `Keunggulan: "${period.sensei.keunggulan_diri}"`,
+        details: {
+          "Nama Lengkap": period.sensei.nama_lengkap,
+          "Bidang Keahlian": period.sensei.bidang_keahlian || "Tidak disebutkan",
+          "Pengalaman": period.sensei.pengalaman || "Tidak disebutkan",
+          "Hobi": period.sensei.hobi || "Tidak disebutkan",
+        }
+      });
+    }
+  });
 
-  return (
-    <div className="w-full bg-gray-50 p-4 md:p-6">
-      <motion.div
-        className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        {/* Header */}
-        <motion.div
-          className="bg-white px-4 py-3 border-b border-gray-200"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          <h2 className="text-lg md:text-xl md:text-center font-semibold text-gray-800">
-            Kandidat Terbaik
-          </h2>
-        </motion.div>
-
-        <div className="flex flex-col md:items-center lg:flex-row">
-          {/* Left Section - Profile Carousel */}
-          <motion.div
-            className="flex-1 p-6 lg:max-w-[25%]"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            <div className="flex flex-col items-center gap-4">
-              {/* Profile Image */}
-              <motion.div
-                className="relative"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="w-[160pt] lg:w-[140pt] h-[120pt] lg:h-[110pt] bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg overflow-hidden shadow-md">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={currentCandidate.id}
-                      src={currentCandidate.image}
-                      alt="Profile"
-                      className="w-full h-full object-cover object-center"
-                      initial={{ opacity: 0, scale: 1.1 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.5 }}
-                    />
-                  </AnimatePresence>
-                </div>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`badge-${currentCandidate.id}`}
-                    className="absolute -bottom-2 -right-2 bg-blue-600 text-white text-sm px-4 py-2 rounded-full font-medium shadow-lg"
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0, opacity: 0 }}
-                    transition={{ delay: 0.2, type: "spring", stiffness: 500 }}
-                  >
-                    {currentCandidate.badge}
-                  </motion.div>
-                </AnimatePresence>
-              </motion.div>
-
-              {/* Profile Info */}
-              <div className="flex-1 min-w-0 text-center">
-                <AnimatePresence mode="wait">
-                  <motion.h3
-                    key={`name-${currentCandidate.id}`}
-                    className="text-lg font-semibold text-gray-900 mb-2"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {currentCandidate.name}
-                  </motion.h3>
-                </AnimatePresence>
-
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`location-${currentCandidate.id}`}
-                    className="flex items-center gap-2 text-sm md:text-base text-gray-600 mb-3"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                  >
-                    <svg
-                      className="w-4 h-4"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span>{currentCandidate.location}</span>
-                  </motion.div>
-                </AnimatePresence>
-
-                <motion.button
-                  className="text-blue-600 text-sm md:text-base font-medium hover:text-blue-800 transition-colors"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6, duration: 0.5 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Lihat Profil &gt;
-                </motion.button>
-
-                {/* Carousel Indicators */}
-                <div className="flex justify-center gap-2 mt-4">
-                  {candidates.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === currentIndex
-                          ? "bg-blue-600 w-6"
-                          : "bg-gray-300 hover:bg-gray-400"
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Center Section - Description */}
-          <motion.div
-            className="flex-1 px-6 py-6 lg:border-l lg:border-r border-gray-200"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            <motion.div
-              className="text-center mb-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            >
-              <p className="text-blue-600 font-medium text-sm md:text-base leading-relaxed">
-                Dukungan total profesional untuk merekrut tenaga kerja asing
-                untuk pertama kalinya
-              </p>
-              <motion.p
-                className="text-blue-600 text-sm md:text-base mt-1"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-              >
-                ~Merekrut tenaga kerja asing~
-              </motion.p>
-            </motion.div>
-
-            <motion.div
-              className="space-y-3 text-sm text-gray-700"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              <motion.div
-                className="flex items-start gap-3"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <input
-                  type="checkbox"
-                  checked
-                  readOnly
-                  className="checkbox checkbox-sm mt-0.5 checkbox-primary"
-                />
-                <div>
-                  <span className="md:text-lg font-medium">
-                    Dukungan posting pekerjaan
-                  </span>
-                  <span className="ml-2 md:text-lg">
-                    Temukan bakat yang dicari perusahaan Anda
-                  </span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="flex items-start gap-3"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <input
-                  type="checkbox"
-                  checked
-                  readOnly
-                  className="checkbox checkbox-sm mt-0.5 checkbox-primary"
-                />
-                <div>
-                  <span className="md:text-lg font-medium">
-                    Dukungan pemrosesan dokumen
-                  </span>
-                  <span className="ml-2 md:text-lg">
-                    Spesialis akan mendukung Anda mulai dari persiapan dokumen
-                    hingga pengajuan atas nama Anda.
-                  </span>
-                </div>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Section - Stats */}
-          <motion.div
-            className="w-full lg:w-80 bg-gradient-to-br from-blue-600 to-blue-700 text-white p-6"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            <div className="text-center">
-              <motion.div
-                className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-2xl mb-4"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.8, type: "spring", stiffness: 300 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-              >
-                <svg
-                  className="w-8 h-8"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </motion.div>
-
-              <motion.div
-                className="mb-2"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.5 }}
-              >
-                <motion.span
-                  className="text-3xl font-bold"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1, duration: 0.5 }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  10841
-                </motion.span>
-                <span className="text-xl ml-1">+</span>
-              </motion.div>
-
-              <motion.p
-                className="text-blue-100 text-sm md:text-lg mb-6"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.1, duration: 0.5 }}
-              >
-                Jumlah pencari kerja
-              </motion.p>
-
-              <motion.button
-                className="inline-flex items-center gap-2 text-white font-medium text-base md:text-lg hover:text-blue-100 transition-colors group"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span>Temukan lebih lanjut</span>
-                <motion.svg
-                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  whileHover={{ x: 3 }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </motion.svg>
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </motion.div>
-    </div>
-  );
+  return formattedData;
 };
 
-export default CandidateCard;
+function CandidateCard({ onSeeAllClick }) {
+  const [awardWinnersData, setAwardWinnersData] = useState([]);
+  const [[page, direction], setPage] = useState([0, 0]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPerson, setSelectedPerson] = useState(null);
+  const [datas, setDatas] = useState(null);
+
+  // --- Animation Variants ---
+  const slideVariants = {
+    enter: (direction) => ({ x: direction > 0 ? '100%' : '-100%', opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (direction) => ({ x: direction < 0 ? '100%' : '-100%', opacity: 0 }),
+  };
+  const contentContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { delayChildren: 0.3, staggerChildren: 0.15 } }
+  };
+  const contentItemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100 } }
+  };
+
+// --- Fetch data from API ---
+const fetchData = async () => {
+  try {
+    const response = await api.get('/active-kandidats');
+    setDatas(response.data.data || []); // pastikan default []
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    setDatas([]); // fallback supaya tidak crash
+  }
+};
+
+// --- Trigger fetch on mount ---
+useEffect(() => {
+  fetchData();
+}, []);
+
+// --- Transform data after `datas` is updated ---
+useEffect(() => {
+  if (datas && datas.length > 0) {
+    const formattedData = transformApiData(datas);
+    setAwardWinnersData(formattedData);
+  }
+}, [datas]);
+
+
+  // --- Logika untuk carousel ---
+  const currentIndex = awardWinnersData.length > 0 ? (page < 0 ? (awardWinnersData.length - (Math.abs(page) % awardWinnersData.length)) % awardWinnersData.length : page % awardWinnersData.length) : 0;
+  const paginate = (newDirection) => {
+    setPage([page + newDirection, newDirection]);
+  };
+  const handleViewDetails = (person) => {
+    setSelectedPerson(person);
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  // --- Auto-slide effect ---
+  useEffect(() => {
+    if (awardWinnersData.length > 1) {
+      const timer = setInterval(() => paginate(1), 5000);
+      return () => clearInterval(timer);
+    }
+  }, [page, awardWinnersData.length]);
+
+  if (awardWinnersData.length === 0) {
+    return (
+      <div className="bg-[#F4F8FB] min-h-screen flex items-center justify-center">
+        <p className="text-gray-500">Memuat data talenta terbaik...</p>
+      </div>
+    );
+  }
+  
+  const person = awardWinnersData[currentIndex];
+
+
+  return (
+   <>
+    <div className="bg-[#F4F8FB] min-h-screen font-sans flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+      <div className="w-full max-w-6xl mx-auto">
+        <div className="text-center mb-8 md:mb-12">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-[#003366]">Talenta Terbaik Kami</h1>
+          <p className="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Figur-figur inspiratif yang menjadi bukti nyata dari komitmen dan kualitas kami.</p>
+        </div>
+
+        {/* --- Unified Responsive Carousel --- */}
+        <div className="relative h-[550px] sm:h-[480px] md:h-[400px]">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={page}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ x: { type: "spring", stiffness: 250, damping: 30 }, opacity: { duration: 0.3 } }}
+              className="absolute w-full h-full"
+            >
+              <div className="bg-white shadow-lg rounded-2xl overflow-hidden md:flex h-full">
+                <div className="md:w-1/2">
+                  <img src={
+                      person?.document?.file_path != undefined
+                      ? import.meta.env.VITE_STORAGE_IMG + person?.document?.file_path
+                      : person.image
+                    } alt={person.nama_lengkap} className="w-full h-64 md:h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/CCCCCC/FFFFFF?text=Image+Error'; }} />
+                </div>
+                <motion.div className="p-6 md:p-8 lg:p-12 flex flex-col justify-center md:w-1/2" variants={contentContainerVariants} initial="hidden" animate="visible">
+                  <motion.h3 variants={contentItemVariants} className="text-2xl lg:text-3xl font-bold text-[#003366]">{person.category}</motion.h3>
+                  <motion.p variants={contentItemVariants} className="text-lg font-medium text-gray-800 mt-1">{person.name}</motion.p>
+                  <motion.p variants={contentItemVariants} className="mt-4 text-gray-600 flex-grow">{person.description}</motion.p>
+                  <motion.div variants={contentItemVariants}>
+                    <motion.button onClick={() => handleViewDetails(person)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-6 w-full sm:w-auto self-start bg-[#F5A200] text-white font-bold py-3 px-8 rounded-full hover:bg-[#E09300] focus:outline-none focus:ring-4 focus:ring-[#F5A200]/50">
+                      Lihat Detail
+                    </motion.button>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+          <button onClick={() => paginate(-1)} className="absolute top-1/2 left-2 md:-left-4 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow-md transition z-10">
+            <ChevronLeft className="text-[#003366]" size={28} />
+          </button>
+          <button onClick={() => paginate(1)} className="absolute top-1/2 right-2 md:-right-4 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow-md transition z-10">
+            <ChevronRight className="text-[#003366]" size={28} />
+          </button>
+        </div>
+        
+        <div className="flex justify-center mt-6 space-x-2">
+          {awardWinnersData.map((_, index) => (
+            <button key={index} onClick={() => { const diff = index - currentIndex; setPage([page + diff, diff > 0 ? 1 : -1]); }} className={`w-3 h-3 rounded-full transition-all duration-300 ${currentIndex === index ? 'bg-[#003366] scale-125' : 'bg-gray-300 hover:bg-gray-400'}`} />
+          ))}
+        </div>
+
+        <div className="mt-12 md:mt-16 text-center bg-white p-8 rounded-2xl shadow-md border border-gray-200">
+          <h3 className="text-2xl font-bold text-[#003366]">Jumlah Pencari Kerja Terus Bertambah</h3>
+          <p className="mt-2 text-gray-600">Bergabunglah dengan ratusan talenta lainnya yang siap meraih masa depan cerah di Jepang.</p>
+          <motion.button onClick={() => onSeeAllClick() } whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-6 bg-[#003366] text-white font-bold py-3 px-8 rounded-full hover:bg-[#002244] focus:outline-none focus:ring-4 focus:ring-[#003366]/50">
+            Temukan Lebih Lanjut
+          </motion.button>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {isModalOpen && <DetailModal person={selectedPerson} onClose={handleCloseModal} />}
+      </AnimatePresence>
+    </div>
+   </>
+  )
+}
+
+export default CandidateCard
