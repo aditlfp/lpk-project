@@ -336,7 +336,7 @@ function AllCandidatePage({ onBackClick }) {
             Kandidat Terbaik Saat Ini
           </h1>
           <p className="text-lg text-gray-600 mt-2">
-            Jelajahi siswa, petugas lapangan, dan sensei.
+            Jelajahi siswa, marketing, dan sensei.
           </p>
         </header>
 
@@ -360,7 +360,7 @@ function AllCandidatePage({ onBackClick }) {
                 : "text-gray-600 hover:bg-gray-300"
             }`}
           >
-            Petugas Lapangan
+            Marketing
           </button>
           <button
             onClick={() => setActiveTab("sensei")}
