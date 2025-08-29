@@ -44,7 +44,7 @@ const transformApiData = (apiData) => {
     if (period.field_officiers) {
       formattedData.push({
         id: `officer-${period.field_officiers.id}`,
-        category: "Marketing Terbaik",
+        category: "Marketing",
         name: period.field_officiers.nama_lengkap,
         image: `https://placehold.co/600x400/F5A200/000000?text=${getInitials(
           period.field_officiers.nama_lengkap
