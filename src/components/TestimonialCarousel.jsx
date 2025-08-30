@@ -174,10 +174,10 @@ export default function TestimoniCarousel() {
                     />
                     {/* Rating */}
                     <div className="flex justify-center mb-2">
-                      {[...Array(item.rating)].map((_, starIndex) => (
+                      {[...Array(Number(item.rating) || 0)].map((_, starIndex) => (
                         <span
                           key={starIndex}
-                          className="text-blue-400 text-base sm:text-lg md:text-xl mx-0.5"
+                          className="text-blue-400 text-xl mx-0.5"
                         >
                           ★
                         </span>
