@@ -105,7 +105,7 @@ export default function TestimoniCarousel() {
       >
         {data.map((item) => {
           const bgImage = item.image_foto
-            ? `http://localhost:8000/storage/${item.image_foto}`
+            ? `${import.meta.env.VITE_BACKEND_URL_STORAGE + item.image_foto}`
             : fallbackImage;
           return (
             <SwiperSlide key={item.id}>
