@@ -50,7 +50,7 @@ export default function TestimoniCarousel() {
   const fallbackImage = useMemo(() => {
     const found = data.find((item) => item.image_foto !== null);
     return found
-      ? `http://localhost:8000/storage/${found.image_foto}`
+      ? `${import.meta.env.VITE_BACKEND_URL_STORAGE + found.image_foto}`
       : "/default.jpg";
   }, [data]);
 
