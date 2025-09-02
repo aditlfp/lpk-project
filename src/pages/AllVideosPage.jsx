@@ -16,6 +16,7 @@ const ErrorMessage = ({ message }) => (
   </div>
 );
 
+
 export default function AllVideosPage({ onBackClick }) {
   // We'll modify useApiData to fetch all videos
   const { videos, isLoading, error } = useApiData(true); // Pass true to fetch all
