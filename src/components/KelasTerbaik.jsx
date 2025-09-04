@@ -1,48 +1,51 @@
 import { FaClock, FaStar } from "react-icons/fa";
-import kelas from "../assets/img_fix/kelas.jpg";
-import kelas2 from "../assets/img_fix/kelas2.jpg";
 import { FaMedal } from "react-icons/fa6";
+import api from "../utils/axios";
+import { useEffect, useState } from "react";
+import StarRating from "./partials/StarRating";
+import ButtonBlue from "./partials/ButtonBlue";
 
-const kelasData = [
-  {
-    title: "Kelas JF-TEST Asa Hikari Mulya",
-    duration: "1.5 Bulan Pendidikan",
-    sertifikat: true,
-    description:
-      "Kelas JF-Test diperuntukan bagi peserta yang telah menguasai bahasa Jepang dan ingin mendapatkan sertifikat untuk memenuhi persyaratan Specified Skill Worker (SSW) dan memiliki peluang untuk bekerja ke Jepang.",
-    image: kelas,
-    rating: 4.8,
-  },
-  {
-    title: "Kelas BASIC Asa Hikari Mulya",
-    duration: "3 Bulan Pendidikan",
-    sertifikat: true,
-    description:
-      "Kelas Basic direkomendasikan bagi peserta yang memiliki keinginan untuk siap bekerja di Jepang. Kelas BASIC meliputi pendidikan dasar bahasa Jepang serta Budaya dan etika di negara Jepang.",
-    image: kelas2,
-    rating: 4.9,
-  },
-  {
-    title: "Kelas BASIC Asa Hikari Mulya",
-    duration: "3 Bulan Pendidikan",
-    sertifikat: true,
-    description:
-      "Kelas Basic direkomendasikan bagi peserta yang memiliki keinginan untuk siap bekerja di Jepang. Kelas BASIC meliputi pendidikan dasar bahasa Jepang serta Budaya dan etika di negara Jepang.",
-    image: kelas2,
-    rating: 5.0,
-  },
-  {
-    title: "Kelas BASIC Asa Hikari Mulya",
-    duration: "3 Bulan Pendidikan",
-    sertifikat: true,
-    description:
-      "Kelas Basic direkomendasikan bagi peserta yang memiliki keinginan untuk siap bekerja di Jepang. Kelas BASIC meliputi pendidikan dasar bahasa Jepang serta Budaya dan etika di negara Jepang.",
-    image: kelas2,
-    rating: 5.0,
-  },
-];
+const KelasTerbaik = ({onSeeAllClick}) => {
+  const [data, setData] = useState(null)
+  const [isLoading, setLoading] = useState(true)
 
-const KelasTerbaik = () => {
+  const fetchData = async() => {
+    try {
+      const res = await api.get('/lpk-classes')
+      const allData = res.data.data;
+
+      const activeData = allData.filter(item => item.active);
+
+      const last4Active = activeData.slice(-4);
+      setData(last4Active);
+      setLoading(false)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+ if (isLoading) {
+    return (
+      <>
+        <div className="bg-[#F4F8FB] min-h-screen flex items-center justify-center">
+          <p className="text-gray-500">Memuat data kelas LPK...</p>
+        </div>
+      </>
+    );
+  }
+
+  if(data.length === 0){
+    return (
+      <div className="bg-[#F4F8FB] min-h-screen flex items-center justify-center">
+          <p className="text-gray-500">Data saat ini belum tersedia</p>
+      </div>
+    )
+  }
+
   return (
     <section id="kelas" className="py-16 px-4 text-center">
       <p className="text-sm md:text-base text-blue-500 font-medium">
@@ -69,14 +72,14 @@ const KelasTerbaik = () => {
       </p>
 
       <div className="mt-12 md:grid gap-4 md:gap-4 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-[90rem] mx-auto justify-center items-center">
-        {kelasData.map((kelas, idx) => (
+        {data?.map((kelas, idx) => (
           <div
             key={idx}
             className="bg-blue-950 text-white rounded-xl my-5 sm:my-0 shadow-lg overflow-hidden w-full md:w-[22rem] lg:w-full flex flex-col"
             style={{ height: "100%" }} // optional if wrapping with grid
           >
             <img
-              src={kelas.image}
+              src={import.meta.env.VITE_BACKEND_URL_STORAGE +kelas.image}
               alt={kelas.title}
               className="w-full h-56 object-cover"
             />
@@ -89,27 +92,29 @@ const KelasTerbaik = () => {
                 <div className="flex items-center justify-between gap-4 text-sm md:text-base mb-3 text-blue-300">
                   <div className="flex items-center gap-1">
                     <FaClock />
-                    <span>{kelas.duration}</span>
+                    <span>{kelas.waktu_pendidikan}</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <FaMedal />
-                    <span>Bersertifikat</span>
-                  </div>
+                  {kelas?.bersertifikat ? (
+                    <div className="flex items-center gap-1">
+                      <FaMedal />
+                      <span>Bersertifikat</span>
+                    </div>
+                  ) : (
+                    <span>Tidak Bersetifikat</span>
+                  )
+                
+                }
+
                 </div>
                 <p className="text-gray-300 text-sm md:text-base text-justify">
-                  {kelas.description}
+                  {kelas.desc}
                 </p>
               </div>
 
               {/* Footer always at bottom */}
               <div className="mt-5 flex justify-between items-end">
                 <div className="flex items-center gap-1 text-blue-400 text-sm md:text-lg">
-                  <span>{kelas.rating}</span>
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
+                  <StarRating rating={kelas.rating}/>
                 </div>
                 <a
                   href={import.meta.env.VITE_URL_SIGN_UP}
@@ -122,6 +127,13 @@ const KelasTerbaik = () => {
           </div>
         ))}
       </div>
+      <div className="flex justify-center items-center mt-10">
+          <ButtonBlue
+            title={"Lihat Selengkapnya"}
+            navigateToLink={onSeeAllClick}
+            className={"hover:shadow-md btn-sm text-lg"}
+          />
+        </div>
     </section>
   );
 };

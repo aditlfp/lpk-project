@@ -17,6 +17,7 @@ import RequirementPages from './pages/RequirementPages';
 import AllVideosPage from './pages/AllVideosPage';
 import AllSswPage from './pages/AllSswPage';
 import AllCandidatePage from './pages/AllCandidatePage';
+import AllClassesPage from './pages/AllClassesPage';
 
 // This is the main application component
 export default function App() {
@@ -48,6 +49,11 @@ export default function App() {
     window.scrollTo(0,0);
   }
 
+  const navigateToAllClasses = () => {
+    setCurrentPage('all-classes');
+    window.scrollTo(0,0);
+  }
+
 
   // This function decides which set of components to render based on the currentPage state.
   const renderPage = () => {
@@ -61,7 +67,7 @@ export default function App() {
             <VideoGallerySection onSeeAllClick={navigateToAllVideos} />
             <EmployeRequired />
             <CandidateCard onSeeAllClick={navigateToAllCandidate} />
-            <KelasTerbaik />
+            <KelasTerbaik onSeeAllClick={navigateToAllClasses}/>
             <SSWTokuteiGinou onSeeAllClick={navigateToAllSsw}/>
             <TestimonialCarousel />
             <CallToAction />
@@ -89,6 +95,8 @@ export default function App() {
         return <AllSswPage onBackClick={navigateToHome} />
       case 'all-candidate':
         return <AllCandidatePage onBackClick={navigateToHome} />
+      case 'all-classes':
+        return <AllClassesPage onBackClick={navigateToHome} />
       default:
         // Render the home page by default if the state is not recognized.
         // The component order for this page is also preserved.
@@ -98,7 +106,7 @@ export default function App() {
             <VideoGallerySection onSeeAllClick={navigateToAllVideos} />
             <EmployeRequired />
             <CandidateCard onSeeAllClick={navigateToAllCandidate}/>
-            <KelasTerbaik />
+            <KelasTerbaik onSeeAllClick={navigateToAllClasses}/>
             <SSWTokuteiGinou onSeeAllClick={navigateToAllSsw}/>
             <TestimonialCarousel />
             <CallToAction />
