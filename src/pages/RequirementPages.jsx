@@ -27,12 +27,12 @@ function RequirementPages({ onBackClick }) {
             <li> 10. Surat pernyataan kesanggupan</li>
             <li>
               11. Pas Photo 3x4, 4x6 (Laki/Perempuan Baju putih berdasi,
-              baground merah, LakiLaki rambut rapi/perempuan tanpa Hijab)
+              background merah, LakiLaki rambut rapi/perempuan tanpa Hijab)
               masing-masing berjumlah 5 lembar
             </li>
             <li>
-              12. Foto full badan sisi depan, belakang, kanan, dan kiri. (Baju
-              (Laki/Perempuan Baju pu0h berdasi, baground merah, LakiLaki rambut
+              12. Foto full badan sisi depan, belakang, kanan, dan kiri.
+              (Laki/Perempuan Baju putih berdasi, background merah, LakiLaki rambut
               rapi/perempuan tanpa Hijab)
             </li>
           </ul>
