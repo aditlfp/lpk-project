@@ -1,34 +1,39 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
-import pdf_file from "../assets/pdf_file/requirement.pdf"
+import pdf_file from "../assets/pdf_file/requirement.pdf";
 import { ArrowLeft } from "lucide-react";
-function RequirementPages({onBackClick}) {
+function RequirementPages({ onBackClick }) {
   const faqItems = [
     {
       question: "Persyaratan untuk mendaftar siswa",
       answer: (
         <>
           <div className="flex justify-between items-center">
-              <p className="mb-2">Syarat Wajib </p>
-             {/* <a href={pdf_file} download="my_file.pdf">
+            <p className="mb-2">Syarat Wajib </p>
+            {/* <a href={pdf_file} download="my_file.pdf">
               <button className="btn btn-sm rounded-sm">Download PDF</button>
             </a> */}
           </div>
           <ul className="list-disc pl-5 space-y-1">
-            <li>1. Scan KTP Pendaftar </li>
+            <li> 1. Scan KTP Pendaftar </li>
             <li> 2. Scan KTP Orang Tua/Wali</li>
             <li> 3. Scan Akta Kelahiran</li>
             <li> 4. Scan Kartu Keluarga</li>
             <li> 5. Scan Ijazah SD/MI, SMP/Mts, SMA/SMK/MA</li>
-            <li> 6. Scan Ijazah Sarjana</li>
+            <li> 6. Scan Ijazah Sarjana ( Opsional )</li>
             <li> 7. Surat keterangan sehat dari dokter/klinik/puskesmas</li>
             <li> 8. Surat Izin Orang Tua/Wali/Suami/Istri</li>
-            <li> 9. Sertifikat keahlian (Opsional)</li>
+            <li> 9. Sertifikat keahlian ( Opsional )</li>
             <li> 10. Surat pernyataan kesanggupan</li>
             <li>
               11. Pas Photo 3x4, 4x6 (Laki/Perempuan Baju putih berdasi,
               baground merah, LakiLaki rambut rapi/perempuan tanpa Hijab)
               masing-masing berjumlah 5 lembar
+            </li>
+            <li>
+              12. Foto full badan sisi depan, belakang, kanan, dan kiri. (Baju
+              (Laki/Perempuan Baju pu0h berdasi, baground merah, LakiLaki rambut
+              rapi/perempuan tanpa Hijab)
             </li>
           </ul>
         </>
@@ -39,8 +44,8 @@ function RequirementPages({onBackClick}) {
       answer: (
         <>
           <div className="flex justify-between items-center">
-              <p className="mb-2">Syarat Wajib </p>
-             {/* <a href={pdf_file} download="my_file.pdf">
+            <p className="mb-2">Syarat Wajib </p>
+            {/* <a href={pdf_file} download="my_file.pdf">
               <button className="btn btn-sm rounded-sm">Download PDF</button>
             </a> */}
           </div>
@@ -77,8 +82,8 @@ function RequirementPages({onBackClick}) {
       <div className="max-w-3xl mx-auto space-y-4">
         <div className="flex flex-col gap-y-4 mb-2 md:mb-10">
           <div className="flex">
-            <button 
-              onClick={onBackClick} 
+            <button
+              onClick={onBackClick}
               className="p-2 rounded-full hover:bg-gray-200 transition-colors mr-4"
               aria-label="Kembali ke halaman utama"
             >
@@ -120,7 +125,6 @@ function RequirementPages({onBackClick}) {
             <div
               ref={(el) => (contentRefs.current[i] = el)}
               className="overflow-hidden transition-all duration-500 bg-white px-6 text-sm md:text-xl text-gray-800"
-             
             >
               <div className="py-8">{item.answer}</div>
             </div>
