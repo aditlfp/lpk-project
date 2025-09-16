@@ -350,7 +350,7 @@ const KelasTerbaik = ({ onSeeAllClick }) => {
   }
 
   return (
-    <section ref={sectionRef} id="kelas" className="py-16 px-4 text-center">
+    <section ref={sectionRef} id="kelas" className="py-16 px-4 text-center mb-20">
       <p ref={headerRef} className="text-sm md:text-base text-blue-500 font-medium">
         Kelas Terbaik Asa Hikari Mulya
       </p>

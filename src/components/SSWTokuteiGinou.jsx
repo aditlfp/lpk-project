@@ -260,7 +260,7 @@ const SSWTokuteiGinou = ({ onSeeAllClick }) => {
           style={{ animationDuration: "2.5s" }}
         ></div>
 
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <div className="container mx-auto px-4 text-center mt-16">
           <h1 ref={titleRef} className="text-4xl font-bold mb-8 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-lg">
             Specified Skilled Worker (SSW) / Tokutei Ginou
           </h1>
