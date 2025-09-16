@@ -198,15 +198,6 @@ export default function TestimoniCarousel() {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* Custom Pagination */}
-      <div className="mt-6 flex justify-center">
-        <Pagination
-          currentPage={meta.current_page}
-          totalPages={meta.last_page}
-          onPageChange={(page) => fetchData(page)}
-        />
-      </div>
     </div>
   );
 }

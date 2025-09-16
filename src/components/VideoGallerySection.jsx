@@ -31,8 +31,7 @@ export default function VideoGallerySection({ onSeeAllClick }) {
 
   return (
     <section className="pt-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
+      {/* <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-blue-400 text-sm md:text-base font-medium mb-2 tracking-wide">
             Cuplikan Video Asa Hikari Mulya
@@ -42,7 +41,6 @@ export default function VideoGallerySection({ onSeeAllClick }) {
           </h2>
         </div>
 
-         {/* Video Grid */}
           {videos.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:mx-10 lg:mx-20 gap-8">
               {videos.map((video) => (
@@ -54,11 +52,10 @@ export default function VideoGallerySection({ onSeeAllClick }) {
           )}
 
 
-        {/* View More Button - Now uses the passed-in function */}
         <div className="text-center pb-2 my-12">
           <ButtonBlue navigateToLink={onSeeAllClick} title={'Lihat Semua Video'} className={'btn-md hover:shadow-md'}/>
         </div>
-      </div>
+      </div> */}
 
       <div className="divider"></div>
 

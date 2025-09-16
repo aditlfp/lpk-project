@@ -6,11 +6,11 @@ import Navbar from "./components/Navbar";
 import KelasTerbaik from "./components/KelasTerbaik";
 import TestimonialCarousel from "./components/TestimonialCarousel";
 import VideoGallerySection from "./components/VideoGallerySection";
-import CallToAction from "./components/CallToAction";
-import CustomFAQ from "./components/CustomFAQ";
+// import CallToAction from "./components/CallToAction";
+// import CustomFAQ from "./components/CustomFAQ";
 import Footer from "./components/Footer";
-import SSWTokuteiGinou from "./components/SSWTokuteiGinou";
-import EmployeRequired from "./components/EmployeRequired";
+// import SSWTokuteiGinou from "./components/SSWTokuteiGinou";
+// import EmployeRequired from "./components/EmployeRequired";
 import CandidateCard from "./components/CandidateCard";
 import WhatsappBubble from "./components/WhatsappBubble";
 import RequirementPages from './pages/RequirementPages';
@@ -65,13 +65,13 @@ export default function App() {
             {/* These components are part of the main landing page */}
             <HeroSection navigateTo={navigateTo} />
             <VideoGallerySection onSeeAllClick={navigateToAllVideos} />
-            <EmployeRequired />
+            {/* <EmployeRequired /> */}
             <CandidateCard onSeeAllClick={navigateToAllCandidate} />
             <KelasTerbaik onSeeAllClick={navigateToAllClasses}/>
-            <SSWTokuteiGinou onSeeAllClick={navigateToAllSsw}/>
+            {/* <SSWTokuteiGinou onSeeAllClick={navigateToAllSsw}/> */}
             <TestimonialCarousel />
-            <CallToAction />
-            <CustomFAQ />
+            {/* <CallToAction /> */}
+            {/* <CustomFAQ /> */}
           </>
         );
       case 'program':
@@ -80,8 +80,8 @@ export default function App() {
           <>
             {/* The component order for this page is defined here. */}
             <h2 className="text-4xl font-bold text-center my-8">Program Details</h2>
-            <SSWTokuteiGinou />
-            <EmployeRequired />
+            {/* <SSWTokuteiGinou /> */}
+            {/* <EmployeRequired /> */}
             <CandidateCard onSeeAllClick={navigateToAllCandidate}/>
           </>
         );
@@ -104,13 +104,13 @@ export default function App() {
           <>
             <HeroSection navigateTo={navigateTo}/>
             <VideoGallerySection onSeeAllClick={navigateToAllVideos} />
-            <EmployeRequired />
+            {/* <EmployeRequired /> */}
             <CandidateCard onSeeAllClick={navigateToAllCandidate}/>
             <KelasTerbaik onSeeAllClick={navigateToAllClasses}/>
-            <SSWTokuteiGinou onSeeAllClick={navigateToAllSsw}/>
+            {/* <SSWTokuteiGinou onSeeAllClick={navigateToAllSsw}/> */}
             <TestimonialCarousel />
-            <CallToAction />
-            <CustomFAQ />
+            {/* <CallToAction /> */}
+            {/* <CustomFAQ /> */}
           </>
         );
     }
@@ -122,7 +122,7 @@ export default function App() {
       {/* We pass the navigateTo function to the Navbar so it can change the app's state. */}
       <Navbar navigateTo={navigateTo} currentPage={currentPage}/>
       
-      <div className={`!min-h-screen !w-screen ${currentPage == 'requirement' ? '' : 'py-12'}`}>
+      <div className={`!min-h-screen !w-screen mb-12 ${currentPage == 'requirement' ? '' : 'py-12'}`}>
         {/* The content of the page is determined by the renderPage function */}
         {renderPage()}
       </div>
