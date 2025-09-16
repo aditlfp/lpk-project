@@ -10,20 +10,9 @@ import {
   Heart,
   Home,
 } from "lucide-react";
-import React, { useState, useEffect, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import { gsap } from "gsap";
 import api from "../utils/axios";
-
-// --- Variants ---
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
 
 // --- Helpers ---
 const fallbackImg = (fallbackUrl) => (e) => {
@@ -41,49 +30,89 @@ const InfoRow = ({ icon, label, value }) => (
   </div>
 );
 
-const BaseCard = ({ colorFrom, colorTo, ringColor, children }) => (
-  <motion.div
-    variants={cardVariants}
-    className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 border border-gray-100"
-  >
-    <div className={`h-2 bg-gradient-to-r ${colorFrom} ${colorTo}`}></div>
-    <div className="p-6">{children}</div>
-  </motion.div>
-);
+const BaseCard = ({ colorFrom, colorTo, ringColor, children, cardRef }) => {
+  useEffect(() => {
+    if (cardRef?.current) {
+      const card = cardRef.current;
+      
+      // Hover animation
+      const handleMouseEnter = () => {
+        gsap.to(card, {
+          y: -4,
+          scale: 1.02,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(card, {
+          y: 0,
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      };
+
+      card.addEventListener('mouseenter', handleMouseEnter);
+      card.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        card.removeEventListener('mouseenter', handleMouseEnter);
+        card.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
+  }, [cardRef]);
+
+  return (
+    <div
+      ref={cardRef}
+      className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
+    >
+      <div className={`h-2 bg-gradient-to-r ${colorFrom} ${colorTo}`}></div>
+      <div className="p-6">{children}</div>
+    </div>
+  );
+};
 
 // --- Card Components ---
-const StudentCard = ({ student }) => (
-  <BaseCard
-    colorFrom="from-purple-500"
-    colorTo="to-indigo-600"
-    ringColor="ring-purple-100"
-  >
-    <div className="flex items-center space-x-4 mb-4">
-      <img
-        className="h-20 w-20 rounded-full object-cover ring-4 ring-purple-100"
-        src={student.imageUrl}
-        alt={`${student.name}'s profile`}
-        onError={fallbackImg("https://placehold.co/100x100/EAD9F2/333?text=S")}
-      />
-      <div>
-        <h3 className="text-2xl font-bold text-gray-900">{student.name}</h3>
-        <p className="text-purple-600 font-semibold">{student.status}</p>
+const StudentCard = ({ student }) => {
+  const cardRef = useRef(null);
+  
+  return (
+    <BaseCard
+      colorFrom="from-purple-500"
+      colorTo="to-indigo-600"
+      ringColor="ring-purple-100"
+      cardRef={cardRef}
+    >
+      <div className="flex items-center space-x-4 mb-4">
+        <img
+          className="h-20 w-20 rounded-full object-cover ring-4 ring-purple-100"
+          src={student.imageUrl}
+          alt={`${student.name}'s profile`}
+          onError={fallbackImg("https://placehold.co/100x100/EAD9F2/333?text=S")}
+        />
+        <div>
+          <h3 className="text-2xl font-bold text-gray-900">{student.name}</h3>
+          <p className="text-purple-600 font-semibold">{student.status}</p>
+        </div>
       </div>
-    </div>
-    <div className="space-y-3 border-t border-gray-200 pt-4">
-      <InfoRow
-        icon={<Award size={18} />}
-        label="Lulus"
-        value={student.graduationYear}
-      />
-      <InfoRow
-        icon={<Home size={18} />}
-        label="Alamat"
-        value={student.address}
-      />
-    </div>
-  </BaseCard>
-);
+      <div className="space-y-3 border-t border-gray-200 pt-4">
+        <InfoRow
+          icon={<Award size={18} />}
+          label="Lulus"
+          value={student.graduationYear}
+        />
+        <InfoRow
+          icon={<Home size={18} />}
+          label="Alamat"
+          value={student.address}
+        />
+      </div>
+    </BaseCard>
+  );
+};
 
 const renderStars = (rating) => {
   const stars = [];
@@ -107,82 +136,92 @@ const renderStars = (rating) => {
   return stars;
 };
 
-const OfficerCard = ({ officer }) => (
-  <BaseCard
-    colorFrom="from-green-500"
-    colorTo="to-teal-600"
-    ringColor="ring-green-100"
-  >
-    <div className="flex items-center space-x-4 mb-4">
-      <img
-        className="h-20 w-20 rounded-full object-cover ring-4 ring-green-100"
-        src={officer.imageUrl}
-        alt={`${officer.name}'s profile`}
-        onError={fallbackImg("https://placehold.co/100x100/D4E7C5/333?text=O")}
-      />
-      <div>
-        <h3 className="text-2xl font-bold text-gray-900">{officer.name}</h3>
-        <p className="text-green-600 font-semibold flex items-center">
-          {renderStars(officer.rating)}
-          <span className="ml-2">{officer.rating}</span>
-        </p>
+const OfficerCard = ({ officer }) => {
+  const cardRef = useRef(null);
+  
+  return (
+    <BaseCard
+      colorFrom="from-green-500"
+      colorTo="to-teal-600"
+      ringColor="ring-green-100"
+      cardRef={cardRef}
+    >
+      <div className="flex items-center space-x-4 mb-4">
+        <img
+          className="h-20 w-20 rounded-full object-cover ring-4 ring-green-100"
+          src={officer.imageUrl}
+          alt={`${officer.name}'s profile`}
+          onError={fallbackImg("https://placehold.co/100x100/D4E7C5/333?text=O")}
+        />
+        <div>
+          <h3 className="text-2xl font-bold text-gray-900">{officer.name}</h3>
+          <p className="text-green-600 font-semibold flex items-center">
+            {renderStars(officer.rating)}
+            <span className="ml-2">{officer.rating}</span>
+          </p>
+        </div>
       </div>
-    </div>
-    <div className="space-y-3 border-t border-gray-200 pt-4">
-      <InfoRow
-        icon={<MapPin size={18} />}
-        label="Area Tugas"
-        value={officer.assignmentArea}
-      />
-      <InfoRow
-        icon={<Target size={18} />}
-        label="Misi"
-        value={officer.mission}
-      />
-      <InfoRow
-        icon={<BookOpen size={18} />}
-        label="Visi"
-        value={officer.vision}
-      />
-    </div>
-  </BaseCard>
-);
+      <div className="space-y-3 border-t border-gray-200 pt-4">
+        <InfoRow
+          icon={<MapPin size={18} />}
+          label="Area Tugas"
+          value={officer.assignmentArea}
+        />
+        <InfoRow
+          icon={<Target size={18} />}
+          label="Misi"
+          value={officer.mission}
+        />
+        <InfoRow
+          icon={<BookOpen size={18} />}
+          label="Visi"
+          value={officer.vision}
+        />
+      </div>
+    </BaseCard>
+  );
+};
 
-const SenseiCard = ({ sensei }) => (
-  <BaseCard
-    colorFrom="from-amber-500"
-    colorTo="to-orange-600"
-    ringColor="ring-amber-100"
-  >
-    <div className="flex items-center space-x-4 mb-4">
-      <img
-        className="h-20 w-20 rounded-full object-cover ring-4 ring-amber-100"
-        src={sensei.imageUrl}
-        alt={`${sensei.name}'s profile`}
-        onError={fallbackImg("https://placehold.co/100x100/FFD8B1/333?text=S")}
-      />
-      <div>
-        <h3 className="text-2xl font-bold text-gray-900">{sensei.name}</h3>
-        <p className="text-amber-600 font-semibold">
-          {sensei.experience || "Pengalaman tidak tersedia"}
-        </p>
+const SenseiCard = ({ sensei }) => {
+  const cardRef = useRef(null);
+  
+  return (
+    <BaseCard
+      colorFrom="from-amber-500"
+      colorTo="to-orange-600"
+      ringColor="ring-amber-100"
+      cardRef={cardRef}
+    >
+      <div className="flex items-center space-x-4 mb-4">
+        <img
+          className="h-20 w-20 rounded-full object-cover ring-4 ring-amber-100"
+          src={sensei.imageUrl}
+          alt={`${sensei.name}'s profile`}
+          onError={fallbackImg("https://placehold.co/100x100/FFD8B1/333?text=S")}
+        />
+        <div>
+          <h3 className="text-2xl font-bold text-gray-900">{sensei.name}</h3>
+          <p className="text-amber-600 font-semibold">
+            {sensei.experience || "Pengalaman tidak tersedia"}
+          </p>
+        </div>
       </div>
-    </div>
-    <div className="space-y-3 border-t border-gray-200 pt-4">
-      <InfoRow
-        icon={<Sparkles size={18} />}
-        label="Keunggulan"
-        value={sensei.strength}
-      />
-      <InfoRow icon={<Heart size={18} />} label="Hobi" value={sensei.hobby} />
-      <InfoRow
-        icon={<Home size={18} />}
-        label="Alamat"
-        value={sensei.address}
-      />
-    </div>
-  </BaseCard>
-);
+      <div className="space-y-3 border-t border-gray-200 pt-4">
+        <InfoRow
+          icon={<Sparkles size={18} />}
+          label="Keunggulan"
+          value={sensei.strength}
+        />
+        <InfoRow icon={<Heart size={18} />} label="Hobi" value={sensei.hobby} />
+        <InfoRow
+          icon={<Home size={18} />}
+          label="Alamat"
+          value={sensei.address}
+        />
+      </div>
+    </BaseCard>
+  );
+};
 
 // --- Data Mapping ---
 const mapStudent = (item, base) => {
@@ -235,6 +274,113 @@ const mapSensei = (item, base) => {
   };
 };
 
+/**
+ * Custom Hook: usePageAnimations
+ * Handles all GSAP animations for the page
+ */
+const usePageAnimations = (activeTab, filteredData, isLoading) => {
+  const containerRef = useRef(null);
+  const headerRef = useRef(null);
+  const tabsRef = useRef(null);
+  const searchRef = useRef(null);
+  const gridRef = useRef(null);
+  const paginationRef = useRef(null);
+
+  // Initial page load animation
+  useEffect(() => {
+    const elements = [
+      headerRef.current,
+      tabsRef.current,
+      searchRef.current,
+      paginationRef.current
+    ].filter(Boolean);
+
+    if (elements.length > 0) {
+      // Set initial states
+      gsap.set(elements, {
+        opacity: 0,
+        y: 30
+      });
+
+      // Animate elements in sequence
+      gsap.to(elements, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.1,
+        delay: 0.2
+      });
+    }
+  }, []);
+
+  // Tab change animation
+  useEffect(() => {
+    if (tabsRef.current) {
+      const activeButton = tabsRef.current.querySelector('.bg-white');
+      if (activeButton) {
+        gsap.fromTo(activeButton, {
+          scale: 0.95,
+          opacity: 0.8
+        }, {
+          scale: 1,
+          opacity: 1,
+          duration: 0.3,
+          ease: "back.out(1.7)"
+        });
+      }
+    }
+  }, [activeTab]);
+
+  // Grid animation when content changes
+  useEffect(() => {
+    if (!isLoading && gridRef.current && filteredData.length > 0) {
+      const cards = gridRef.current.children;
+      
+      // Set initial state for new cards
+      gsap.set(cards, {
+        opacity: 0,
+        y: 50,
+        scale: 0.9
+      });
+
+      // Animate cards in with stagger
+      gsap.to(cards, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.5,
+        ease: "power2.out",
+        stagger: 0.1
+      });
+    }
+  }, [activeTab, filteredData, isLoading]);
+
+  // Loading state animation
+  useEffect(() => {
+    if (isLoading && gridRef.current) {
+      gsap.to(gridRef.current, {
+        opacity: 0.5,
+        duration: 0.3
+      });
+    } else if (gridRef.current) {
+      gsap.to(gridRef.current, {
+        opacity: 1,
+        duration: 0.3
+      });
+    }
+  }, [isLoading]);
+
+  return {
+    containerRef,
+    headerRef,
+    tabsRef,
+    searchRef,
+    gridRef,
+    paginationRef
+  };
+};
+
 // --- Main Page ---
 function AllCandidatePage({ onBackClick }) {
   const [activeTab, setActiveTab] = useState("students");
@@ -251,6 +397,24 @@ function AllCandidatePage({ onBackClick }) {
     nextUrl: null,
     prevUrl: null,
   });
+
+  const filteredData = useMemo(() => {
+    const dataMap = { students, officers, sensei };
+    const currentData = dataMap[activeTab] || [];
+    if (!searchTerm) return currentData;
+    return currentData.filter((item) =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [searchTerm, activeTab, students, officers, sensei]);
+
+  const {
+    containerRef,
+    headerRef,
+    tabsRef,
+    searchRef,
+    gridRef,
+    paginationRef
+  } = usePageAnimations(activeTab, filteredData, isLoading);
 
   const fetchData = async (url) => {
     setIsLoading(true);
@@ -288,15 +452,6 @@ function AllCandidatePage({ onBackClick }) {
     fetchData("/active-kandidats");
   }, []);
 
-  const filteredData = useMemo(() => {
-    const dataMap = { students, officers, sensei };
-    const currentData = dataMap[activeTab] || [];
-    if (!searchTerm) return currentData;
-    return currentData.filter((item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }, [searchTerm, activeTab, students, officers, sensei]);
-
   const renderContent = () => {
     if (isLoading) {
       return (
@@ -322,9 +477,9 @@ function AllCandidatePage({ onBackClick }) {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen font-sans py-12 md:py-0 md:mt-24">
+    <div ref={containerRef} className="bg-gray-100 min-h-screen font-sans py-12 md:py-0 md:mt-24">
       <div className="container mx-auto px-4 py-8">
-        <header className="relative text-center mb-10">
+        <header ref={headerRef} className="relative text-center mb-10">
           <button
             onClick={onBackClick}
             className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full hover:bg-gray-200 transition-colors"
@@ -341,7 +496,7 @@ function AllCandidatePage({ onBackClick }) {
         </header>
 
         {/* Tabs */}
-        <div className="mb-8 p-1.5 bg-gray-200 rounded-xl flex justify-center max-w-md mx-auto">
+        <div ref={tabsRef} className="mb-8 p-1.5 bg-gray-200 rounded-xl flex justify-center max-w-md mx-auto">
           <button
             onClick={() => setActiveTab("students")}
             className={`w-full py-2.5 rounded-lg text-sm font-semibold transition-colors ${
@@ -375,7 +530,7 @@ function AllCandidatePage({ onBackClick }) {
         </div>
 
         {/* Search */}
-        <div className="mb-8 max-w-lg mx-auto">
+        <div ref={searchRef} className="mb-8 max-w-lg mx-auto">
           <input
             type="text"
             placeholder="Cari berdasarkan nama..."
@@ -386,18 +541,15 @@ function AllCandidatePage({ onBackClick }) {
         </div>
 
         {/* Content */}
-        <motion.div
-          key={activeTab}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+        <div
+          ref={gridRef}
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 min-h-[400px]"
         >
-          <AnimatePresence>{renderContent()}</AnimatePresence>
-        </motion.div>
+          {renderContent()}
+        </div>
 
         {/* Pagination */}
-        <div className="mt-12 flex justify-between items-center gap-x-4 md:gap-x-0">
+        <div ref={paginationRef} className="mt-12 flex justify-between items-center gap-x-4 md:gap-x-0">
           <button
             onClick={() => fetchData(pagination.prevUrl)}
             disabled={!pagination.prevUrl || isLoading}

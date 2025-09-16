@@ -1,4 +1,5 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
+import { gsap } from "gsap";
 import api from "../utils/axios";
 import ButtonBlue from "./partials/ButtonBlue";
 
@@ -9,17 +10,11 @@ import ButtonBlue from "./partials/ButtonBlue";
  * @returns {{ heroData: object, loading: boolean, error: object|null }}
  */
 const useHeroData = () => {
-  // --- State Management ---
-  // A single state object is more efficient than multiple useState calls.
-  // It triggers only one re-render when the data is updated.
   const [heroData, setHeroData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // --- Cleanup Flag ---
-    // This flag tracks whether the component is still mounted.
-    // It's set to false in the cleanup function.
     let isMounted = true;
 
     const fetchData = async () => {
@@ -33,18 +28,13 @@ const useHeroData = () => {
           (item) => item.is_pinned == 1
         );
 
-        // --- Check if Mounted Before State Update ---
         // Only update state if the component is still mounted.
         if (isMounted) {
             if (pinnedItems && pinnedItems.length > 0) {
-              // If there are multiple pinned items, sort them to find the most recent one.
-              // We assume a date field like 'updated_at' or 'created_at' exists.
-              // NOTE: Change 'updated_at' if your date field has a different name.
               pinnedItems.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
               
-              const latestHero = pinnedItems[0]; // The most recent item is now the first in the array.
+              const latestHero = pinnedItems[0]; 
               
-              // Update the state with the data from the latest hero item.
               setHeroData({
                 logo: latestHero.main_logo
                   ? import.meta.env.VITE_BACKEND_URL_STORAGE + latestHero.main_logo
@@ -56,18 +46,15 @@ const useHeroData = () => {
                 description: latestHero.desc,
               });
             } else {
-              // If no pinned hero is found, the state already holds the default content.
               console.log("No pinned hero item found. Using default content.");
             }
         }
       } catch (err) {
-        // In case of an error, log it and set the error state.
         console.error("Failed to fetch hero data:", err);
         if(isMounted) {
             setError(err);
         }
       } finally {
-        // This runs regardless of success or failure.
         if (isMounted) {
             setLoading(false);
         }
@@ -77,15 +64,184 @@ const useHeroData = () => {
     fetchData();
 
     // Cleanup function: This is called when the component unmounts.
-    // It sets our flag to false, preventing any pending state updates.
     return () => {
       isMounted = false;
     };
-  }, []); // The empty dependency array ensures this effect runs only once on mount.
+  }, []); 
 
   return { heroData, loading, error };
 };
 
+/**
+ * Custom Hook: useGSAPAnimations
+ * Handles all GSAP animations for the hero section
+ */
+const useGSAPAnimations = (heroData, loading) => {
+  const containerRef = useRef(null);
+  const logoRef = useRef(null);
+  const titleRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const buttonsRef = useRef(null);
+  const overlayRef = useRef(null);
+  const backgroundRef = useRef(null);
+
+  useEffect(() => {
+    if (!loading && heroData && containerRef.current) {
+      // Small delay to ensure all elements are rendered
+      const timer = setTimeout(() => {
+        // Check if all required elements exist
+        const elementsToAnimate = [
+          titleRef.current,
+          descriptionRef.current,
+          buttonsRef.current,
+          overlayRef.current,
+          backgroundRef.current
+        ].filter(Boolean); // Filter out null elements
+
+        // Only animate if we have elements
+        if (elementsToAnimate.length === 0) return;
+
+        // Create GSAP timeline
+        const tl = gsap.timeline();
+
+        // Set initial states - only for existing elements
+        if (logoRef.current) {
+          gsap.set(logoRef.current, { opacity: 0, y: 50 });
+        }
+        if (titleRef.current) {
+          gsap.set(titleRef.current, { opacity: 0, y: 50 });
+        }
+        if (descriptionRef.current) {
+          gsap.set(descriptionRef.current, { opacity: 0, y: 50 });
+        }
+        if (buttonsRef.current) {
+          gsap.set(buttonsRef.current, { opacity: 0, y: 50 });
+        }
+        if (overlayRef.current) {
+          gsap.set(overlayRef.current, { opacity: 0 });
+        }
+        if (backgroundRef.current) {
+          gsap.set(backgroundRef.current, { scale: 1.1, opacity: 0 });
+        }
+
+        // Animation sequence - only animate existing elements
+        if (backgroundRef.current) {
+          tl.to(backgroundRef.current, {
+            duration: 1.5,
+            opacity: 1,
+            scale: 1,
+            ease: "power2.out"
+          });
+        }
+
+        if (overlayRef.current) {
+          tl.to(overlayRef.current, {
+            duration: 1,
+            opacity: 0.75,
+            ease: "power2.out"
+          }, "-=1");
+        }
+
+        if (logoRef.current) {
+          tl.to(logoRef.current, {
+            duration: 0.8,
+            opacity: 1,
+            y: 0,
+            ease: "back.out(1.7)"
+          }, "-=0.5");
+        }
+
+        if (titleRef.current) {
+          tl.to(titleRef.current, {
+            duration: 1,
+            opacity: 1,
+            y: 0,
+            ease: "power3.out"
+          }, "-=0.4");
+        }
+
+        if (descriptionRef.current) {
+          tl.to(descriptionRef.current, {
+            duration: 0.8,
+            opacity: 1,
+            y: 0,
+            ease: "power2.out"
+          }, "-=0.6");
+        }
+
+        if (buttonsRef.current) {
+          tl.to(buttonsRef.current, {
+            duration: 0.8,
+            opacity: 1,
+            y: 0,
+            ease: "back.out(1.7)"
+          }, "-=0.4");
+
+          // Add hover animations for buttons
+          const buttons = buttonsRef.current.querySelectorAll('button, a, [role="button"]');
+          buttons.forEach(button => {
+            const handleMouseEnter = () => {
+              gsap.to(button, {
+                duration: 0.3,
+                scale: 1.05,
+                ease: "power2.out"
+              });
+            };
+
+            const handleMouseLeave = () => {
+              gsap.to(button, {
+                duration: 0.3,
+                scale: 1,
+                ease: "power2.out"
+              });
+            };
+
+            button.addEventListener('mouseenter', handleMouseEnter);
+            button.addEventListener('mouseleave', handleMouseLeave);
+
+            // Store cleanup functions
+            button._gsapCleanup = () => {
+              button.removeEventListener('mouseenter', handleMouseEnter);
+              button.removeEventListener('mouseleave', handleMouseLeave);
+            };
+          });
+        }
+
+        // Store timeline for cleanup
+        containerRef.current._gsapTimeline = tl;
+      }, 50); // Small delay to ensure DOM is ready
+
+      // Cleanup function
+      return () => {
+        clearTimeout(timer);
+        
+        if (containerRef.current?._gsapTimeline) {
+          containerRef.current._gsapTimeline.kill();
+        }
+
+        // Clean up button event listeners
+        if (buttonsRef.current) {
+          const buttons = buttonsRef.current.querySelectorAll('button, a, [role="button"]');
+          buttons.forEach(button => {
+            if (button._gsapCleanup) {
+              button._gsapCleanup();
+            }
+          });
+        }
+      };
+    }
+  }, [heroData, loading]);
+
+  return {
+    containerRef,
+    logoRef,
+    titleRef,
+    descriptionRef,
+    buttonsRef,
+    overlayRef,
+    backgroundRef
+  };
+};
 
 /**
  * Main Component: HeroSection
@@ -94,6 +250,15 @@ const useHeroData = () => {
  */
 export default function HeroSection({ navigateTo }) {
   const { heroData, loading } = useHeroData();
+  const {
+    containerRef,
+    logoRef,
+    titleRef,
+    descriptionRef,
+    buttonsRef,
+    overlayRef,
+    backgroundRef
+  } = useGSAPAnimations(heroData, loading);
 
   // --- Performance Optimization with useMemo ---
   // useMemo caches the result of a calculation. Here, it prevents the `style` object
@@ -138,21 +303,22 @@ export default function HeroSection({ navigateTo }) {
   }
 
   return (
-    <div className="relative h-[100vh]">
+    <div ref={containerRef} className="relative h-[100vh]">
       {/* Background Image */}
       <div
+        ref={backgroundRef}
         className="absolute inset-0 bg-cover bg-center"
         style={backgroundStyle}
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-blue-950 opacity-75" />
+      <div ref={overlayRef} className="absolute inset-0 bg-blue-950 opacity-75" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center text-white h-full px-4">
         {/* Logo */}
         {heroData?.logo && (
-          <div className="flex w-full justify-center items-center gap-x-4 mb-6 mt-[30pt] lg:mt-[10pt]">
+          <div ref={logoRef} className="flex w-full justify-center items-center gap-x-4 mb-6 mt-[30pt] lg:mt-[10pt]">
             <img
               src={heroData.logo}
               alt="Asa Hikari Mulya"
@@ -162,17 +328,17 @@ export default function HeroSection({ navigateTo }) {
         )}
 
         {/* Title */}
-        <h1 className="text-3xl md:text-[2.3rem] lg:text-[2.9rem] font-bold mb-4 md:mb-10 lg:mb-5 text-pretty max-w-5xl mt-60">
+        <h1 ref={titleRef} className="text-3xl md:text-[2.3rem] lg:text-[2.9rem] font-bold mb-4 md:mb-10 lg:mb-5 text-pretty max-w-5xl mt-60">
           {heroData.title}
         </h1>
 
         {/* Description */}
-        <p className="max-w-5xl md:max-w-[80rem] md:mx-10 font-bold text-sm md:text-lg text-gray-300 mb-6 md:mb-10 lg:mb-5">
+        <p ref={descriptionRef} className="max-w-5xl md:max-w-[80rem] md:mx-10 font-bold text-sm md:text-lg text-gray-300 mb-6 md:mb-10 lg:mb-5">
           {heroData.description}
         </p>
 
         {/* Button */}
-        <div className="flex w-full justify-center items-center gap-x-1 sm:gap-x-2">
+        <div ref={buttonsRef} className="flex w-full justify-center items-center gap-x-1 sm:gap-x-2">
           <>
             <ButtonBlue href={import.meta.env.VITE_URL_SIGN_UP} title={'Daftar Sekarang'}/>
           </>

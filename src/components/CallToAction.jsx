@@ -2,7 +2,7 @@ import ButtonBlue from "./partials/ButtonBlue";
 
 const CallToAction = () => {
   return (
-    <section className="relative z-10 -mt-10 md:-mt-24 px-4">
+    <section className="relative z-[10] !-mt-10 md:-mt-24 px-4">
       <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg px-6 py-10 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         {/* Text */}
         <div className="w-full md:w-3/5 lg:w-3/4">
