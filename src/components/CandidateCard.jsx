@@ -314,7 +314,7 @@ useEffect(() => {
             ))}
           </div>
 
-          <div className="mt-12 md:mt-16 text-center bg-white p-8 rounded-2xl shadow-md border border-gray-200">
+          {/* <div className="mt-12 md:mt-16 text-center bg-white p-8 rounded-2xl shadow-md border border-gray-200">
             <h3 className="text-2xl font-bold text-[#003366]">
               Jumlah Pencari Kerja Terus Bertambah
             </h3>
@@ -322,16 +322,18 @@ useEffect(() => {
               Bergabunglah dengan ratusan talenta lainnya yang siap meraih masa
               depan cerah di Jepang.
             </p>
-            <motion.button
-              onClick={() => onSeeAllClick()}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-6 bg-[#003366] text-white font-bold py-3 px-8 rounded-full hover:bg-[#002244] focus:outline-none focus:ring-4 focus:ring-[#003366]/50"
-            >
-              Temukan Lebih Lanjut
-            </motion.button>
+          </div> */}
+            <div className="mt-12 md:mt-16 text-center">
+                <motion.button
+                  onClick={() => onSeeAllClick()}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-6 bg-[#003366] text-white font-bold py-3 px-8 rounded-full hover:bg-[#002244] focus:outline-none focus:ring-4 focus:ring-[#003366]/50"
+                  >
+                  Lihat Selengkapnya
+                </motion.button>
+            </div>
           </div>
-        </div>
 
         <AnimatePresence>
           {isModalOpen && (
